@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>MapleCheck</title>
+  <style>
+    body {
+      width: 280px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      margin: 0;
+      padding: 16px;
+      color: #1a1a1a;
+    }
+    h1 {
+      font-size: 15px;
+      margin: 0 0 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .status {
+      padding: 10px 12px;
+      border-radius: 8px;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+    .status.us { background: #e8edf7; border: 1px solid #1f4287; }
+    .status.ca { background: #fdeaea; border: 1px solid #cc0000; }
+    .status.none { background: #f2f2f2; border: 1px solid #ccc; }
+    .brand { font-weight: 700; margin-bottom: 2px; }
+    .meta { color: #555; font-size: 12px; }
+    .alt-title { font-size: 12px; font-weight: 600; margin: 10px 0 4px; }
+    .alt-list { font-size: 12px; margin: 0; padding-left: 16px; }
+    .footer { font-size: 10px; color: #999; margin-top: 12px; }
+    .report-btn {
+      display: block;
+      width: 100%;
+      margin-top: 10px;
+      padding: 8px;
+      font-size: 12px;
+      background: #f2f2f2;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      cursor: pointer;
+      color: #333;
+    }
+    .report-btn:hover { background: #e8e8e8; }
+    #report-form {
+      display: none;
+      margin-top: 8px;
+      padding: 10px;
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+    }
+    #report-form select, #report-form textarea {
+      width: 100%;
+      box-sizing: border-box;
+      font-size: 12px;
+      margin-bottom: 6px;
+      padding: 6px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-family: inherit;
+    }
+    #report-form textarea { resize: vertical; min-height: 40px; }
+    #report-submit {
+      width: 100%;
+      padding: 6px;
+      font-size: 12px;
+      background: #cc0000;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    #report-confirm { font-size: 12px; color: #1a7d1a; margin-top: 8px; display: none; }
+
+    /* Unverified Wikidata guess — deliberately NOT styled like the confirmed
+       status boxes (no solid red/blue background). Dashed border, muted
+       colour, and hidden behind a click so it's never seen with the same
+       visual weight as verified data. */
+    #wikidata-toggle {
+      display: none;
+      width: 100%;
+      margin-top: 8px;
+      padding: 8px;
+      font-size: 11px;
+      background: #fff;
+      border: 1px dashed #999;
+      border-radius: 6px;
+      cursor: pointer;
+      color: #666;
+    }
+    #wikidata-toggle:hover { background: #f7f7f7; }
+    #wikidata-result {
+      display: none;
+      margin-top: 6px;
+      padding: 8px 10px;
+      background: #fffbea;
+      border: 1px dashed #c9a400;
+      border-radius: 6px;
+      font-size: 11px;
+      color: #6b5900;
+    }
+    #wikidata-result .wd-label { font-weight: 700; display: block; margin-bottom: 3px; }
+    #wikidata-result a { color: #6b5900; }
+  </style>
+</head>
+<body>
+  <h1>🍁 MapleCheck</h1>
+  <div id="content">Loading…</div>
+  <button id="research-toggle" class="report-btn" style="display:none; background:#e8edf7; border-color:#1f4287; color:#1f4287;">🔍 Request we look into this site</button>
+  <button id="wikidata-toggle">🔎 Show an unverified guess (not human-checked)</button>
+  <div id="wikidata-result"></div>
+  <button id="report-toggle" class="report-btn">⚠️ Report incorrect data</button>
+  <div id="report-form">
+    <select id="report-reason">
+      <option value="wrong-ownership">Ownership is wrong</option>
+      <option value="wrong-country">Country is wrong</option>
+      <option value="outdated">This is outdated (company was sold/changed)</option>
+      <option value="wrong-alternatives">Suggested alternatives are wrong</option>
+      <option value="other">Other</option>
+    </select>
+    <textarea id="report-details" placeholder="Optional: what should it say instead? Include a source if you have one."></textarea>
+    <button id="report-submit">Submit report</button>
+  </div>
+  <div id="report-confirm">Thanks — report saved. We'll review it.</div>
+  <div class="footer">v0.1 starter data — verify before relying on for purchases</div>
+  <script src="data.js"></script>
+  <script src="wikidata.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+#maplecheck-badge {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 2147483647;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  cursor: grab;
+}
+#maplecheck-badge:active {
+  cursor: grabbing;
+}
+
+.mc-badge-inner {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  transition: transform 0.15s ease;
+}
+
+.mc-badge-inner:hover {
+  transform: scale(1.03);
+}
+
+.mc-us {
+  background: #1f4287; /* blue = US-owned flag */
+}
+
+.mc-ca {
+  background: #cc0000; /* red = Canadian-owned */
+}
+
+.mc-unknown {
+  background: #666;
+}
+
+.mc-flag {
+  font-size: 16px;
+}
+
+.mc-drag-handle {
+  cursor: grab;
+  font-size: 13px;
+  opacity: 0.7;
+  padding: 0 2px;
+}
+.mc-drag-handle:active {
+  cursor: grabbing;
+}
+
+.mc-minimize-btn {
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 700;
+  opacity: 0.7;
+  padding: 0 4px;
+  line-height: 1;
+}
+.mc-minimize-btn:hover {
+  opacity: 1;
+}
+
+/* Minimized state: shrink to a small fixed-size dot with just the flag,
+   dropping the label, drag hint, and minimize button entirely. The whole
+   badge (including this minimized dot) stays draggable — see content.js,
+   drag is bound to the whole badge, not a handle that disappears here. */
+#maplecheck-badge.mc-minimized .mc-label,
+#maplecheck-badge.mc-minimized .mc-drag-handle,
+#maplecheck-badge.mc-minimized .mc-minimize-btn {
+  display: none;
+}
+#maplecheck-badge.mc-minimized .mc-badge-inner {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  gap: 0;
+  border-radius: 50%;
+  justify-content: center;
+}
+#maplecheck-badge.mc-minimized .mc-flag {
+  font-size: 13px;
+}
+#maplecheck-badge.mc-minimized .mc-panel {
+  display: none !important; /* never show the expand panel while minimized */
+}
+
+/* Expanded panel — hidden by default, shown when the badge is clicked.
+   This is what was missing before: the badge toggled this class but no
+   CSS ever gave it content or visibility, so clicking looked interactive
+   but did nothing. */
+.mc-panel {
+  display: none;
+  position: absolute;
+  bottom: calc(100% + 8px);
+  right: 0;
+  width: 260px;
+  max-height: 340px;
+  overflow-y: auto;
+  background: #fff;
+  color: #1a1a1a;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  padding: 12px 14px;
+  font-size: 12px;
+}
+
+#maplecheck-badge.mc-expanded .mc-panel {
+  display: block;
+}
+
+.mc-panel-brand {
+  font-weight: 700;
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+.mc-panel-meta {
+  color: #555;
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+
+.mc-panel-italic {
+  font-style: italic;
+}
+
+.mc-panel-alt-title {
+  font-weight: 600;
+  margin: 8px 0 3px;
+}
+
+.mc-panel-alt-list {
+  margin: 0 0 6px;
+  padding-left: 16px;
+}
