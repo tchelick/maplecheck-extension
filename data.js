@@ -556,6 +556,13 @@ const OWNERSHIP_DATA = {
   "tv.apple.com": { brand: "Apple TV+", ownership: "US", category: "Media & Entertainment", hq: "Cupertino, California", note: "Owned by Apple (NASDAQ: AAPL).", confidence: "high",
     alternatives: ["CBC Gem", "Crave"] },
 
+
+  // ---- Men's basics ----
+  "saxxunderwear.com": { brand: "SAXX Underwear", ownership: "US", category: "Apparel & Fashion", hq: "Vancouver, British Columbia (headquarters) / New York, New York (TZP Group)", note: "Founded in Vancouver in 2006 by Trent Kitsch and still headquartered and designed there, but control has passed to US private equity. In August 2021 TZP Group, a New York firm, made a strategic investment through TZP Capital Partners III — independent trade press reported it as TZP acquiring control — while Vancouver's Krystal Growth Partners, via NLS Group Holdings, retained what the announcement called a 'significant minority interest.' US firm Brentwood Associates, which had invested in 2016, exited in the same deal. Flagged rather than treated as settled because Krystal's own portfolio page still describes the pre-2021 structure (it lists Brentwood as a current shareholder, which the 2021 announcement contradicts), so one source is stale rather than genuinely disagreeing. A direct statement from SAXX would settle it.", confidence: "verify",
+    alternatives: ["Manmade (Canadian, Montreal)", "Kotn (Canadian)"] },
+  "manmadebrand.com": { brand: "Manmade", ownership: "Canada", category: "Apparel & Fashion", hq: "Montreal, Quebec", note: "Privately held Canadian men's basics brand — boxer briefs, socks and tees — founded in Montreal in 2021 by four friends who met at Concordia University and still run it. No outside acquisition; independent and Canadian-owned. Confirmed via Concordia University's own profile of the founders plus independent Canadian retail coverage.", confidence: "high",
+    alternatives: [] },
+
 };
 
 // Simple lookup by hostname
