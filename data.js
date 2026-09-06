@@ -563,6 +563,48 @@ const OWNERSHIP_DATA = {
   "manmadebrand.com": { brand: "Manmade", ownership: "Canada", category: "Apparel & Fashion", hq: "Montreal, Quebec", note: "Privately held Canadian men's basics brand — boxer briefs, socks and tees — founded in Montreal in 2021 by four friends who met at Concordia University and still run it. No outside acquisition; independent and Canadian-owned. Confirmed via Concordia University's own profile of the founders plus independent Canadian retail coverage.", confidence: "high",
     alternatives: [] },
 
+
+  // ---- Dating & Social ----
+  // Note on this category: the online dating market is unusually concentrated.
+  // Match Group alone owns Tinder, Hinge, Match, OkCupid and Plenty of Fish,
+  // so several "different" apps are the same US company. There is no
+  // Canadian-owned dating app at national scale — Plenty of Fish was the one,
+  // and it was sold to Match in 2015.
+  "pof.com": { brand: "Plenty of Fish", ownership: "US", category: "Dating & Social", hq: "Vancouver, BC (operations) / Dallas, Texas (Match Group)", note: "The clearest case of a Canadian dating company that stopped being Canadian. Founded in Vancouver in 2003 by Markus Frind and famously run as a near-solo operation, it was sold to Match Group in 2015 for US$575M in cash — a sale that required federal industry minister approval under the Investment Canada Act. Still operates from Vancouver, but owned by Match Group (NASDAQ: MTCH) of Dallas.", confidence: "high",
+    alternatives: [], alternativesNote: "No Canadian-owned dating app operates at comparable scale — Plenty of Fish was that app before the 2015 sale. Ruby (Toronto) is the main Canadian-owned operator left, but its brands are niche rather than general-purpose." },
+  "tinder.com": { brand: "Tinder", ownership: "US", category: "Dating & Social", hq: "West Hollywood, California / Dallas, Texas (Match Group)", note: "Owned by Match Group, NASDAQ: MTCH.", confidence: "high",
+    alternatives: [], alternativesNote: "Hinge, Match, OkCupid and Plenty of Fish are all owned by the same company (Match Group), so switching between them does not change who gets paid." },
+  "hinge.co": { brand: "Hinge", ownership: "US", category: "Dating & Social", hq: "New York, New York", note: "Owned by Match Group (NASDAQ: MTCH), which took full ownership in 2019 — the same parent as Tinder, Match, OkCupid and Plenty of Fish.", confidence: "high",
+    alternatives: [] },
+  "match.com": { brand: "Match", ownership: "US", category: "Dating & Social", hq: "Dallas, Texas", note: "The namesake brand of Match Group, NASDAQ: MTCH.", confidence: "high",
+    alternatives: [] },
+  "okcupid.com": { brand: "OkCupid", ownership: "US", category: "Dating & Social", hq: "New York, New York", note: "Owned by Match Group (NASDAQ: MTCH) since 2011.", confidence: "high",
+    alternatives: [] },
+  "bumble.com": { brand: "Bumble", ownership: "US", category: "Dating & Social", hq: "Austin, Texas", note: "Bumble Inc., NASDAQ: BMBL. Also owns Badoo and Fruitz. The main scale competitor to Match Group, but equally American.", confidence: "high",
+    alternatives: [] },
+  "badoo.com": { brand: "Badoo", ownership: "US", category: "Dating & Social", hq: "London, UK (operations) / Austin, Texas (Bumble Inc.)", note: "Founded in Russia in 2006 and long run from London, but consolidated under US-listed Bumble Inc. (NASDAQ: BMBL) in its 2020 corporate restructuring.", confidence: "high",
+    alternatives: [] },
+  "grindr.com": { brand: "Grindr", ownership: "US", category: "Dating & Social", hq: "West Hollywood, California", note: "Notable ownership history: Chinese gaming company Beijing Kunlun Tech bought Grindr in 2016-2018, then was ordered by CFIUS, the US foreign-investment security committee, to divest it on national security grounds because the app held users' location, messages and HIV status. Kunlun sold to US-based San Vicente Acquisition Partners in 2020 for about US$608M. Grindr went public in 2022 and trades as NYSE: GRND.", confidence: "high",
+    alternatives: [] },
+  "ashleymadison.com": { brand: "Ashley Madison", ownership: "Canada", category: "Dating & Social", hq: "Toronto, Ontario", note: "Canadian-owned, which surprises people who assume otherwise. Operated by Ruby Life Inc. (the company formerly called Avid Life Media, renamed Ruby in 2016), a privately held Toronto company that also runs Cougar Life. Listed here as an ownership fact, not an endorsement — the 2015 data breach and the resulting FTC and class-action settlements are part of this company's record.", confidence: "high",
+    alternatives: [] },
+  "cougarlife.com": { brand: "Cougar Life", ownership: "Canada", category: "Dating & Social", hq: "Toronto, Ontario", note: "Operated by Ruby Life Inc. of Toronto, the same privately held Canadian company behind Ashley Madison.", confidence: "high",
+    alternatives: [] },
+  "eharmony.com": { brand: "eharmony", ownership: "not-US", category: "Dating & Social", hq: "Los Angeles, California (operations) / Hamburg, Germany (ParshipMeet Group)", note: "Founded in California in 2000 but no longer American-controlled. Acquired in 2018 by Germany's ProSiebenSat.1 through its NuCom/Parship arm, and now held by ParshipMeet Group, roughly 55% ProSiebenSat.1 and 45% General Atlantic (a US private equity firm) — so a substantial US minority sits under a European majority. As of December 2025, ProSiebenSat.1 itself is about 75.6% controlled by Italy's MFE-MediaForEurope, adding another layer above it. Not US-controlled and not Canadian.", confidence: "high",
+    alternatives: [] },
+  "zoosk.com": { brand: "Zoosk", ownership: "verify", category: "Dating & Social", hq: "Berlin, Germany (Spark Networks) / San Francisco, California (origin)", note: "Ownership is unsettled — do not rely on this entry. Zoosk is held by Spark Networks Services GmbH, a Berlin company that also owns Christian Mingle, JDate and EliteSingles. Spark was taken private by MGG Investment Group, a US lender that became its equity holder; after a failed 2024 restructuring, MGG withdrew funding and the Berlin Charlottenburg court placed Spark under preliminary insolvency administration in January 2026, with a related Chapter 15 filing in the US. Whether these brands end up US-owned, German-owned or sold to a third party is being decided in insolvency proceedings.", confidence: "verify",
+    alternatives: [] },
+  "christianmingle.com": { brand: "Christian Mingle", ownership: "verify", category: "Dating & Social", hq: "Berlin, Germany (Spark Networks)", note: "Same situation as Zoosk — owned by Spark Networks Services GmbH, which entered German insolvency administration in January 2026 with a Chapter 15 filing in the US. Ownership pending the outcome of those proceedings.", confidence: "verify",
+    alternatives: [] },
+  "jdate.com": { brand: "JDate", ownership: "verify", category: "Dating & Social", hq: "Berlin, Germany (Spark Networks)", note: "Same situation as Zoosk and Christian Mingle — a Spark Networks Services GmbH brand, with ownership pending the outcome of the German insolvency proceedings opened in January 2026.", confidence: "verify",
+    alternatives: [] },
+  "happn.com": { brand: "happn", ownership: "not-US", category: "Dating & Social", hq: "Paris, France", note: "Privately held French company, founded in Paris in 2014. Not US-owned, not Canadian.", confidence: "high",
+    alternatives: [] },
+  "feeld.co": { brand: "Feeld", ownership: "not-US", category: "Dating & Social", hq: "London, United Kingdom", note: "Privately held British company, founded in London in 2014. Not US-owned, not Canadian.", confidence: "high",
+    alternatives: [] },
+  "coffeemeetsbagel.com": { brand: "Coffee Meets Bagel", ownership: "US", category: "Dating & Social", hq: "San Francisco, California", note: "Privately held US company, founded in 2012 by the Kang sisters.", confidence: "high",
+    alternatives: [] },
+
 };
 
 // Simple lookup by hostname
