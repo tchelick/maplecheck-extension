@@ -39,4 +39,4 @@ git commit -m "Sync company data from extension" || echo "(nothing to commit in 
 git push
 
 echo ""
-echo "Done. GitHub Pages will auto-deploy maplecheck.store in about a minute."
+echo "Done. Vercel will auto-deploy the site update in about a minute."
