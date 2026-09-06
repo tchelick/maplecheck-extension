@@ -822,6 +822,10 @@ const OWNERSHIP_DATA = {
   "noize.com": { brand: "Noize", ownership: "Canada", category: "Apparel & Fashion", hq: "Montreal, Quebec", note: "Vegan outerwear brand — parkas, puffers and raincoats made without animal materials, described as 100% PETA-approved. Canadian-operated, but ownership and manufacturing are not published — flagged for confirmation.", confidence: "verify",
     alternatives: [] },
 
+
+  "miik.ca": { brand: "Miik", ownership: "Canada", category: "Apparel & Fashion", hq: "Etobicoke, Ontario", madeIn: "Canada", materialsFrom: "Canada", note: "One of the very few entries where the whole chain stays in Canada. Women-founded and women-led — founder Donna Smith with CEO Sue Cadman — with every garment produced within 50km of the studio in the Greater Toronto Area, from fabrics custom-milled locally rather than imported. The company states 95% of its production materials are recovered.", confidence: "high",
+    alternatives: [] },
+
 };
 
 // Simple lookup by hostname
