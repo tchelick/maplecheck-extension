@@ -830,6 +830,10 @@ const OWNERSHIP_DATA = {
   "tru.earth": { brand: "Tru Earth", ownership: "Canada", category: "Personal Care & Household", hq: "Greater Vancouver, British Columbia", madeIn: "Canada", note: "Tru Earth Environmental Products Inc., founded in BC in 2019 by Brad Liski (CEO), Ryan McKenzie and Kevin Hinton, making plastic-free laundry detergent strips plus dishwasher tablets and household cleaners. Named Canada's second fastest-growing startup by Canadian Business. Independent Canadian directories report manufacturing in the Vancouver area; the company's own about page does not state a location, so treat the made-in claim as reported rather than company-confirmed.", confidence: "high",
     alternatives: [] },
 
+
+  "popsyclothing.co.uk": { brand: "Popsy Clothing", ownership: "not-US", category: "Apparel & Fashion", hq: "Nuneaton, England", madeIn: "imported", note: "British womenswear brand founded in 2017 by Cherish Reardon, who started it selling dresses from home. Registered at Companies House as POPSY CLOTHING LIMITED (company number 09881595), registered office Unit 2 Bath Road, Nuneaton. States its clothing is made in the UK. Not US-owned, and not Canadian.", confidence: "high",
+    alternatives: [], otherAlternatives: [], alternativesNote: "British-made rather than Canadian. If Canadian-made is what you're after, Miik, Blondie Apparel, Sympli and Encircled all manufacture domestically." },
+
 };
 
 // Simple lookup by hostname
