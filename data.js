@@ -260,7 +260,7 @@ const OWNERSHIP_DATA = {
 
   // ---- Everyday household / personal care (small-ticket, high switching willingness) ----
   "tide.com": { brand: "Tide", ownership: "US", category: "Personal Care & Household", hq: "Cincinnati, Ohio", note: "Owned by Procter & Gamble, NYSE: PG", confidence: "high",
-    alternatives: ["Nellie's (Canadian laundry powder)", "Attitude (Canadian, Quebec-based)"] },
+    alternatives: ["Tru Earth (Canadian, BC — laundry strips)", "Nellie's (Canadian laundry powder)", "Attitude (Canadian, Quebec-based)"] },
   "dove.com": { brand: "Dove", ownership: "not-US", category: "Personal Care & Household", hq: "London, UK / Rotterdam, Netherlands", note: "Owned by Unilever — Anglo-Dutch, not US-owned. Not Canadian either.", confidence: "high",
     alternatives: ["Attitude (Canadian personal care)"] },
   "herbalessences.com": { brand: "Herbal Essences", ownership: "US", category: "Personal Care & Household", hq: "Cincinnati, Ohio", note: "Owned by Procter & Gamble, NYSE: PG", confidence: "high",
@@ -824,6 +824,10 @@ const OWNERSHIP_DATA = {
 
 
   "miik.ca": { brand: "Miik", ownership: "Canada", category: "Apparel & Fashion", hq: "Etobicoke, Ontario", madeIn: "Canada", materialsFrom: "Canada", note: "One of the very few entries where the whole chain stays in Canada. Women-founded and women-led — founder Donna Smith with CEO Sue Cadman — with every garment produced within 50km of the studio in the Greater Toronto Area, from fabrics custom-milled locally rather than imported. The company states 95% of its production materials are recovered.", confidence: "high",
+    alternatives: [] },
+
+
+  "tru.earth": { brand: "Tru Earth", ownership: "Canada", category: "Personal Care & Household", hq: "Greater Vancouver, British Columbia", madeIn: "Canada", note: "Tru Earth Environmental Products Inc., founded in BC in 2019 by Brad Liski (CEO), Ryan McKenzie and Kevin Hinton, making plastic-free laundry detergent strips plus dishwasher tablets and household cleaners. Named Canada's second fastest-growing startup by Canadian Business. Independent Canadian directories report manufacturing in the Vancouver area; the company's own about page does not state a location, so treat the made-in claim as reported rather than company-confirmed.", confidence: "high",
     alternatives: [] },
 
 };
