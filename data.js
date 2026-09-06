@@ -844,6 +844,10 @@ const OWNERSHIP_DATA = {
   "boadiceaperfume.com": { brand: "Boadicea the Victorious", ownership: "not-US", category: "Personal Care & Household", hq: "London, United Kingdom", note: "British luxury fragrance house, founded in London in 2008 by Michael Boadi and launched as a Harrods exclusive. Bought in 2010 by David Crisp with a group of investors, who still run it. A member of Walpole, the British luxury industry body. Not US-owned and not Canadian.", confidence: "high",
     alternatives: [], alternativesNote: "No Canadian-owned luxury fragrance house of comparable scale appears in this dataset. Saje Natural Wellness (Vancouver) and Province Apothecary (Toronto) are Canadian-owned in adjacent categories, but neither is a like-for-like substitute for a perfume house." },
 
+
+  "modaselle.com": { brand: "Modaselle", ownership: "Canada", category: "Apparel & Fashion", hq: "Vancouver, British Columbia", note: "Canadian luxury consignment business founded by Natalie Ivanova, selling pre-owned handbags, watches and jewellery from its Seymour Street showroom in Vancouver since 2014 and online since 2012. Worth understanding what the Canadian ownership means here: the labels it resells (Chanel, Hermes, Rolex, Cartier) are all foreign-owned, but on a resale the money goes to this Vancouver company and the original brand receives nothing — so buying second-hand through a Canadian consignor is arguably the most Canadian way to buy a foreign luxury brand.", confidence: "high",
+    alternatives: [] },
+
 };
 
 // Simple lookup by hostname
