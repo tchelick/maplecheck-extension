@@ -36,36 +36,52 @@
     const flagEmoji = isUS ? "🇺🇸" : isCA ? "🍁" : "❓";
     const label = isUS ? "US-owned" : isCA ? "Canadian-owned" : "Ownership unclear";
 
-    // Build the expanded panel content once, up front, from the same data
-    // the popup uses — so clicking the badge is never a dead interaction.
-    let panelHtml = `<div class="mc-panel-brand">${data.brand}</div>`;
-    if (data.hq) panelHtml += `<div class="mc-panel-meta">${data.hq}</div>`;
-    if (data.note) panelHtml += `<div class="mc-panel-meta">${data.note}</div>`;
+    // Built as DOM nodes rather than an innerHTML string so dataset values
+    // enter as text and can never be parsed as markup. Today data.js ships
+    // inside the extension, so this is defence in depth — but the badge is
+    // injected into every page the user visits, and the same fields are
+    // meant to come from a hosted API in Phase 2 (see README), at which
+    // point string interpolation here would be a real injection point.
+    const el = (tag, className, text) => {
+      const node = document.createElement(tag);
+      if (className) node.className = className;
+      if (text != null) node.textContent = text;
+      return node;
+    };
+
+    const panel = el("div", "mc-panel");
+    panel.appendChild(el("div", "mc-panel-brand", data.brand));
+    if (data.hq) panel.appendChild(el("div", "mc-panel-meta", data.hq));
+    if (data.note) panel.appendChild(el("div", "mc-panel-meta", data.note));
+
+    const appendAlternatives = (titleText, items) => {
+      panel.appendChild(el("div", "mc-panel-alt-title", titleText));
+      const list = el("ul", "mc-panel-alt-list");
+      for (const item of items) list.appendChild(el("li", null, item));
+      panel.appendChild(list);
+    };
 
     if (data.alternatives && data.alternatives.length > 0) {
-      panelHtml += `<div class="mc-panel-alt-title">Canadian alternatives:</div>`;
-      panelHtml += `<ul class="mc-panel-alt-list">${data.alternatives.map((a) => `<li>${a}</li>`).join("")}</ul>`;
+      appendAlternatives("Canadian alternatives:", data.alternatives);
     }
     if (data.otherAlternatives && data.otherAlternatives.length > 0) {
-      panelHtml += `<div class="mc-panel-alt-title">Not Canadian, but not US-owned:</div>`;
-      panelHtml += `<ul class="mc-panel-alt-list">${data.otherAlternatives.map((a) => `<li>${a}</li>`).join("")}</ul>`;
+      appendAlternatives("Not Canadian, but not US-owned:", data.otherAlternatives);
     }
     if (data.alternativesNote) {
-      panelHtml += `<div class="mc-panel-meta mc-panel-italic">${data.alternativesNote}</div>`;
+      panel.appendChild(el("div", "mc-panel-meta mc-panel-italic", data.alternativesNote));
     }
     if (!data.alternatives?.length && !data.otherAlternatives?.length && !data.alternativesNote) {
-      panelHtml += `<div class="mc-panel-meta mc-panel-italic">No alternative listed yet.</div>`;
+      panel.appendChild(el("div", "mc-panel-meta mc-panel-italic", "No alternative listed yet."));
     }
 
-    badge.innerHTML = `
-      <div class="mc-badge-inner mc-${isUS ? "us" : isCA ? "ca" : "unknown"}">
-        <span class="mc-drag-handle" title="Drag to move">⠿</span>
-        <span class="mc-flag">${flagEmoji}</span>
-        <span class="mc-label">${label}</span>
-        <span class="mc-minimize-btn" title="Minimize">−</span>
-      </div>
-      <div class="mc-panel">${panelHtml}</div>
-    `;
+    const inner = el("div", `mc-badge-inner mc-${isUS ? "us" : isCA ? "ca" : "unknown"}`);
+    const dragHandle = el("span", "mc-drag-handle", "⠿");
+    dragHandle.title = "Drag to move";
+    const minimizeSpan = el("span", "mc-minimize-btn", "−");
+    minimizeSpan.title = "Minimize";
+    inner.append(dragHandle, el("span", "mc-flag", flagEmoji), el("span", "mc-label", label), minimizeSpan);
+
+    badge.replaceChildren(inner, panel);
 
     document.body.appendChild(badge);
 

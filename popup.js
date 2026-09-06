@@ -1,3 +1,26 @@
+// Build an element with its text set as text, never as markup.
+//
+// Everything rendered here is built through this helper rather than by
+// interpolating into innerHTML. That matters most for the Wikidata block
+// below: Wikidata labels are editable by anyone, so interpolating one into
+// innerHTML let a third party inject markup into this popup (a spoofed
+// ownership badge, a phishing link, a remote image that leaks the user's
+// IP). Manifest V3's default CSP blocks injected <script> and inline
+// handlers, so it was never arbitrary code execution — but markup
+// injection into a trusted-looking popup is bad enough on its own.
+// The same rule protects the data.js fields once those come from a hosted
+// API (see README Phase 2) instead of the bundled file.
+function el(tag, className, text) {
+  const node = document.createElement(tag);
+  if (className) node.className = className;
+  if (text != null) node.textContent = text;
+  return node;
+}
+
+function br() {
+  return document.createElement("br");
+}
+
 // Determine data for the ACTUAL currently active tab, not whatever page
 // was last loaded anywhere (that was the bug: a content script running on
 // any page, including one opened from a link in this popup, would silently
@@ -24,12 +47,10 @@ chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
   chrome.storage.local.set({ lastLookup: data });
 
   if (!data || data.unknown) {
-    container.innerHTML = `
-      <div class="status none">
-        <div class="brand">❓ We don't have data on this site yet</div>
-        <div class="meta">${data ? data.hostname : ""}</div>
-      </div>
-    `;
+    const unknownBox = el("div", "status none");
+    unknownBox.appendChild(el("div", "brand", "❓ We don't have data on this site yet"));
+    unknownBox.appendChild(el("div", "meta", data ? data.hostname : ""));
+    container.replaceChildren(unknownBox);
     // Unknown site: show "request research" instead of "report incorrect data"
     reportSection.style.display = "none";
     researchSection.style.display = "block";
@@ -50,19 +71,50 @@ chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
           const explanation = guess.reason === "too-short"
             ? `The domain name is too short/generic to search reliably (e.g. "ns" matches unrelated things like "Nova Scotia" rather than the actual company). Refusing to guess rather than showing something misleading.`
             : `Nothing usable found. This is expected for small or private companies — Wikidata mostly covers companies notable enough to have a Wikipedia page.`;
-          wdResult.innerHTML = `<span class="wd-label">⚠️ Unverified — no reliable Wikidata match</span>${explanation}`;
+          wdResult.replaceChildren(
+            el("span", "wd-label", "⚠️ Unverified — no reliable Wikidata match"),
+            document.createTextNode(explanation)
+          );
         } else {
-          const countryLine = guess.country
-            ? `Country: <strong>${guess.country}</strong>${guess.country === "Canada" ? " 🍁" : ""}`
-            : "Country: not found";
-          const ownerLine = guess.ownedByLabel ? `<br>Listed owner: ${guess.ownedByLabel}` : "";
-          wdResult.innerHTML = `
-            <span class="wd-label">⚠️ Unverified guess — not human-checked by MapleCheck</span>
-            ${guess.label ? `Wikidata match: <strong>${guess.label}</strong><br>` : ""}
-            ${countryLine}${ownerLine}<br>
-            <a href="${guess.wikidataUrl}" target="_blank" rel="noopener">View on Wikidata ↗</a><br>
-            <span style="font-style:italic;">If this looks right, use "Request we look into this site" above so we can verify it properly.</span>
-          `;
+          // Every value below originates from the Wikidata API, i.e. from a
+          // page any member of the public can edit — so all of it goes in as
+          // text nodes, never as markup.
+          wdResult.replaceChildren(
+            el("span", "wd-label", "⚠️ Unverified guess — not human-checked by MapleCheck")
+          );
+
+          if (guess.label) {
+            wdResult.append(document.createTextNode("Wikidata match: "), el("strong", null, guess.label), br());
+          }
+
+          if (guess.country) {
+            wdResult.append(
+              document.createTextNode("Country: "),
+              el("strong", null, guess.country),
+              document.createTextNode(guess.country === "Canada" ? " 🍁" : "")
+            );
+          } else {
+            wdResult.append(document.createTextNode("Country: not found"));
+          }
+
+          if (guess.ownedByLabel) {
+            wdResult.append(br(), document.createTextNode(`Listed owner: ${guess.ownedByLabel}`));
+          }
+          wdResult.append(br());
+
+          // Only link out to a real Wikidata URL. Refusing anything else keeps
+          // a remote value from ever becoming a javascript: or data: href.
+          if (/^https:\/\/www\.wikidata\.org\/wiki\/[\w-]+$/.test(guess.wikidataUrl || "")) {
+            const link = el("a", null, "View on Wikidata ↗");
+            link.href = guess.wikidataUrl;
+            link.target = "_blank";
+            link.rel = "noopener";
+            wdResult.append(link, br());
+          }
+
+          wdResult.append(
+            el("span", "wd-hint", 'If this looks right, use "Request we look into this site" above so we can verify it properly.')
+          );
         }
         wdResult.style.display = "block";
       });
@@ -78,29 +130,30 @@ chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
   const statusClass = isUS ? "us" : isCA ? "ca" : "none";
   const label = isUS ? "🇺🇸 US-owned" : isCA ? "🍁 Canadian-owned" : "❓ Ownership unclear";
 
-  let html = `
-    <div class="status ${statusClass}">
-      <div class="brand">${data.brand}</div>
-      <div class="meta">${label}${data.hq ? " · " + data.hq : ""}</div>
-      ${data.note ? `<div class="meta" style="margin-top:4px;">${data.note}</div>` : ""}
-    </div>
-  `;
+  const statusBox = el("div", `status ${statusClass}`);
+  statusBox.appendChild(el("div", "brand", data.brand));
+  statusBox.appendChild(el("div", "meta", `${label}${data.hq ? ` · ${data.hq}` : ""}`));
+  if (data.note) statusBox.appendChild(el("div", "meta meta-note", data.note));
+  container.replaceChildren(statusBox);
+
+  function appendAlternatives(titleText, titleClass, items) {
+    container.appendChild(el("div", titleClass, titleText));
+    const list = el("ul", "alt-list");
+    for (const item of items) list.appendChild(el("li", null, item));
+    container.appendChild(list);
+  }
 
   if (data.alternatives && data.alternatives.length > 0) {
-    html += `<div class="alt-title">Canadian alternatives:</div>`;
-    html += `<ul class="alt-list">${data.alternatives.map((a) => `<li>${a}</li>`).join("")}</ul>`;
+    appendAlternatives("Canadian alternatives:", "alt-title", data.alternatives);
   }
 
   if (data.otherAlternatives && data.otherAlternatives.length > 0) {
-    html += `<div class="alt-title" style="color:#555;">Not Canadian, but not US-owned:</div>`;
-    html += `<ul class="alt-list">${data.otherAlternatives.map((a) => `<li>${a}</li>`).join("")}</ul>`;
+    appendAlternatives("Not Canadian, but not US-owned:", "alt-title alt-title-muted", data.otherAlternatives);
   }
 
   if (data.alternativesNote) {
-    html += `<div class="meta" style="margin-top:6px; font-style:italic;">${data.alternativesNote}</div>`;
+    container.appendChild(el("div", "meta alt-note", data.alternativesNote));
   }
-
-  container.innerHTML = html;
 });
 
 // ---- Request research on an unknown site ----
