@@ -27,6 +27,12 @@ cp data.js "$SITE_REPO/extension-data.js"
 echo "Updating homepage stat counts..."
 node "$SITE_REPO/update-stats.js" "$SITE_REPO/extension-data.js" "$SITE_REPO/index.html"
 
+# The manifest lists each covered domain explicitly instead of asking for
+# <all_urls>, so it has to be regenerated whenever the dataset changes or it
+# silently falls behind data.js.
+echo "Regenerating manifest permissions from data.js..."
+node generate-manifest-permissions.js
+
 echo "Committing and pushing the extension repo..."
 git add -A
 git commit -m "Update company data" || echo "(nothing to commit in extension repo)"
@@ -40,3 +46,9 @@ git push
 
 echo ""
 echo "Done. Vercel will auto-deploy the site update in about a minute."
+echo ""
+echo "Note: the website is now current, but the extension is not. If this"
+echo "sync added NEW domains, those sites get no on-page badge until you"
+echo "run 'node build.js' and publish a new version to the stores — the"
+echo "covered domains are baked into manifest.json. The popup still works"
+echo "everywhere in the meantime, so people can still request research."

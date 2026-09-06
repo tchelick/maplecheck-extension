@@ -64,6 +64,11 @@ function firefoxManifest() {
   // Firefox MV3 runs an event page, not a service worker.
   m.background = { scripts: ["background.js"] };
   // AMO requires a stable extension id for a listed add-on.
+  //
+  // This block lives here rather than in manifest.json on purpose:
+  // browser_specific_settings is Firefox-only, and manifest.json is the
+  // Chromium source manifest, so putting it there would ship a Gecko key
+  // inside the Chrome Web Store package.
   m.browser_specific_settings = {
     gecko: {
       id: "maplecheck@maplecheck.store",
@@ -71,14 +76,17 @@ function firefoxManifest() {
       // gained it in 140, Firefox for Android in 142). Firefox auto-updates
       // on a 4-week cycle, so this excludes almost no active users.
       strict_min_version: "142.0",
-      // Mozilla requires an explicit data-collection declaration. "none"
-      // matches what privacy.html states: lookups run locally against the
-      // bundled dataset, nothing is transmitted to us, and the only outbound
-      // request is the opt-in Wikidata lookup the user clicks. Re-check this
-      // declaration if a hosted backend is ever added (see README Phase 2) —
-      // at that point it stops being "none".
+      // Mozilla requires an explicit data-collection declaration.
+      // required "none": the ownership check runs entirely locally against
+      // the bundled dataset and nothing is transmitted to us.
+      // optional "browsingActivity": the opt-in "show an unverified guess"
+      // button sends the current hostname to Wikidata's public API. It only
+      // fires when the user clicks it, which is exactly what an optional
+      // collection permission is for — declaring it means Firefox asks the
+      // user rather than us deciding on their behalf.
       data_collection_permissions: {
         required: ["none"],
+        optional: ["browsingActivity"],
       },
     },
   };
