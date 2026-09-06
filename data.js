@@ -834,6 +834,12 @@ const OWNERSHIP_DATA = {
   "popsyclothing.co.uk": { brand: "Popsy Clothing", ownership: "not-US", category: "Apparel & Fashion", hq: "Nuneaton, England", madeIn: "imported", note: "British womenswear brand founded in 2017 by Cherish Reardon, who started it selling dresses from home. Registered at Companies House as POPSY CLOTHING LIMITED (company number 09881595), registered office Unit 2 Bath Road, Nuneaton. States its clothing is made in the UK. Not US-owned, and not Canadian.", confidence: "high",
     alternatives: [], otherAlternatives: [], alternativesNote: "British-made rather than Canadian. If Canadian-made is what you're after, Miik, Blondie Apparel, Sympli and Encircled all manufacture domestically." },
 
+
+  "isclinical.com": { brand: "iS Clinical", ownership: "US", category: "Personal Care & Household", hq: "Burbank, California", note: "Made by Innovative Skincare, a privately held American company founded in 2000 by Bryan Johns and Alec Call, with Johns as president and CEO. Sold internationally through regional distributor sites — including isclinical.co.uk — which is why the brand is often taken for European. The country-code domain reflects where it is sold, not who owns it.", confidence: "high",
+    alternatives: ["Province Apothecary (Canadian, Toronto)", "Saje Natural Wellness (Canadian, Vancouver)", "Rocky Mountain Soap Company (Canadian, Canmore)"] },
+  "isclinical.co.uk": { brand: "iS Clinical (UK site)", ownership: "US", category: "Personal Care & Household", hq: "United Kingdom (distributor site) / Burbank, California (Innovative Skincare)", note: "The UK storefront for iS Clinical. The .co.uk domain is a regional sales site; the brand and its parent, Innovative Skincare, are American and based in Burbank, California. Listed separately because the domain alone would otherwise suggest a British company.", confidence: "high",
+    alternatives: ["Province Apothecary (Canadian, Toronto)", "Saje Natural Wellness (Canadian, Vancouver)", "Rocky Mountain Soap Company (Canadian, Canmore)"] },
+
 };
 
 // Simple lookup by hostname
