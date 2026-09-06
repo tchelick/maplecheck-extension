@@ -840,6 +840,10 @@ const OWNERSHIP_DATA = {
   "isclinical.co.uk": { brand: "iS Clinical (UK site)", ownership: "US", category: "Personal Care & Household", hq: "United Kingdom (distributor site) / Burbank, California (Innovative Skincare)", note: "The UK storefront for iS Clinical. The .co.uk domain is a regional sales site; the brand and its parent, Innovative Skincare, are American and based in Burbank, California. Listed separately because the domain alone would otherwise suggest a British company.", confidence: "high",
     alternatives: ["Province Apothecary (Canadian, Toronto)", "Saje Natural Wellness (Canadian, Vancouver)", "Rocky Mountain Soap Company (Canadian, Canmore)"] },
 
+
+  "boadiceaperfume.com": { brand: "Boadicea the Victorious", ownership: "not-US", category: "Personal Care & Household", hq: "London, United Kingdom", note: "British luxury fragrance house, founded in London in 2008 by Michael Boadi and launched as a Harrods exclusive. Bought in 2010 by David Crisp with a group of investors, who still run it. A member of Walpole, the British luxury industry body. Not US-owned and not Canadian.", confidence: "high",
+    alternatives: [], alternativesNote: "No Canadian-owned luxury fragrance house of comparable scale appears in this dataset. Saje Natural Wellness (Vancouver) and Province Apothecary (Toronto) are Canadian-owned in adjacent categories, but neither is a like-for-like substitute for a perfume house." },
+
 };
 
 // Simple lookup by hostname
