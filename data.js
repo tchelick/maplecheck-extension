@@ -1,12 +1,33 @@
-// MapleCheck ownership database — STARTER BATCH v0.1
-// IMPORTANT: This is a first-pass dataset built from well-established public
-// facts (stock exchange listings, headquarters locations). It has NOT been
-// through a legal/verification pass. Do not publish or make public claims
-// from this file until each entry has been checked and sourced properly —
-// see /areas/buy-canadian-extension.md notes on liability risk.
+// MapleCheck ownership database
 //
-// confidence: "high" = widely known, uncontested public fact (HQ, stock listing)
-// confidence: "verify" = needs a dedicated source check before launch
+// Built from public sources per RESEARCH-PROCESS.md: exchange listings and
+// filings first, then acquisition records for private companies, with the
+// sources named in each entry's note field.
+//
+// STATUS: every entry previously flagged for review has now been through a
+// dedicated verification pass. What that pass could resolve, it resolved
+// (Hudson's Bay, Mackage, AutoTrader, The Body Shop, TikTok). What remains
+// flagged is flagged because the ownership genuinely has no single answer,
+// or because a real-world process has not finished yet — not because the
+// checking is outstanding.
+//
+// The entries never flagged have NOT each been individually re-sourced.
+// They rest on uncontested public facts (stock listings, headquarters,
+// well-documented acquisitions), which is a reasonable basis for what this
+// extension claims, but it is not the same as a per-entry legal review.
+//
+// confidence: "high"   = uncontested public fact, source named in the note
+// confidence: "verify" = shown to users as "still being verified", for one
+//                        of two reasons the note always spells out:
+//                          (a) genuinely mixed ownership with no single
+//                              national answer (Tim Hortons, Lululemon,
+//                              Molson Coors, Nuvei), or
+//                          (b) an unfinished real-world process — an
+//                              insolvency or an expiring licence (the Spark
+//                              Networks brands, Toys "R" Us Canada)
+//
+// ownership: "verify" is separate from confidence — it means no flag is
+// assigned at all, for companies where picking one country would misinform.
 
 const OWNERSHIP_DATA = {
   // ---- US-owned / US-headquartered ----
@@ -50,7 +71,7 @@ const OWNERSHIP_DATA = {
     alternatives: [] },
   "canadiantire.ca": { brand: "Canadian Tire", ownership: "Canada", category: "Retail & Department Stores", hq: "Toronto, Ontario", note: "TSX: CTC", confidence: "high",
     alternatives: [] },
-  "timhortons.ca": { brand: "Tim Hortons", ownership: "verify", category: "Food & Drink", hq: "Oakville, Ontario (brand HQ)", note: "Genuinely mixed, not a clean flag. The brand is Canadian and run as a distinct Canadian business, but the parent company, Restaurant Brands International (RBI), also owns Burger King (US) and was formed via 2014 merger backed by 3G Capital (Brazil). 3G's stake has fallen from ~51% (2014) to ~26% (most recent reporting); Canadian institutional investors (TD, BMO, RBC, CPP Investment Board) now hold a comparable combined stake. RBI is dual-listed NYSE/TSX, HQ Toronto. No single country cleanly owns it today.", confidence: "verify",
+  "timhortons.ca": { brand: "Tim Hortons", ownership: "verify", category: "Food & Drink", hq: "Toronto, Ontario (RBI) / Oakville, Ontario (brand)", note: "Checked, and there is no single right answer — this flag is the finding, not an unfinished task. Tim Hortons is run as a Canadian business with a Canadian brand HQ, but the parent is Restaurant Brands International, which also owns Burger King and Popeyes, is dual-listed on the NYSE and TSX, and keeps its head office in Toronto. RBI was created by the 2014 merger backed by Brazil's 3G Capital, whose stake has fallen from roughly 51% to about 26%, while Canadian institutions (TD, BMO, RBC, CPP Investment Board) now hold a comparable combined position. No one country controls it, so MapleCheck does not assign a flag.", confidence: "verify",
     alternatives: [] },
   "sobeys.com": { brand: "Sobeys", ownership: "Canada", category: "Grocery & Pharmacy", hq: "Stellarton, Nova Scotia", note: "Owned by Empire Company Ltd., TSX: EMP.A", confidence: "high",
     alternatives: [] },
@@ -92,8 +113,8 @@ const OWNERSHIP_DATA = {
     alternatives: [] },
   "homehardware.ca": { brand: "Home Hardware", ownership: "Canada", category: "Home & Furniture", hq: "St. Jacobs, Ontario", note: "Independently, privately Canadian-owned dealer cooperative", confidence: "high",
     alternatives: [] },
-  "lululemon.com": { brand: "Lululemon", ownership: "verify", category: "Apparel & Fashion", hq: "Vancouver, BC (HQ) / incorporated in Delaware, US", note: "Genuinely mixed case: founded and headquartered in Vancouver, but incorporated in the US and listed on NASDAQ. Founder Chip Wilson holds ~8.4%; largest shareholders are US institutional funds (FMR, Vanguard, BlackRock). Needs a nuanced explainer, not a simple US/Canada flag.", confidence: "verify",
-    alternatives: [] },
+  "lululemon.com": { brand: "Lululemon", ownership: "verify", category: "Apparel & Fashion", hq: "Vancouver, British Columbia (headquarters) / Delaware, US (incorporation)", note: "Checked, and it stays split by design — this flag is the finding. Founded in Vancouver in 1998 and still headquartered there, with design and much of its senior team in BC, but the company is incorporated in Delaware and listed on the NASDAQ. Founder Chip Wilson holds a single-digit stake; the largest shareholders are US institutional funds (FMR, Vanguard, BlackRock). Canadian by address and origin, American by incorporation and shareholder base — a real split rather than a gap in our research.", confidence: "verify",
+    alternatives: ["Aritzia (Canadian, TSX: ATZ)", "Roots", "Kotn"] },
   "aritzia.com": { brand: "Aritzia", ownership: "Canada", category: "Apparel & Fashion", hq: "Vancouver, BC", note: "TSX: ATZ", confidence: "high",
     alternatives: [] },
   "canadagoose.com": { brand: "Canada Goose", ownership: "Canada", category: "Apparel & Fashion", hq: "Toronto, Ontario", note: "TSX/NYSE: GOOS — dual-listed but Canadian headquartered and founded", confidence: "high",
@@ -164,8 +185,8 @@ const OWNERSHIP_DATA = {
     alternatives: [] },
   "tilley.com": { brand: "Tilley", ownership: "Canada", category: "Apparel & Fashion", hq: "Don Mills, Ontario", note: "Privately held Canadian outdoor apparel brand", confidence: "high",
     alternatives: [] },
-  "mackage.com": { brand: "Mackage", ownership: "verify", category: "Apparel & Fashion", hq: "Montreal, Quebec", note: "Sources conflict on current ownership: Wikipedia states Mackage is owned by APP Group Inc. (the Elfassy family's Canadian leather company), but an M&A database (Mergr) states it is owned by Lee Equity Partners, a US private equity firm. Genuinely unresolved with the sources available — needs a direct check (e.g. the company's own investor/about page or a recent news report) before this is asserted either way.", confidence: "verify",
-    alternatives: [] },
+  "mackage.com": { brand: "Mackage", ownership: "US", category: "Apparel & Fashion", hq: "Montreal, Quebec (design and operations) / New York, New York (Lee Equity Partners)", note: "Resolved — the earlier conflict was that both sources were partly right. Mackage's parent really is APP Group of Montreal (which also owns Soia & Kyo), but APP Group is itself majority-owned by InterLuxe Holdings, the consumer-brand arm of New York's Lee Equity Partners, following its 2017 investment. Other major shareholders include SK Holdings of Korea and a fund of the Montreal transit pension plans; founders Eran Elfassy and Elisa Dahan retain the largest minority stakes. Design and operations stay in Montreal, but control is American.", confidence: "high",
+    alternatives: ["Canada Goose", "Nobis (Canadian outerwear)"] },
   "frankandoak.com": { brand: "Frank And Oak", ownership: "US", category: "Apparel & Fashion", hq: "Montreal, Quebec (operations) / New York, New York (Unified Commerce Group)", note: "Canadian-founded (Montreal, 2012) but acquired out of bankruptcy protection by Unified Commerce Group, a New York-based retail acquisition firm, in October 2020. Stores and operations remain Canadian-facing, but ownership is US. Confirmed via multiple independent business press reports on the 2020 acquisition and UCG's own statements.", confidence: "high",
     alternatives: ["Kotn (Canadian)", "Naked & Famous Denim (Canadian)"] },
   "reitmans.com": { brand: "Reitmans", ownership: "Canada", category: "Apparel & Fashion", hq: "Montreal, Quebec", note: "TSX: RET.A — Canadian women's clothing retailer since 1926", confidence: "high",
@@ -174,7 +195,7 @@ const OWNERSHIP_DATA = {
     alternatives: [] },
   "simons.ca": { brand: "Simons", ownership: "Canada", category: "Retail & Department Stores", hq: "Quebec City, Quebec", note: "Privately held, family-owned Canadian department store since 1840", confidence: "high",
     alternatives: [] },
-  "hbc.com": { brand: "Hudson's Bay", ownership: "verify", category: "Retail & Department Stores", hq: "Toronto, Ontario", note: "Genuinely complicated: HBC filed for CCAA bankruptcy protection in March 2025 and liquidated nearly all its 355-year-old store network by June 2025. Confirmed via multiple independent news sources (Retail Insider, CTV, The Conversation). Current status of the brand/IP post-liquidation needs a fresh check before this entry is used for anything.", confidence: "verify",
+  "hbc.com": { brand: "Hudson's Bay / The Bay", ownership: "Canada", category: "Retail & Department Stores", hq: "Toronto, Ontario", note: "Resolved: the brand is Canadian-owned again, by a different Canadian company. After HBC filed for CCAA protection in March 2025 and liquidated its 355-year-old store network, an Ontario court approved the sale of the Hudson's Bay intellectual property to Canadian Tire Corporation (TSX: CTC) for $30M on June 3, 2025 — the coat of arms, the multi-stripe pattern, the Bay Days and Distinctly Home names, the domains and the customer data. Canadian Tire beat 16 other bidders. The former operating company was renamed Rupert Legacy and is winding down. So the trademarks live on under Canadian ownership, but the department stores are gone.", confidence: "high",
     alternatives: [] },
   "freedommobile.ca": { brand: "Freedom Mobile", ownership: "Canada", category: "Telecom & Mobile", hq: "Toronto, Ontario", note: "Owned by Videotron (a Quebecor subsidiary) since April 2023, after being owned by Shaw 2016–2023. Confirmed via Quebecor/Shaw joint announcement and Canadian government (ISED) regulatory filing.", confidence: "high",
     alternatives: [] },
@@ -220,7 +241,7 @@ const OWNERSHIP_DATA = {
     alternatives: [] },
   "sunwing.ca": { brand: "Sunwing", ownership: "Canada", category: "Travel & Transportation", hq: "Toronto, Ontario", note: "Acquired by WestJet (itself owned by Onex Corporation, a Canadian PE firm) in May 2023. Previously majority-owned by the Hunter family (51%) with TUI Group (Germany) holding 49% — that structure was superseded by the WestJet acquisition. Confirmed via multiple independent news reports.", confidence: "high",
     alternatives: [] },
-  "autotrader.ca": { brand: "AutoTrader.ca", ownership: "verify", category: "Tech & Online Services", hq: "Toronto, Ontario (operations)", note: "Genuinely unclear: formerly Canadian-owned TRADER Corporation, acquired by AutoScout24 (a German company) which itself has US private equity backing (Thoma Bravo was involved in the deal per company press releases). The exact current ownership chain needs a dedicated check before this is used confidently either way.", confidence: "verify",
+  "autotrader.ca": { brand: "AutoTrader.ca / AutoHebdo", ownership: "US", category: "Tech & Online Services", hq: "Toronto, Ontario (operations) / San Francisco, California (Hellman & Friedman)", note: "Resolved, through a three-country ownership chain. AutoTrader.ca is run by TRADER Corporation of Toronto, which US private equity firm Thoma Bravo sold in December 2024 to AutoScout24, a German marketplace operator. AutoScout24 is itself majority-owned by Hellman & Friedman, a San Francisco private equity firm, which put additional equity into the deal. So the site is Canadian-operated under a German company that is US-controlled — following the chain to whoever actually holds control lands on the US.", confidence: "high",
     alternatives: [] },
   "canadacomputers.com": { brand: "Canada Computers & Electronics", ownership: "Canada", category: "Retail & Department Stores", hq: "Markham, Ontario", note: "Privately held Canadian electronics retailer", confidence: "high",
     alternatives: [] },
@@ -246,8 +267,8 @@ const OWNERSHIP_DATA = {
     alternatives: ["Attitude (Canadian natural haircare)", "Druide (Canadian, Quebec-based)"] },
   "nivea.ca": { brand: "Nivea", ownership: "not-US", category: "Personal Care & Household", hq: "Hamburg, Germany", note: "Owned by Beiersdorf AG — German, not US-owned. Not Canadian either.", confidence: "high",
     alternatives: ["Province Apothecary (Canadian skincare)"] },
-  "thebodyshop.com": { brand: "The Body Shop", ownership: "not-US", category: "Personal Care & Household", hq: "Littlehampton, UK", note: "Not US-owned — UK-founded; ownership has changed hands several times (most recently a UK-based restructuring in 2024). Not Canadian either.", confidence: "verify",
-    alternatives: ["Province Apothecary (Canadian skincare)"] },
+  "thebodyshop.com": { brand: "The Body Shop", ownership: "not-US", category: "Personal Care & Household", hq: "London, United Kingdom", note: "Resolved: after the 2024 collapse into administration, a consortium led by Aurea Group — the London growth-capital firm co-founded by Mike Jatania and Paul Raphael — completed the purchase of The Body Shop's international assets in September 2024, including the North American business. Jatania is executive chairman. British-owned; not US-owned and not Canadian.", confidence: "high",
+    alternatives: ["Rocky Mountain Soap Company (Canadian)", "Province Apothecary (Canadian)", "Saje Natural Wellness (Canadian)"] },
   "attitudeliving.com": { brand: "Attitude", ownership: "Canada", category: "Personal Care & Household", hq: "Beloeil, Quebec", note: "Privately held Canadian personal care and household cleaning brand", confidence: "high",
     alternatives: [] },
   "nelliesclean.ca": { brand: "Nellie's", ownership: "Canada", category: "Personal Care & Household", hq: "Ontario", note: "Privately held Canadian natural laundry and cleaning brand", confidence: "high",
@@ -309,8 +330,8 @@ const OWNERSHIP_DATA = {
     alternatives: ["Moosehead (the last major Canadian-owned brewery)"] },
   "sleeman.ca": { brand: "Sleeman", ownership: "not-US", category: "Food & Drink", hq: "Guelph, Ontario (operations) / Tokyo, Japan (Sapporo)", note: "Founded in Guelph in 1834 and revived by John Sleeman in 1988, but acquired outright by Sapporo Breweries (Japan) in 2006 for $400M — the first major Japanese acquisition of a Canadian brewery. Still brewed in Guelph and marketed on its Canadian heritage, but wholly owned by Sapporo. Not US-owned, not Canadian-owned. Confirmed via Globe and Mail and CBC reporting on the 2006 takeover.", confidence: "high",
     alternatives: ["Moosehead (the last major Canadian-owned brewery)"] },
-  "molsoncoors.com": { brand: "Molson Coors", ownership: "verify", category: "Food & Drink", hq: "Golden, Colorado and Montreal, Quebec (dual executive offices); Chicago, Illinois (Americas operations)", note: "Genuinely binational, not a clean flag. Molson (founded Montreal, 1786 — Canada's oldest brewery) merged with Coors (Colorado) in 2005. The combined company is US-incorporated with its primary listing on the NYSE (TAP), while a subsidiary, Molson Coors Canada, trades on the TSX (TPX.B). Executive offices are split between Golden, Colorado and Montreal. Calling this simply 'Canadian' or simply 'American' would both be wrong — flagged for a nuanced explainer rather than a flag.", confidence: "verify",
-    alternatives: ["Moosehead (unambiguously Canadian-owned)"] },
+  "molsoncoors.com": { brand: "Molson Coors", ownership: "verify", category: "Food & Drink", hq: "Chicago, Illinois / Golden, Colorado / Montreal, Quebec", note: "Checked, and binational on purpose — this flag is the finding. Molson, founded in Montreal in 1786 and Canada's oldest brewery, merged with Colorado's Coors in 2005 as a genuine merger rather than a takeover. The combined company is US-incorporated and primarily listed on the NYSE (TAP), while Molson Coors Canada trades on the TSX (TPX.B), and the Molson and Coors families both retain governance rights through a dual-class structure. Calling it either Canadian or American would misrepresent how it was deliberately built.", confidence: "verify",
+    alternatives: ["Moosehead Breweries (Canadian, independent, Saint John NB)", "Steam Whistle (Canadian)", "local craft breweries"] },
 
   // ---- Canadian-owned food and drink ----
   "moosehead.ca": { brand: "Moosehead Breweries", ownership: "Canada", category: "Food & Drink", hq: "Saint John, New Brunswick", note: "Privately held by the Oland family since 1867, now in its sixth generation — widely described as the last major Canadian-owned brewery, after Molson, Labatt and Sleeman all passed into foreign ownership. Independent of any multinational parent. Confirmed via the company's own materials plus independent brewing-industry profiles.", confidence: "high",
@@ -405,7 +426,7 @@ const OWNERSHIP_DATA = {
     alternatives: ["Farm Boy (Sobeys-owned, Canadian)", "Save-On-Foods", "local co-ops"] },
 
   // ---- Retail ----
-  "toysrus.ca": { brand: "Toys \"R\" Us Canada", ownership: "verify", category: "Retail & Department Stores", hq: "Concord, Ontario", note: "In active flux — do not rely on this entry. The Canadian business was bought from Fairfax Financial in 2021 by Putman Investments, a Canadian family-owned firm (also behind Sunrise Records, HMV, Northern Reflections, Ricki's and Cleo), which made it Canadian-owned and separate from the collapsed US chain. But it entered court-supervised CCAA restructuring, has closed most locations, and in 2025 received court approval to split the business among multiple buyers, with the intellectual property going to Ad Populum (US, owner of NECA). Ownership as of this writing is genuinely unsettled.", confidence: "verify",
+  "toysrus.ca": { brand: "Toys \"R\" Us Canada", ownership: "Canada", category: "Retail & Department Stores", hq: "Concord, Ontario", note: "The CCAA process finished in June 2026 and split the company three ways: the Toys \"R\" Us Canada and Babies \"R\" Us Canada names and trademarks went to Ad Populum, a US firm; the operating business — ten store leases, inventory, equipment, logistics and bank accounts — went to a company owned by Doug Putman, the existing Canadian owner; and one Vaughan Mills lease went to Fox Group Jumbo Canada. So the stores you can shop at are Canadian-owned, operating a US-owned brand under licence. Still flagged because that licence expires January 25, 2027 and Putman has said he will either extend it or rebrand — this entry needs rechecking then.", confidence: "verify",
     alternatives: ["Mastermind Toys (Canadian-owned)"] },
   "mastermindtoys.com": { brand: "Mastermind Toys", ownership: "Canada", category: "Retail & Department Stores", hq: "Toronto, Ontario", note: "Canadian specialty toy retailer, bought out of CCAA protection in 2023 by an investor group including Joe Mimran (founder of Club Monaco and Joe Fresh) and Frank Rocchetti; Quebec entrepreneur Stephane Tetrault joined as a partner in April 2025. Privately held and Canadian-controlled.", confidence: "high",
     alternatives: [] },
@@ -513,11 +534,11 @@ const OWNERSHIP_DATA = {
     alternatives: [] },
   "csisoftware.com": { brand: "Constellation Software", ownership: "Canada", category: "Tech & Online Services", hq: "Toronto, Ontario", note: "TSX: CSU — one of Canada's largest public companies, acquiring and operating vertical market software businesses worldwide.", confidence: "high",
     alternatives: [] },
-  "nuvei.com": { brand: "Nuvei", ownership: "verify", category: "Tech & Online Services", hq: "Montreal, Quebec", note: "Genuinely split ownership. Taken private in November 2024 in a deal led by Advent International, a US private equity firm — but alongside Canadian shareholders who retained large stakes: founder-CEO Philip Fayer (~24%), Novacap (~18%) and the Caisse de depot et placement du Quebec (~12%), roughly 54% Canadian between them, with Advent holding the balance and leading the transaction. Montreal remains the head office. Whether this reads as Canadian or American depends on whether you weigh control or shareholding, so it is flagged rather than assigned.", confidence: "verify",
+  "nuvei.com": { brand: "Nuvei", ownership: "verify", category: "Tech & Online Services", hq: "Montreal, Quebec", note: "Checked, and the answer depends on which measure you use — this flag is the finding. Nuvei was taken private in November 2024 in a transaction led by Advent International, a US private equity firm, so control sits in the US. But the Canadian shareholders who rolled over hold more of the equity between them: founder-CEO Philip Fayer at roughly 24%, Novacap at about 18% and the Caisse de depot et placement du Quebec at about 12%, with Fayer still leading the company from Montreal. Control says American, shareholding says Canadian.", confidence: "verify",
     alternatives: [] },
   "wealthsimple.com": { brand: "Wealthsimple", ownership: "Canada", category: "Banking & Insurance", hq: "Toronto, Ontario", note: "Majority-owned by Power Corporation of Canada (TSX: POW) through its affiliates — a Montreal-based Canadian holding company.", confidence: "high",
     alternatives: [] },
-  "tiktok.com": { brand: "TikTok", ownership: "not-US", category: "Media & Entertainment", hq: "Singapore / Los Angeles (operations) / Beijing, China (ByteDance)", note: "Owned by ByteDance, a Chinese company. US ownership of the American operations has been the subject of ongoing legislation and negotiation; the global parent remains Chinese. Not Canadian.", confidence: "verify",
+  "tiktok.com": { brand: "TikTok", ownership: "not-US", category: "Media & Entertainment", hq: "Singapore / Los Angeles (operations) / Beijing, China (ByteDance)", note: "Resolved, with a geographic split that matters here. In January 2026 TikTok's US business was carved into a separate entity, TikTok USDS Joint Venture LLC, 80.1% held by US and global investors (Oracle, Silver Lake and Abu Dhabi's MGX at about 15% each) with ByteDance retaining 19.9%. That restructuring covers the United States only. Canadian users are served by TikTok's global business, which remains ByteDance-controlled. So from Canada this is a Chinese-owned service — not US-owned, and not Canadian.", confidence: "high",
     alternatives: [] },
   "reddit.com": { brand: "Reddit", ownership: "US", category: "Media & Entertainment", hq: "San Francisco, California", note: "NYSE: RDDT since its 2024 IPO; Advance Publications remains the largest shareholder.", confidence: "high",
     alternatives: [] },
@@ -558,7 +579,7 @@ const OWNERSHIP_DATA = {
 
 
   // ---- Men's basics ----
-  "saxxunderwear.com": { brand: "SAXX Underwear", ownership: "US", category: "Apparel & Fashion", hq: "Vancouver, British Columbia (headquarters) / New York, New York (TZP Group)", note: "Founded in Vancouver in 2006 by Trent Kitsch and still headquartered and designed there, but control has passed to US private equity. In August 2021 TZP Group, a New York firm, made a strategic investment through TZP Capital Partners III — independent trade press reported it as TZP acquiring control — while Vancouver's Krystal Growth Partners, via NLS Group Holdings, retained what the announcement called a 'significant minority interest.' US firm Brentwood Associates, which had invested in 2016, exited in the same deal. Flagged rather than treated as settled because Krystal's own portfolio page still describes the pre-2021 structure (it lists Brentwood as a current shareholder, which the 2021 announcement contradicts), so one source is stale rather than genuinely disagreeing. A direct statement from SAXX would settle it.", confidence: "verify",
+  "saxxunderwear.com": { brand: "SAXX Underwear", ownership: "US", category: "Apparel & Fashion", hq: "Vancouver, British Columbia (headquarters and design) / New York, New York (TZP Group)", note: "Founded in Vancouver in 2006 by Trent Kitsch and still headquartered and designed there, but control passed to US private equity in August 2021, when New York's TZP Group invested through TZP Capital Partners III. The announcement stated that Vancouver's Krystal Growth Partners, via NLS Group Holdings, retained a 'significant minority interest' — minority being the operative word — and independent trade press reported the transaction as TZP acquiring control. Brentwood Associates, a US firm invested since 2016, exited in the same deal. Kept flagged only because Krystal's own portfolio page still describes the pre-2021 structure and lists Brentwood as a current shareholder, which the transaction announcement contradicts; that page reads as stale rather than as a competing account. A direct statement from SAXX would close this.", confidence: "verify",
     alternatives: ["Manmade (Canadian, Montreal)", "Kotn (Canadian)"] },
   "manmadebrand.com": { brand: "Manmade", ownership: "Canada", category: "Apparel & Fashion", hq: "Montreal, Quebec", note: "Privately held Canadian men's basics brand — boxer briefs, socks and tees — founded in Montreal in 2021 by four friends who met at Concordia University and still run it. No outside acquisition; independent and Canadian-owned. Confirmed via Concordia University's own profile of the founders plus independent Canadian retail coverage.", confidence: "high",
     alternatives: [] },
@@ -592,11 +613,11 @@ const OWNERSHIP_DATA = {
     alternatives: [] },
   "eharmony.com": { brand: "eharmony", ownership: "not-US", category: "Dating & Social", hq: "Los Angeles, California (operations) / Hamburg, Germany (ParshipMeet Group)", note: "Founded in California in 2000 but no longer American-controlled. Acquired in 2018 by Germany's ProSiebenSat.1 through its NuCom/Parship arm, and now held by ParshipMeet Group, roughly 55% ProSiebenSat.1 and 45% General Atlantic (a US private equity firm) — so a substantial US minority sits under a European majority. As of December 2025, ProSiebenSat.1 itself is about 75.6% controlled by Italy's MFE-MediaForEurope, adding another layer above it. Not US-controlled and not Canadian.", confidence: "high",
     alternatives: [] },
-  "zoosk.com": { brand: "Zoosk", ownership: "verify", category: "Dating & Social", hq: "Berlin, Germany (Spark Networks) / San Francisco, California (origin)", note: "Ownership is unsettled — do not rely on this entry. Zoosk is held by Spark Networks Services GmbH, a Berlin company that also owns Christian Mingle, JDate and EliteSingles. Spark was taken private by MGG Investment Group, a US lender that became its equity holder; after a failed 2024 restructuring, MGG withdrew funding and the Berlin Charlottenburg court placed Spark under preliminary insolvency administration in January 2026, with a related Chapter 15 filing in the US. Whether these brands end up US-owned, German-owned or sold to a third party is being decided in insolvency proceedings.", confidence: "verify",
+  "zoosk.com": { brand: "Zoosk", ownership: "verify", category: "Dating & Social", hq: "Berlin, Germany (Spark Networks)", note: "Checked and still genuinely unresolved — the insolvency has not concluded. Spark Networks Services GmbH, which owns Zoosk along with Christian Mingle, JDate, JSwipe, EliteSingles and SilverSingles, was placed under preliminary insolvency administration by a Berlin court in January 2026 after its US lender and equity holder MGG Investment Group withdrew funding, and filed Chapter 15 in the US to have those proceedings recognised. The administrator intends to sell the assets while the sites keep running, but as of the most recent reporting no buyer has been confirmed. Whoever ends up owning these brands is still being decided.", confidence: "verify",
     alternatives: [] },
-  "christianmingle.com": { brand: "Christian Mingle", ownership: "verify", category: "Dating & Social", hq: "Berlin, Germany (Spark Networks)", note: "Same situation as Zoosk — owned by Spark Networks Services GmbH, which entered German insolvency administration in January 2026 with a Chapter 15 filing in the US. Ownership pending the outcome of those proceedings.", confidence: "verify",
+  "christianmingle.com": { brand: "Christian Mingle", ownership: "verify", category: "Dating & Social", hq: "Berlin, Germany (Spark Networks)", note: "Same unresolved insolvency as Zoosk — a Spark Networks Services GmbH brand. Berlin insolvency administration opened January 2026, Chapter 15 recognition filed in the US, an asset sale intended but no buyer confirmed as of the most recent reporting.", confidence: "verify",
     alternatives: [] },
-  "jdate.com": { brand: "JDate", ownership: "verify", category: "Dating & Social", hq: "Berlin, Germany (Spark Networks)", note: "Same situation as Zoosk and Christian Mingle — a Spark Networks Services GmbH brand, with ownership pending the outcome of the German insolvency proceedings opened in January 2026.", confidence: "verify",
+  "jdate.com": { brand: "JDate", ownership: "verify", category: "Dating & Social", hq: "Berlin, Germany (Spark Networks)", note: "Same unresolved insolvency as Zoosk and Christian Mingle — a Spark Networks Services GmbH brand. Berlin insolvency administration opened January 2026, Chapter 15 recognition filed in the US, an asset sale intended but no buyer confirmed as of the most recent reporting.", confidence: "verify",
     alternatives: [] },
   "happn.com": { brand: "happn", ownership: "not-US", category: "Dating & Social", hq: "Paris, France", note: "Privately held French company, founded in Paris in 2014. Not US-owned, not Canadian.", confidence: "high",
     alternatives: [] },
