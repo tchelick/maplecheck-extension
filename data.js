@@ -648,6 +648,36 @@ const OWNERSHIP_DATA = {
   "goodforsunday.com": { brand: "Good For Sunday", ownership: "Canada", category: "Apparel & Fashion", hq: "Toronto, Ontario", note: "Toronto-based independent label making loungewear and everyday basics, designed and manufactured in Canada. Also runs a Canadian private-label and wholesale manufacturing arm, so it produces domestically for other brands as well as its own.", confidence: "high",
     alternatives: [] },
 
+
+  // ---- Canadian apparel, batch 2 ----
+  // madeIn / materialsFrom are a SEPARATE axis from ownership: "Canada",
+  // "mixed", "imported", or omitted when the company does not say. A brand
+  // can be Canadian-owned and manufacture entirely offshore (Vessi, tentree
+  // below), or foreign-owned and still make things here. Only filled from
+  // what the company or independent reporting states publicly.
+  "josephribkoff.com": { brand: "Joseph Ribkoff", ownership: "Canada", category: "Apparel & Fashion", hq: "Dorval, Quebec", madeIn: "mixed", note: "Founded in Montreal in 1957 and still headquartered in Quebec, where over 400 of its roughly 500 employees work, with the design studio, production and warehouse on site. Sold in 62 countries through 3,500+ retail partners. The company states the majority of its product is manufactured in Canada and Europe, so not exclusively Canadian-made.", confidence: "high",
+    alternatives: [] },
+  "shopsmythe.ca": { brand: "SMYTHE", ownership: "Canada", category: "Apparel & Fashion", hq: "Toronto, Ontario", madeIn: "Canada", note: "Founded in Toronto in 2004 by Andrea Lenczner and Christie Smythe, who still run it, built around tailored women's blazers and outerwear. Outerwear is made in Canada and pieces carry Made in Canada labelling.", confidence: "high",
+    alternatives: [] },
+  "vessi.com": { brand: "Vessi", ownership: "Canada", category: "Apparel & Fashion", hq: "Vancouver, British Columbia", madeIn: "imported", note: "A clear case of Canadian-owned but not Canadian-made. Vessi Footwear Ltd. is a Vancouver company and the waterproof knit shoes are designed there, but manufacturing is in Taiwan, China, Cambodia and Vietnam. Buying Vessi supports a Canadian company; it does not support Canadian manufacturing.", confidence: "high",
+    alternatives: [] },
+  "tentree.ca": { brand: "tentree", ownership: "Canada", category: "Apparel & Fashion", hq: "Vancouver, British Columbia", madeIn: "imported", note: "Canadian-owned, founded 2012 by brothers Derrick and Kalen Emsley with David Luba, and designed in Vancouver — but the company states plainly that its products are manufactured in China, India, Indonesia, Turkey and Vietnam through partner factories it does not own. Ten trees planted per item is its sustainability claim; domestic manufacturing is not.", confidence: "high",
+    alternatives: [] },
+  "kitandace.com": { brand: "Kit and Ace", ownership: "Canada", category: "Apparel & Fashion", hq: "Vancouver, British Columbia", note: "Canadian-owned, though not by the family that started it. Founded in Vancouver in 2014 by Shannon and JJ Wilson of the Lululemon family, sold in 2018 to then-CEO George Tsogas, and acquired in July 2023 by Unity Brands Inc. — the Canadian group of Joe Mimran, Frank Rocchetti and David Lui, the same investors behind Mastermind Toys.", confidence: "high",
+    alternatives: [] },
+  "sympli.com": { brand: "Sympli", ownership: "Canada", category: "Apparel & Fashion", hq: "Burnaby, British Columbia", madeIn: "Canada", note: "Canadian-owned and Canadian-made, founded 2002 by Jan Stimpson. States that 100% of its clothing is designed and manufactured in Canada, sewn through a home-sewing network in Vancouver's Lower Mainland, with pattern-making and fabric selection done in house.", confidence: "high",
+    alternatives: [] },
+  "gentlefawn.com": { brand: "Gentle Fawn", ownership: "Canada", category: "Apparel & Fashion", hq: "Vancouver, British Columbia", note: "Independent Vancouver womenswear label guided by co-founder Carla Hogg. Canadian-owned; the company does not publish a clear manufacturing location, so where it is sewn is left unstated here rather than assumed.", confidence: "high",
+    alternatives: [] },
+  "cieleathletics.com": { brand: "Ciele Athletics", ownership: "Canada", category: "Apparel & Fashion", hq: "Montreal, Quebec", note: "Founded in Montreal in 2014 by Jeremy Bresnen and Mike Giles, making technical running headwear and apparel, designed in Montreal. Canadian-owned. Manufacturing locations are not clearly published, so they are left unstated rather than guessed.", confidence: "high",
+    alternatives: [] },
+  "hatley.com": { brand: "Hatley", ownership: "Canada", category: "Apparel & Fashion", hq: "Montreal, Quebec", note: "Family-owned Canadian brand founded in 1987 in North Hatley, Quebec by John and Alice Oldland, who transferred ownership to their sons Chris, Nick and Jeremy in 1999. Known for children's and women's nature-themed apparel.", confidence: "high",
+    alternatives: [] },
+  "silverjeans.ca": { brand: "Silver Jeans Co.", ownership: "Canada", category: "Apparel & Fashion", hq: "Winnipeg, Manitoba", note: "Made by Western Glove Works of Winnipeg, founded by the Silver family in 1921 and described as the oldest privately held denim producer in North America; the Silver Jeans label launched in 1991. Canadian-owned and Winnipeg-headquartered. Note that Western Glove Works also appears in the portfolio of Stern Partners, a Vancouver investment firm — Canadian either way, but worth a recheck if you need the precise current structure.", confidence: "high",
+    alternatives: [] },
+  "quince.com": { brand: "Quince", ownership: "US", category: "Apparel & Fashion", hq: "San Francisco, California", note: "Included because it turns up on Canadian shopping lists but is not Canadian. Quince is an American e-commerce company founded in 2018 and based in San Francisco, selling through a manufacturer-to-consumer model with partner factories shipping direct. It launched a Canadian storefront in 2026, which is why Canadians increasingly encounter it.", confidence: "high",
+    alternatives: ["Encircled (Canadian-owned, made in Toronto)", "Sympli (Canadian-owned, made in BC)", "Province of Canada"] },
+
 };
 
 // Simple lookup by hostname
