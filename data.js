@@ -727,6 +727,51 @@ const OWNERSHIP_DATA = {
   "joefresh.com": { brand: "Joe Fresh", ownership: "Canada", category: "Apparel & Fashion", hq: "Brampton, Ontario", note: "Owned by Loblaw Companies / George Weston Limited (TSX: L), the same Canadian parent as Loblaws, No Frills and Shoppers Drug Mart. Launched in 2006 with Joe Mimran as creative director.", confidence: "high",
     alternatives: [] },
 
+
+  // ---- Small Canadian labels (verified from the companies' own sites) ----
+  "softworksfashions.com": { brand: "Softworks", ownership: "Canada", category: "Apparel & Fashion", hq: "Montreal, Quebec", madeIn: "Canada", note: "Contemporary womenswear manufacturer founded in 1998, owned by Rolly Penney and Caroline Poce, based on Chabanel West in Montreal's garment district. States garments are made in Canada; fabric origin is not disclosed.", confidence: "high",
+    alternatives: [] },
+  "brendabeddome.com": { brand: "BEDDOME", ownership: "Canada", category: "Apparel & Fashion", hq: "Canada", madeIn: "Canada", note: "Womenswear label from designer Brenda Beddome, over 40 years in Canadian fashion. States each collection is designed, cut and sewn in Canada.", confidence: "high",
+    alternatives: [] },
+  "georgiaroselabel.com": { brand: "Georgia Rose", ownership: "Canada", category: "Apparel & Fashion", hq: "Ontario", madeIn: "Canada", materialsFrom: "mixed", note: "Canadian woman-owned slow-fashion label run by founder Alexandra, designed and sewn in small batches in Ontario. The company is explicit that production uses 'domestic and imported parts', so the sewing is Canadian while some inputs are not — the honest version of a Made in Canada claim.", confidence: "high",
+    alternatives: [] },
+  "88queenst.com": { brand: "88 Queen St", ownership: "Canada", category: "Apparel & Fashion", hq: "Sherbrooke, Quebec", madeIn: "Canada", note: "Independent slow-fashion label in the Lennoxville borough of Sherbrooke, making original, custom and upcycled clothing for women and children, produced in house by the owner.", confidence: "high",
+    alternatives: [] },
+  "sarahsuedesign.com": { brand: "Sarah Sue Design", ownership: "Canada", category: "Apparel & Fashion", hq: "Winnipeg, Manitoba", madeIn: "Canada", note: "Sustainable womenswear by founder Sarah Sue, stating all pieces are made in Winnipeg, in small batches using natural fabrics with upcycling and zero-waste production.", confidence: "high",
+    alternatives: [] },
+  "sunsafeonthelake.ca": { brand: "Sun Safe On The Lake", ownership: "Canada", category: "Apparel & Fashion", hq: "Muskoka, Ontario", madeIn: "Canada", note: "UPF 50+ sun-protective swimwear for families, founded by a Muskoka parent, made in Canada and part of the Ontario Made movement. Donates 2% of sales to the NICU at Soldiers' Memorial Hospital.", confidence: "high",
+    alternatives: [] },
+  "thisisj.com": { brand: "This Is J", ownership: "Canada", category: "Apparel & Fashion", hq: "Canada", madeIn: "Canada", note: "Bamboo viscose sleepwear and loungewear, also known for its Bamboo Jammers line, stating it has been made in Canada for over 20 years.", confidence: "high",
+    alternatives: [] },
+  "blondieapparel.com": { brand: "Blondie Apparel", ownership: "Canada", category: "Apparel & Fashion", hq: "Toronto, Ontario", madeIn: "Canada", materialsFrom: "Canada", note: "One of the few entries where both halves are Canadian: the company states garments are designed and manufactured in Canada using fabric milled in Toronto. Domestic milling is rare, since most Canadian-made clothing is sewn here from imported fabric.", confidence: "high",
+    alternatives: [] },
+  "papafashions.com": { brand: "Papa Fashions / Sorella", ownership: "Canada", category: "Apparel & Fashion", hq: "Vancouver, British Columbia", madeIn: "imported", note: "Vancouver-based fashion company behind the Sorella line and a sleepwear range. Its own site states the garments are made in Italy and Turkey, so this is a Canadian company selling imported manufacturing. Ownership is not published, so the Canadian classification rests on the company's stated Vancouver base.", confidence: "verify",
+    alternatives: [] },
+
+  // ---- Canadian independent boutiques (retailers, not manufacturers) ----
+  // These sell other labels rather than making anything, and none of them
+  // publish ownership details — so they are flagged rather than asserted.
+  "poshshop.ca": { brand: "Posh Boutique", ownership: "Canada", category: "Apparel & Fashion", hq: "Toronto, Ontario", note: "Independent Toronto boutique on Queen St East, operating since 1989 and positioning itself around Made in Canada fashion, carrying labels such as Frank Lyman and Joseph Ribkoff. A retailer, not a manufacturer. Ownership is not published — flagged for confirmation.", confidence: "verify",
+    alternatives: [] },
+  "undergroundclothing.ca": { brand: "Underground Clothing", ownership: "Canada", category: "Apparel & Fashion", hq: "Canada", note: "Canadian multi-brand retailer with a dedicated Canadian designers section. A retailer rather than a manufacturer; ownership is not published — flagged for confirmation.", confidence: "verify",
+    alternatives: [] },
+  "watchuswomen.com": { brand: "Watch Us Women", ownership: "Canada", category: "Apparel & Fashion", hq: "Oakville, Ontario", note: "Independent Oakville boutique carrying Joseph Ribkoff, Charlie B, Frank Lyman and others, with personal styling. Retailer, not manufacturer. Ownership is not published — flagged for confirmation.", confidence: "verify",
+    alternatives: [] },
+  "idealfashion.ca": { brand: "Ideal Fashion", ownership: "Canada", category: "Apparel & Fashion", hq: "Mount Forest, Ontario", note: "Women's designer boutique operating since 1975, carrying Frank Lyman and French Dressing Jeans among others. Retailer, not manufacturer. Ownership is not published — flagged for confirmation.", confidence: "verify",
+    alternatives: [] },
+  "30church.com": { brand: "30 Church", ownership: "Canada", category: "Apparel & Fashion", hq: "Amherst, Nova Scotia", note: "Independent Nova Scotia boutique carrying Joseph Ribkoff, Levi's, Birkenstock and others. Retailer, not manufacturer. Ownership is not published — flagged for confirmation.", confidence: "verify",
+    alternatives: [] },
+  "rougecanape.ca": { brand: "Rouge Canape", ownership: "Canada", category: "Apparel & Fashion", hq: "Joliette, Quebec", note: "Quebec boutique specialising in Quebec designers — clothing, jewellery, accessories and shoes. Retailer, not manufacturer. Ownership is not published — flagged for confirmation.", confidence: "verify",
+    alternatives: [] },
+  "shopcarrelijeans.com": { brand: "Carreli Jeans", ownership: "Canada", category: "Apparel & Fashion", hq: "Canada", note: "Premium denim and Tencel label operating since 1989 and pricing in Canadian dollars, but the company publishes neither its ownership nor where the garments are made — flagged rather than assumed.", confidence: "verify",
+    alternatives: [] },
+  "balicorp.ca": { brand: "Bali Corp (Utero)", ownership: "verify", category: "Apparel & Fashion", hq: "Montreal, Quebec", note: "Montreal-registered menswear retailer operating the Utero brand, with a Montreal address on Meilleur — but the site also lists a Brooklyn address and publishes neither ownership nor manufacturing location. Not enough to assign a flag either way.", confidence: "verify",
+    alternatives: [] },
+
+  // ---- Not Canadian ----
+  "shopcider.com": { brand: "Cider", ownership: "not-US", category: "Apparel & Fashion", hq: "Hong Kong (headquarters) / Guangzhou, China (production) / Singapore (registered)", note: "Included because it appears on Canadian shopping lists but is not Canadian in any sense. Launched in 2020 by Fenco Lin, Yu Oppel and Michael Wang as a Gen-Z fast-fashion brand, headquartered in Hong Kong with production and warehousing in Guangzhou, and registered in Singapore as Cider (SG) Holding Pte. Ltd. Widely compared to Shein. Not US-owned and not Canadian.", confidence: "high",
+    alternatives: ["Blondie Apparel (Canadian-owned, made and milled in Toronto)", "Sarah Sue Design", "Georgia Rose"] },
+
 };
 
 // Simple lookup by hostname
