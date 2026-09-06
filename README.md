@@ -4,15 +4,64 @@ Zero-cost, zero-backend v1. Ownership data is embedded directly in `data.js`,
 no server, no hosting, no API calls. Good enough to test the concept and
 show people today.
 
+## Building for the browser stores
+
+```
+node build.js
+```
+
+Writes two packages to `dist/` (gitignored):
+
+| Package | Upload to |
+|---|---|
+| `maplecheck-chromium-<version>.zip` | Chrome Web Store, Microsoft Edge Add-ons, Opera |
+| `maplecheck-firefox-<version>.zip` | addons.mozilla.org (AMO) |
+
+All the source files are shared — `build.js` only rewrites `manifest.json`
+per browser, so there is exactly one copy of the code and one `data.js`.
+
+**Why two builds.** Chrome's Manifest V3 only accepts
+`background.service_worker`; Firefox's only runs `background.scripts`.
+Current versions of each ignore the other's key, so one combined manifest
+does run — but store review tooling is stricter than the runtime, and
+Firefox additionally needs `browser_specific_settings.gecko.id`, which means
+nothing to Chrome. One clean manifest per store avoids depending on a
+reviewer being lenient.
+
+**Edge, Brave, Opera and Vivaldi are all Chromium** — they take the same
+zip as Chrome with no code changes. Only Edge and Opera have their own
+stores worth submitting to; Brave and Vivaldi users install from the
+Chrome Web Store.
+
+**Safari is not covered.** It needs Xcode's extension converter (macOS
+only) plus a paid Apple Developer account, so it can't be built from this
+repo on Windows.
+
+Before submitting to Firefox, check the package with Mozilla's linter:
+
+```
+npx web-ext lint --source-dir dist/firefox
+```
+
 ## Load it locally (2 minutes)
 
-1. Open Chrome (or Edge/Brave) and go to `chrome://extensions`
-2. Turn on **Developer mode** (top right toggle)
-3. Click **Load unpacked**
-4. Select this folder (`maplecheck-extension`)
-5. Visit walmart.ca, amazon.ca, or loblaws.ca — you should see a badge appear
-   bottom-right of the page
-6. Click the extension icon in your toolbar for the popup detail view
+**Chrome / Edge / Brave / Opera**
+
+1. Run `node build.js`
+2. Go to `chrome://extensions` (or `edge://extensions`)
+3. Turn on **Developer mode** (top right toggle)
+4. Click **Load unpacked** and select `dist/chromium`
+
+**Firefox**
+
+1. Run `node build.js`
+2. Go to `about:debugging` → **This Firefox**
+3. Click **Load Temporary Add-on** and select `dist/firefox/manifest.json`
+   (temporary add-ons are removed when Firefox restarts)
+
+Then visit walmart.ca, amazon.ca, or loblaws.ca — you should see a badge
+appear bottom-right of the page. Click the extension icon in your toolbar
+for the popup detail view.
 
 ## What's real vs. placeholder right now
 
