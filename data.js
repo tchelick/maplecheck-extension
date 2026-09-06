@@ -626,6 +626,28 @@ const OWNERSHIP_DATA = {
   "coffeemeetsbagel.com": { brand: "Coffee Meets Bagel", ownership: "US", category: "Dating & Social", hq: "San Francisco, California", note: "Privately held US company, founded in 2012 by the Kang sisters.", confidence: "high",
     alternatives: [] },
 
+
+  // ---- Independent Canadian clothing labels ----
+  // Ownership and manufacturing are different questions, and this group is
+  // unusual in satisfying both: each is Canadian-owned AND cuts and sews in
+  // Canada, which most of the apparel entries above do not.
+  "franklyman.com": { brand: "Frank Lyman Design", ownership: "Canada", category: "Apparel & Fashion", hq: "Montreal, Quebec", note: "Privately held family business, founded in Montreal in 2001 by Frank Lyman after 25 years at Joseph Ribkoff. His daughter Stephanie became president in 2016 and two of his sons work in the business. Around 98% of the line is manufactured in Canada by subcontractors, and it sells into thousands of stores in dozens of countries — a Canadian-owned exporter rather than a domestic-only label.", confidence: "high",
+    alternatives: [] },
+  "encircled.ca": { brand: "Encircled", ownership: "Canada", category: "Apparel & Fashion", hq: "Toronto, Ontario", note: "Founded in Toronto in 2012 by Kristi Soomer, who still owns and runs it as CEO. Everything is made in Toronto and more than half the fabric is knit in Canada. A Certified B Corporation, which is a third-party audited standard rather than a self-declared one.", confidence: "high",
+    alternatives: [] },
+  "freelabel.com": { brand: "Free Label", ownership: "Canada", category: "Apparel & Fashion", hq: "Vancouver, British Columbia", note: "Founded in 2015 by Jess Sternberg, who started the label precisely because she could not find Canadian-made clothing she wanted to wear. Based in Vancouver since 2016 and run with her husband Julian Hoyle; garments are cut and sewn in Toronto and Vancouver, with much of the fabric custom milled in Toronto. Independently owned — no outside acquisition.", confidence: "high",
+    alternatives: [] },
+  "provinceofcanada.com": { brand: "Province of Canada", ownership: "Canada", category: "Apparel & Fashion", hq: "Toronto, Ontario", note: "Independent Toronto label founded by Julie and Jeremy, built on the rule that every product is made in Canada — knit and sewn in Toronto, with materials sourced domestically wherever possible rather than outsourced. Privately held.", confidence: "high",
+    alternatives: [] },
+  "birdsofnorthamerica.com": { brand: "Birds of North America", ownership: "Canada", category: "Apparel & Fashion", hq: "Toronto, Ontario", note: "Founded in 2007 by designer Hayley Gibson, starting in a Victoria BC studio, then Montreal, and in Toronto's Junction Triangle since 2015 where design and pattern-making happen. Every garment has been made in Canada since the label began. The West Queen West storefront closed in January 2024 and the business moved fully online — still operating, still independently owned.", confidence: "high",
+    alternatives: [] },
+  "elizafaulkner.com": { brand: "Eliza Faulkner", ownership: "Canada", category: "Apparel & Fashion", hq: "Montreal, Quebec", note: "Eliza Faulkner Designs Inc., the namesake label launched in 2012 by the Central Saint Martins-trained designer after working at Erdem, Roland Mouret and Zandra Rhodes in London. Designed and produced in Montreal, with deadstock fabric used where possible. Independently owned; a two-time Canadian Arts and Fashion Awards nominee.", confidence: "high",
+    alternatives: [] },
+  "jerico.ca": { brand: "JERICO", ownership: "Canada", category: "Apparel & Fashion", hq: "Greater Toronto Area, Ontario", note: "Family-owned since 1987, started by two brothers and two sisters, making basics — t-shirts, sweatshirts, sweatpants, hoodies — entirely in Canada. It kept domestic production after import quotas were lifted in 2001, which is when most of the Canadian garment industry moved offshore; that decision is why it is one of the few remaining Canadian-made basics manufacturers.", confidence: "high",
+    alternatives: [] },
+  "goodforsunday.com": { brand: "Good For Sunday", ownership: "Canada", category: "Apparel & Fashion", hq: "Toronto, Ontario", note: "Toronto-based independent label making loungewear and everyday basics, designed and manufactured in Canada. Also runs a Canadian private-label and wholesale manufacturing arm, so it produces domestically for other brands as well as its own.", confidence: "high",
+    alternatives: [] },
+
 };
 
 // Simple lookup by hostname
