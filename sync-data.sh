@@ -34,7 +34,10 @@ echo "Regenerating manifest permissions from data.js..."
 node generate-manifest-permissions.js
 
 echo "Committing and pushing the extension repo..."
-git add -A
+# Stage only what this script actually changes. "git add -A" would sweep any
+# unrelated work-in-progress into a commit labelled "Update company data",
+# which is how the manifest-permissions change ended up mislabelled once.
+git add data.js manifest.json
 git commit -m "Update company data" || echo "(nothing to commit in extension repo)"
 git push
 
