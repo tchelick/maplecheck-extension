@@ -74,6 +74,18 @@
       panel.appendChild(el("div", "mc-panel-meta mc-panel-italic", "No alternative listed yet."));
     }
 
+    // Only when alternatives were actually listed — no point disclosing
+    // affiliate links on a panel that offered none.
+    if (data.alternatives?.length || data.otherAlternatives?.length) {
+      panel.appendChild(
+        el(
+          "div",
+          "mc-panel-affiliate",
+          "Some links may be affiliate links — MapleCheck may earn a small commission. This never affects which companies are listed as Canadian-owned."
+        )
+      );
+    }
+
     const inner = el("div", `mc-badge-inner mc-${isUS ? "us" : isCA ? "ca" : "unknown"}`);
     const dragHandle = el("span", "mc-drag-handle", "⠿");
     dragHandle.title = "Drag to move";

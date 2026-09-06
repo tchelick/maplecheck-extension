@@ -154,6 +154,21 @@ chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
   if (data.alternativesNote) {
     container.appendChild(el("div", "meta alt-note", data.alternativesNote));
   }
+
+  // Shown only when alternatives were actually listed — a disclosure on a
+  // panel with nothing to click would be noise.
+  const showedAlternatives =
+    (data.alternatives && data.alternatives.length > 0) ||
+    (data.otherAlternatives && data.otherAlternatives.length > 0);
+  if (showedAlternatives) {
+    container.appendChild(
+      el(
+        "div",
+        "affiliate-note",
+        "Some links may be affiliate links — MapleCheck may earn a small commission. This never affects which companies are listed as Canadian-owned."
+      )
+    );
+  }
 });
 
 // ---- Request research on an unknown site ----
