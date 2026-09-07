@@ -953,7 +953,7 @@ const OWNERSHIP_DATA = {
     alternatives: [] },
 
 
-  "flytrippers.com": { brand: "Flytrippers", ownership: "Canada", category: "Travel & Transportation", hq: "Quebec City, Quebec", note: "Canadian travel deals site founded in 2016 by Andrew D'Amours and Kevin Gagnon, who pitched it on CBC's Dragons' Den in 2018. Finds discounted flights and publishes travel rewards and credit card guidance for a Canadian audience. Canadian ownership is confirmed both by independent coverage and directly by MapleCheck's operator, who knows the founders personally — noted here for the same reason it is noted on The Learning Designers: readers should be able to see where a claim came from, including when it came from us.", confidence: "high",
+  "flytrippers.com": { brand: "Flytrippers", ownership: "Canada", category: "Travel & Transportation", hq: "Quebec City, Quebec", note: "Canadian travel deals site founded in 2016 by Andrew D'Amours and Kevin Gagnon, who pitched it on CBC's Dragons' Den in 2018. Finds discounted flights and publishes travel rewards and credit card guidance for a Canadian audience. Founders, founding date and Canadian base are documented in CBC's Dragons' Den coverage and the company's own national press announcements.", confidence: "high",
     alternatives: [] },
 
 };
