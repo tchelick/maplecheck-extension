@@ -908,6 +908,33 @@ const OWNERSHIP_DATA = {
   "prfo.com": { brand: "PRFO Sports", ownership: "Canada", category: "Apparel & Fashion", hq: "St-Sauveur-des-Monts, Quebec", note: "Quebec outdoor gear and apparel retailer operating since 1989 from St-Sauveur-des-Monts. The company does not publish its ownership, so the Canadian classification rests on its Quebec base and operations — flagged for confirmation.", confidence: "verify",
     alternatives: [] },
 
+
+  // ---- Batch 7: multinationals ----
+  "narscosmetics.ca": { brand: "NARS", ownership: "not-US", category: "Personal Care & Household", hq: "New York, New York (operations) / Tokyo, Japan (Shiseido)", note: "Founded by makeup artist Francois Nars and sold to Shiseido of Japan in 2000. Japanese-owned; not US-owned despite the New York studio, and not Canadian.", confidence: "high",
+    alternatives: ["Cheekbone Beauty (Canadian, Indigenous-owned)", "Marcelle (Canadian)", "Lise Watier (Canadian)"] },
+  "drunkelephant.ca": { brand: "Drunk Elephant", ownership: "not-US", category: "Personal Care & Household", hq: "Houston, Texas (origin) / Tokyo, Japan (Shiseido)", note: "Founded in Houston by Tiffany Masterson and bought by Shiseido of Japan in October 2019 for about US$845M. An American-founded brand that is no longer American-owned — the same pattern this dataset tracks for Canadian brands, running in a different direction.", confidence: "high",
+    alternatives: ["Riversol (Canadian, dermatologist-founded)", "Province Apothecary (Canadian)", "Cheekbone Beauty (Canadian)"] },
+  "vitalproteins.ca": { brand: "Vital Proteins", ownership: "not-US", category: "Personal Care & Household", hq: "Chicago, Illinois (operations) / Vevey, Switzerland (Nestle)", note: "Collagen supplement brand founded in Chicago, with Nestle Health Science taking a majority stake — so the controlling owner is Swiss rather than American. Not Canadian.", confidence: "high",
+    alternatives: ["Jamieson (Canadian for now — see its entry, a Kirin acquisition is pending)"] },
+  "tweezerman.ca": { brand: "Tweezerman", ownership: "not-US", category: "Personal Care & Household", hq: "Solingen, Germany (Zwilling J.A. Henckels)", note: "Acquired by Zwilling J.A. Henckels, the Solingen knife-maker founded in 1731 and owned since 1970 by the German family firm Werhahn KG. German-owned; not US-owned and not Canadian.", confidence: "high",
+    alternatives: [] },
+  "lecreuset.ca": { brand: "Le Creuset", ownership: "not-US", category: "Home & Furniture", hq: "Fresnoy-le-Grand, France (foundry) / Switzerland (administrative HQ)", note: "The enamelled cast iron is still made at the original French foundry, but ownership is neither French nor American: the company was bought in 1988 by Paul Van Zuydam, a South African-born naturalised British businessman who remains owner and chairman, with administrative headquarters in Switzerland.", confidence: "high",
+    alternatives: [] },
+  "fresh.com": { brand: "Fresh", ownership: "not-US", category: "Personal Care & Household", hq: "Boston, Massachusetts (origin) / Paris, France (LVMH)", note: "Founded in Boston in 1991 by Lev Glazman and Alina Roytberg, acquired by LVMH of France in 2000. French-owned; not US-owned, not Canadian.", confidence: "high",
+    alternatives: ["Province Apothecary (Canadian)", "Saje Natural Wellness (Canadian)"] },
+  "caudalie.com": { brand: "Caudalie", ownership: "not-US", category: "Personal Care & Household", hq: "Paris, France", note: "Independent French skincare company founded in 1995 by Mathilde and Bertrand Thomas, built around grape and grapevine extracts. Still associated with its founding family rather than a conglomerate — Mathilde Thomas received the Legion of Honour in 2018. Not US-owned, not Canadian.", confidence: "high",
+    alternatives: [] },
+  "fotileglobal.com": { brand: "FOTILE", ownership: "not-US", category: "Home & Furniture", hq: "Ningbo, Zhejiang, China", note: "High-end kitchen appliance maker founded in 1996 by Mao Zhongqun and his father Mao Lixiang, operating as Ningbo Fotile Kitchenware and holding over 40% of China's high-end kitchen appliance market. Chinese-owned; not US-owned and not Canadian.", confidence: "high",
+    alternatives: [] },
+  "jack-jones.ca": { brand: "Jack & Jones", ownership: "not-US", category: "Apparel & Fashion", hq: "Brande, Denmark", note: "Owned by Bestseller A/S, the privately held Danish clothing group founded by the Holch Povlsen family in 1975 and now solely owned by Anders Holch Povlsen. Danish-owned; not US-owned and not Canadian.", confidence: "high",
+    alternatives: [] },
+  "basspro.ca": { brand: "Bass Pro Shops", ownership: "US", category: "Retail & Department Stores", hq: "Springfield, Missouri", note: "Privately held American outdoor retailer founded by Johnny Morris, which also owns Cabela's. US-owned.", confidence: "high",
+    alternatives: ["SAIL (Canadian, employee-owned since 2026)", "Altitude Sports (Canadian)", "The Last Hunt (Canadian)"] },
+  "lg.com": { brand: "LG", ownership: "not-US", category: "Home & Furniture", hq: "Seoul, South Korea", note: "LG Electronics, part of the South Korean LG Corporation conglomerate. Not US-owned and not Canadian.", confidence: "high",
+    alternatives: [] },
+  "levi.com": { brand: "Levi's", ownership: "US", category: "Apparel & Fashion", hq: "San Francisco, California", note: "Levi Strauss & Co., NYSE: LEVI. Listed separately from levis.com because Levi's uses both domains for its Canadian storefront and the extension matches on the exact domain.", confidence: "high",
+    alternatives: ["Naked & Famous Denim (Canadian, made in Canada)", "Silver Jeans (Canadian, Winnipeg)", "DUER (Canadian)", "Carreli Jeans (Canadian)"] },
+
 };
 
 // Simple lookup by hostname
