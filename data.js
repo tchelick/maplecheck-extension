@@ -962,8 +962,93 @@ const OWNERSHIP_DATA = {
 
 };
 
-// Simple lookup by hostname
+// Alternate domains for the same company. Chains routinely run a .com and a
+// .ca (and sometimes more), and matching only the domain used as the entry key
+// meant the extension stayed silent on the other one — someone on oldnavy.com
+// saw nothing, because the entry is keyed oldnavy.ca.
+//
+// These are listed explicitly rather than derived by swapping the TLD, because
+// that assumption is wrong often enough to matter: well.com is not Well.ca,
+// and mec.com is not Mountain Equipment Company. Every pair below is the same
+// company operating in two markets.
+const DOMAIN_ALIASES = {
+  "oldnavy.com": "oldnavy.ca",
+  "gapcanada.ca": "gap.com",
+  "bananarepublic.ca": "gap.com",
+  "walmart.com": "walmart.ca",
+  "amazon.com": "amazon.ca",
+  "costco.com": "costco.ca",
+  "homedepot.com": "homedepot.ca",
+  "bestbuy.com": "bestbuy.ca",
+  "starbucks.com": "starbucks.ca",
+  "timhortons.com": "timhortons.ca",
+  "staples.com": "staples.ca",
+  "canadiantire.com": "canadiantire.ca",
+  "winners.com": "winners.ca",
+  "marshalls.ca": "winners.ca",
+  "homesense.ca": "winners.ca",
+  "michaels.ca": "michaels.com",
+  "sephora.ca": "sephora.com",
+  "lush.ca": "lush.com",
+  "uniqlo.ca": "uniqlo.com",
+  "zara.ca": "zara.com",
+  "hm.ca": "hm.com",
+  "nike.ca": "nike.com",
+  "adidas.com": "adidas.ca",
+  "levis.ca": "levis.com",
+  "aldoshoes.ca": "aldoshoes.com",
+  "lululemon.ca": "lululemon.com",
+  "roots.ca": "roots.com",
+  "aritzia.ca": "aritzia.com",
+  "canadagoose.ca": "canadagoose.com",
+  "arcteryx.ca": "arcteryx.com",
+  "herschel.ca": "herschel.com",
+  "vessi.ca": "vessi.com",
+  "tentree.com": "tentree.ca",
+  "kotn.ca": "kotn.com",
+  "saxxunderwear.ca": "saxxunderwear.com",
+  "netflix.ca": "netflix.com",
+  "spotify.ca": "spotify.com",
+  "apple.ca": "apple.com",
+  "google.ca": "google.com",
+  "microsoft.ca": "microsoft.com",
+  "linkedin.ca": "linkedin.com",
+  "indeed.ca": "indeed.com",
+  "airbnb.ca": "airbnb.com",
+  "uber.ca": "uber.com",
+  "doordash.ca": "doordash.com",
+  "subway.ca": "subway.com",
+  "mcdonalds.ca": "mcdonalds.com",
+  "dominos.com": "dominos.ca",
+  "dairyqueen.ca": "dairyqueen.com",
+  "kfc.com": "kfc.ca",
+  "ikea.ca": "ikea.com",
+  "wayfair.com": "wayfair.ca",
+  "casper.ca": "casper.com",
+  "lecreuset.com": "lecreuset.ca",
+  "lg.ca": "lg.com",
+  "basspro.com": "basspro.ca",
+  "quince.ca": "quince.com",
+  "shein.ca": "shein.com",
+  "temu.ca": "temu.com",
+  "etsy.ca": "etsy.com",
+  "expedia.com": "expedia.ca",
+  "tripadvisor.com": "tripadvisor.ca",
+  "booking.ca": "booking.com",
+  "hatley.ca": "hatley.com",
+  "silverjeans.com": "silverjeans.ca",
+  "purdys.ca": "purdys.com",
+  "vitalproteins.com": "vitalproteins.ca",
+  "narscosmetics.com": "narscosmetics.ca",
+  "drunkelephant.com": "drunkelephant.ca",
+  "tweezerman.com": "tweezerman.ca",
+  "jackjones.com": "jack-jones.ca",
+};
+
+// Lookup by hostname, following an alias when the visited domain is a
+// different storefront for a company already in the dataset.
 function lookupDomain(hostname) {
   const clean = hostname.replace(/^www\./, "");
-  return OWNERSHIP_DATA[clean] || null;
+  const key = DOMAIN_ALIASES[clean] || clean;
+  return OWNERSHIP_DATA[key] || null;
 }
