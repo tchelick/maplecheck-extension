@@ -885,6 +885,29 @@ const OWNERSHIP_DATA = {
   "bouclair.com": { brand: "Bouclair", ownership: "verify", category: "Home & Furniture", hq: "Pointe-Claire, Quebec", note: "Home decor retailer headquartered in Pointe-Claire, Quebec and privately held. The picture needs a closer look: Alston Investments acquired the majority of the company's assets in 2019, and in March 2025 Second Avenue Capital Partners — an affiliate of the US Schottenstein group — provided a US$20M senior secured credit facility. A credit facility is lending rather than ownership, but the current ownership chain is not publicly clear enough to assign a flag.", confidence: "verify",
     alternatives: [] },
 
+
+  // ---- Batch 6 ----
+  "shopbentley.com": { brand: "Bentley", ownership: "Canada", category: "Retail & Department Stores", hq: "Montreal, Quebec", note: "Canada's largest retailer of luggage, handbags and travel accessories, founded 1987. Acquired in 2024 by Paul Nassar through Hart Stores Canada of Montreal, the Canadian retail group he also owns — so it changed hands but stayed Canadian.", confidence: "high",
+    alternatives: [] },
+  "bathdepot.com": { brand: "Bath Depot", ownership: "Canada", category: "Home & Furniture", hq: "Blainville, Quebec", note: "Founded in 2008 by the Nadeau brothers — Marc, Francois, Guy and Gilles — who came out of plumbing distribution, starting on Montreal's North Shore. Unusually for a retailer it is also manufacturer and distributor, and has expanded nationally.", confidence: "high",
+    alternatives: [] },
+  "lacanadienneshoes.com": { brand: "La Canadienne", ownership: "Canada", category: "Apparel & Fashion", hq: "Montreal, Quebec", madeIn: "mixed", note: "Founded 1961 and run from 1991 by Penny Shuster and Gianni Lamanuzzi, now wholly owned by an investor group led by Champlain Financial Corporation, a Canadian firm, with Nicholas Martire as CEO. The waterproof boots are still made in the company's own Montreal factory and hand-cut; the European collection is made in Italy — so Canadian-made is true of part of the range, not all of it.", confidence: "high",
+    alternatives: [] },
+  "canadiandownandfeather.com": { brand: "Canadian Down & Feather", ownership: "Canada", category: "Home & Furniture", hq: "Toronto, Ontario", madeIn: "Canada", note: "Toronto manufacturer of down, feather and down-alternative duvets and pillows, supplying both hospitality and retail. Most products are made in house on St. Regis Crescent, and the company states 93% of its SKUs qualify for a Made in Canada or Product of Canada label — a self-declared figure, but an unusually specific one.", confidence: "high",
+    alternatives: [] },
+  "chatters.ca": { brand: "Chatters", ownership: "Canada", category: "Personal Care & Household", hq: "Red Deer, Alberta", note: "Founded in Red Deer in 1990 and now Canada's largest retailer of professional hair care products, with over 100 salons across eight provinces. Owned by ONCAP, the mid-market arm of Onex Corporation of Toronto — the same Canadian firm behind WestJet.", confidence: "high",
+    alternatives: [] },
+  "dufresne.ca": { brand: "Dufresne Furniture & Appliances", ownership: "Canada", category: "Home & Furniture", hq: "Winnipeg, Manitoba", note: "Started in Kenora, Ontario in 1986 by Doug and Eva Dufresne and grown into Western Canada's largest independent furniture retailer, with 15 locations across Manitoba, Ontario and Saskatchewan. Canadian owned and family-run.", confidence: "high",
+    alternatives: [] },
+  "royaldistributing.com": { brand: "Royal Distributing", ownership: "US", category: "Retail & Department Stores", hq: "Guelph, Ontario (operations) / Chicago, Illinois (KCM Capital Partners)", note: "Canada's leading powersports retailer — snowmobile, ATV, dirt bike and watersports gear — founded in Guelph in 1990. No longer Canadian-owned: in November 2022 Chicago private investment firm KCM Capital Partners acquired it alongside Chicago's Prairie Capital and company management. Stores and operations stay in Ontario; control is American.", confidence: "high",
+    alternatives: [] },
+  "houseofknives.ca": { brand: "House of Knives", ownership: "Canada", category: "Retail & Department Stores", hq: "Burnaby, British Columbia", note: "Cutlery and kitchen tool retailer established 1979. Allan Eng bought a Victoria franchise location in 1987, he and his brother Andre took the BC franchise rights in 1992, and in 2011 they bought the national rights outright from the original corporate owners — so it has been fully Canadian family-owned since then. Andre Eng is president.", confidence: "high",
+    alternatives: [] },
+  "bikinivillage.com": { brand: "Bikini Village", ownership: "Canada", category: "Apparel & Fashion", hq: "Montreal, Quebec", note: "Swimwear chain that went insolvent in early 2015 and was bought that March by Boutique La Vie en Rose — Francois Roberge's Canadian company — for under $4M, keeping roughly 48 stores open. Roberge had tried to buy it three times over the previous twelve years, and the stated aim was keeping the banner in Canadian hands. Same Canadian owner as La Vie en Rose.", confidence: "high",
+    alternatives: [] },
+  "prfo.com": { brand: "PRFO Sports", ownership: "Canada", category: "Apparel & Fashion", hq: "St-Sauveur-des-Monts, Quebec", note: "Quebec outdoor gear and apparel retailer operating since 1989 from St-Sauveur-des-Monts. The company does not publish its ownership, so the Canadian classification rests on its Quebec base and operations — flagged for confirmation.", confidence: "verify",
+    alternatives: [] },
+
 };
 
 // Simple lookup by hostname
