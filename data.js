@@ -1045,10 +1045,23 @@ const DOMAIN_ALIASES = {
   "jackjones.com": "jack-jones.ca",
 };
 
-// Lookup by hostname, following an alias when the visited domain is a
-// different storefront for a company already in the dataset.
+// Lookup by hostname.
+//
+// Walks up the domain one label at a time, so a subdomain resolves to its
+// parent: oldnavy.gap.com finds gap.com. The manifest already grants
+// *://*.gap.com/*, so the script was running on those pages and then finding
+// nothing, because the key is the bare domain. Walking up also covers the
+// shop./ca./us./store. prefixes brands use constantly.
+//
+// Only exact keys can match, so climbing is safe — a public suffix like
+// "co.uk" is never itself an entry, and the loop simply runs out.
 function lookupDomain(hostname) {
-  const clean = hostname.replace(/^www\./, "");
-  const key = DOMAIN_ALIASES[clean] || clean;
-  return OWNERSHIP_DATA[key] || null;
+  let host = hostname.replace(/^www\./, "").toLowerCase();
+  const labels = host.split(".");
+  for (let i = 0; i < labels.length - 1; i++) {
+    const candidate = labels.slice(i).join(".");
+    const key = DOMAIN_ALIASES[candidate] || candidate;
+    if (OWNERSHIP_DATA[key]) return OWNERSHIP_DATA[key];
+  }
+  return null;
 }
