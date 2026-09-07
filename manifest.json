@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "MapleCheck — Buy Canadian",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "Flags US-owned retailers while you shop online and suggests Canadian alternatives.",
   "permissions": [
     "activeTab",
@@ -262,6 +262,7 @@
     "*://*.lululemon.com/*",
     "*://*.lush.ca/*",
     "*://*.lush.com/*",
+    "*://*.mackage.ca/*",
     "*://*.mackage.com/*",
     "*://*.manmadebrand.com/*",
     "*://*.manulife.ca/*",
@@ -749,6 +750,7 @@
         "*://*.lululemon.com/*",
         "*://*.lush.ca/*",
         "*://*.lush.com/*",
+        "*://*.mackage.ca/*",
         "*://*.mackage.com/*",
         "*://*.manmadebrand.com/*",
         "*://*.manulife.ca/*",

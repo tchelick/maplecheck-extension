@@ -63,6 +63,26 @@
 // outright: that is just `ownership`, and flagging it twice would suggest a
 // nuance that is not there.
 
+// ---- storeUrl: where to actually send a Canadian shopper ----
+//
+// The "visit site" link is normally built from the entry's own domain key,
+// which is right the overwhelming majority of the time. It is wrong when a
+// company runs separate regional storefronts and the domain we key on is the
+// American one — a Canadian clicking through then lands on a US store,
+// priced in USD, shipping from the US, which is the opposite of the point.
+//
+// Attitude is the case that surfaced this: attitudeliving.com serves USD, and
+// the Canadian store lives at ca.attitudeliving.com. Nothing about the domain
+// name reveals that.
+//
+// Set storeUrl to the full URL of the Canadian storefront when, and only when,
+// it differs from what the domain key would produce. Leave it unset otherwise
+// — an unset field means "the domain is correct", not "nobody checked".
+//
+// Do NOT use it to point at an affiliate link. Affiliate links, if they ever
+// exist, belong in their own field so that the disclosure logic can tell the
+// difference between a link that earns money and one that does not.
+
 const OWNERSHIP_DATA = {
   // ---- US-owned / US-headquartered ----
   "walmart.ca": { brand: "Walmart", ownership: "US", category: "Retail & Department Stores", hq: "Bentonville, Arkansas", note: "NYSE: WMT", confidence: "high",
@@ -219,7 +239,7 @@ const OWNERSHIP_DATA = {
     alternatives: [] },
   "tilley.com": { brand: "Tilley", ownership: "Canada", category: "Apparel & Fashion", tags: ["hats", "outdoor clothing", "travel clothing"], hq: "Don Mills, Ontario", note: "Privately held Canadian outdoor apparel brand", confidence: "high",
     alternatives: [] },
-  "mackage.com": { brand: "Mackage", ownership: "US", category: "Apparel & Fashion", tags: ["coats", "outerwear", "leather jackets"], hq: "Montreal, Quebec (design and operations) / New York, New York (Lee Equity Partners)", note: "Resolved — the earlier conflict was that both sources were partly right. Mackage's parent really is APP Group of Montreal (which also owns Soia & Kyo), but APP Group is itself majority-owned by InterLuxe Holdings, the consumer-brand arm of New York's Lee Equity Partners, following its 2017 investment. Other major shareholders include SK Holdings of Korea and a fund of the Montreal transit pension plans; founders Eran Elfassy and Elisa Dahan retain the largest minority stakes. Design and operations stay in Montreal, but control is American.", confidence: "high",
+  "mackage.com": { brand: "Mackage", ownership: "US", category: "Apparel & Fashion", tags: ["coats", "outerwear", "leather jackets"], storeUrl: "https://www.mackage.ca/", hq: "Montreal, Quebec (design and operations) / New York, New York (Lee Equity Partners)", note: "Resolved — the earlier conflict was that both sources were partly right. Mackage's parent really is APP Group of Montreal (which also owns Soia & Kyo), but APP Group is itself majority-owned by InterLuxe Holdings, the consumer-brand arm of New York's Lee Equity Partners, following its 2017 investment. Other major shareholders include SK Holdings of Korea and a fund of the Montreal transit pension plans; founders Eran Elfassy and Elisa Dahan retain the largest minority stakes. Design and operations stay in Montreal, but control is American.", confidence: "high",
     alternatives: ["Canada Goose", "Nobis (Canadian outerwear)"] },
   "frankandoak.com": { brand: "Frank And Oak", ownership: "US", category: "Apparel & Fashion", tags: ["menswear", "casualwear"], hq: "Montreal, Quebec (operations) / New York, New York (Unified Commerce Group)", note: "Canadian-founded (Montreal, 2012) but acquired out of bankruptcy protection by Unified Commerce Group, a New York-based retail acquisition firm, in October 2020. Stores and operations remain Canadian-facing, but ownership is US. Confirmed via multiple independent business press reports on the 2020 acquisition and UCG's own statements.", confidence: "high",
     alternatives: ["Kotn (Canadian)", "Naked & Famous Denim (Canadian)"] },
@@ -267,7 +287,7 @@ const OWNERSHIP_DATA = {
     alternatives: [] },
   "zara.com": { brand: "Zara", ownership: "not-US", category: "Apparel & Fashion", tags: ["fast fashion", "womenswear"], hq: "Arteixo, Spain", note: "Owned by Inditex — Spanish, not US-owned. Not Canadian either.", confidence: "high",
     alternatives: [] },
-  "aldoshoes.com": { brand: "Aldo", ownership: "Canada", category: "Apparel & Fashion", tags: ["shoes", "footwear", "handbags", "boots"], hq: "Montreal, Quebec", note: "Privately held Canadian footwear and accessories retailer", confidence: "high",
+  "aldoshoes.com": { brand: "Aldo", ownership: "Canada", category: "Apparel & Fashion", tags: ["shoes", "footwear", "handbags", "boots"], hq: "Montreal, Quebec", storeUrl: "https://www.aldoshoes.com/en-ca", note: "Privately held Canadian footwear and accessories retailer", confidence: "high",
     alternatives: [] },
   "kijiji.ca": { brand: "Kijiji", ownership: "not-US", category: "Tech & Online Services", hq: "Toronto, Ontario (Canadian operations) / owned by Adevinta, Norway", note: "Not US-owned — Adevinta is a Norwegian global classifieds company (Oslo-listed). Not Canadian-owned either, despite the Canadian operational HQ.", confidence: "high",
     alternatives: ["Facebook Marketplace is also not Canadian (US/Meta) — no major Canadian-owned classifieds alternative at this scale"] },
@@ -303,7 +323,7 @@ const OWNERSHIP_DATA = {
     alternatives: ["Province Apothecary (Canadian skincare)"] },
   "thebodyshop.com": { brand: "The Body Shop", ownership: "not-US", category: "Personal Care & Household", tags: ["skincare", "body care", "soap"], hq: "London, United Kingdom", note: "Resolved: after the 2024 collapse into administration, a consortium led by Aurea Group — the London growth-capital firm co-founded by Mike Jatania and Paul Raphael — completed the purchase of The Body Shop's international assets in September 2024, including the North American business. Jatania is executive chairman. British-owned; not US-owned and not Canadian.", confidence: "high",
     alternatives: ["Rocky Mountain Soap Company (Canadian)", "Province Apothecary (Canadian)", "Saje Natural Wellness (Canadian)"] },
-  "attitudeliving.com": { brand: "Attitude", ownership: "Canada", category: "Personal Care & Household", tags: ["household cleaners", "shampoo", "soap", "laundry"], hq: "Beloeil, Quebec", note: "Privately held Canadian personal care and household cleaning brand", confidence: "high",
+  "attitudeliving.com": { brand: "Attitude", ownership: "Canada", category: "Personal Care & Household", tags: ["household cleaners", "shampoo", "soap", "laundry"], hq: "Beloeil, Quebec", storeUrl: "https://ca.attitudeliving.com/", note: "Privately held Canadian personal care and household cleaning brand, based in Beloeil, Quebec. Note that attitudeliving.com is the US storefront and prices in USD — the Canadian store is at ca.attitudeliving.com, which is where our link goes. attitude.ca is not theirs; it is a parked domain listed for sale.", confidence: "high",
     alternatives: [] },
   "nelliesclean.ca": { brand: "Nellie's", ownership: "Canada", category: "Personal Care & Household", tags: ["laundry detergent", "laundry", "cleaning"], hq: "Ontario", note: "Privately held Canadian natural laundry and cleaning brand", confidence: "high",
     alternatives: [] },
@@ -376,7 +396,7 @@ const OWNERSHIP_DATA = {
     alternatives: [] },
   "mccain.ca": { brand: "McCain Foods", ownership: "Canada", category: "Food & Drink", tags: ["frozen food", "fries", "potatoes"], hq: "Florenceville, New Brunswick (founding home) / Toronto, Ontario", note: "Privately held by the McCain family, founded in Florenceville, New Brunswick in 1957. The world's largest manufacturer of frozen potato products — roughly one in four french fries globally. Remains private and Canadian-controlled.", confidence: "high",
     alternatives: [] },
-  "naturespath.com": { brand: "Nature's Path", ownership: "Canada", category: "Food & Drink", tags: ["cereal", "granola", "organic food"], hq: "Richmond, British Columbia", note: "Privately held and family-owned, founded in 1985 by Arran and Ratana Stephens and now led by the next generation. North America's largest producer of certified organic breakfast and snack foods; also owns EnviroKidz, Que Pasa, Anita's Organic Mill and Love Child Organics. Deliberately independent — the family has publicly declined acquisition offers.", confidence: "high",
+  "naturespath.com": { brand: "Nature's Path", ownership: "Canada", category: "Food & Drink", tags: ["cereal", "granola", "organic food"], hq: "Richmond, British Columbia", storeUrl: "https://naturespath.com/en-ca", note: "Privately held and family-owned, founded in 1985 by Arran and Ratana Stephens and now led by the next generation. North America's largest producer of certified organic breakfast and snack foods; also owns EnviroKidz, Que Pasa, Anita's Organic Mill and Love Child Organics. Deliberately independent — the family has publicly declined acquisition offers.", confidence: "high",
     alternatives: [] },
   "aw.ca": { brand: "A&W Canada", ownership: "Canada", category: "Food & Drink", tags: ["burgers", "fast food", "soft drinks"], hq: "North Vancouver, British Columbia", note: "A genuine split-brand case worth knowing: A&W's Canadian business was sold away from the US chain in 1972 and has operated as a separate Canadian company ever since — it only licenses the trademarks. In October 2024 A&W Food Services of Canada and the A&W Revenue Royalties Income Fund combined into a single Canadian public company (TSX: AW). The US A&W chain is separately owned and unrelated to the Canadian operator. Confirmed via the combination's SEDAR+ filings and company announcements.", confidence: "high",
     alternatives: [] },
@@ -492,7 +512,7 @@ const OWNERSHIP_DATA = {
     alternatives: ["Mountain Equipment Company (MEC, Canadian-owned again since 2025)"] },
   "garageclothing.com": { brand: "Garage / Dynamite", ownership: "Canada", category: "Apparel & Fashion", tags: ["womenswear", "casualwear", "juniors"], hq: "Montreal, Quebec", note: "Both banners are owned by Groupe Dynamite, a Montreal company founded in 1975 that listed on the TSX (GRGD) in 2024. Canadian-controlled.", confidence: "high",
     alternatives: [] },
-  "ardene.com": { brand: "Ardene", ownership: "Canada", category: "Apparel & Fashion", tags: ["fast fashion", "accessories", "womenswear"], hq: "Montreal, Quebec", note: "Privately held Canadian fashion retailer, founded in Montreal and family-controlled.", confidence: "high",
+  "ardene.com": { brand: "Ardene", ownership: "Canada", category: "Apparel & Fashion", tags: ["fast fashion", "accessories", "womenswear"], hq: "Montreal, Quebec", storeUrl: "https://ardene.com/en-ca", note: "Privately held Canadian fashion retailer, founded in Montreal and family-controlled.", confidence: "high",
     alternatives: [] },
   "lavieenrose.com": { brand: "La Vie en Rose", ownership: "Canada", category: "Apparel & Fashion", tags: ["lingerie", "bras", "sleepwear", "swimwear"], hq: "Montreal, Quebec", note: "Privately held Canadian lingerie and swimwear retailer, founded in Montreal in 1985 and led by owner Francois Roberge.", confidence: "high",
     alternatives: [] },
@@ -1032,6 +1052,7 @@ const DOMAIN_ALIASES = {
   "levis.ca": "levis.com",
   "aldoshoes.ca": "aldoshoes.com",
   "lululemon.ca": "lululemon.com",
+  "mackage.ca": "mackage.com",
   "roots.ca": "roots.com",
   "aritzia.ca": "aritzia.com",
   "canadagoose.ca": "canadagoose.com",
