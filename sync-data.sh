@@ -24,6 +24,12 @@ fi
 echo "Copying data.js -> $SITE_REPO/extension-data.js ..."
 cp data.js "$SITE_REPO/extension-data.js"
 
+# The extension fetches this file every few hours, so it is the thing that
+# actually delivers a correction to people. Forgetting it would leave the
+# website updated and every installed extension quietly stale.
+echo "Writing ownership-data.json for the extension to fetch..."
+node make-data-json.js
+
 echo "Updating homepage stat counts..."
 node "$SITE_REPO/update-stats.js" "$SITE_REPO/extension-data.js" "$SITE_REPO/index.html"
 
@@ -50,8 +56,10 @@ git push
 echo ""
 echo "Done. Vercel will auto-deploy the site update in about a minute."
 echo ""
-echo "Note: the website is now current, but the extension is not. If this"
-echo "sync added NEW domains, those sites get no on-page badge until you"
-echo "run 'node build.js' and publish a new version to the stores — the"
-echo "covered domains are baked into manifest.json. The popup still works"
-echo "everywhere in the meantime, so people can still request research."
+echo "Installed extensions pick this up within about 6 hours, or sooner if"
+echo "the browser restarts — corrections do NOT need a store release."
+echo ""
+echo "Still needs a release: NEW domains only get an automatic on-page badge"
+echo "once manifest.json ships, because the covered sites are baked into it."
+echo "Two things soften that — the popup already works on any site, and users"
+echo "who turned on full coverage in the popup get the badge immediately."

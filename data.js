@@ -1089,13 +1089,44 @@ const DOMAIN_ALIASES = {
 //
 // Only exact keys can match, so climbing is safe — a public suffix like
 // "co.uk" is never itself an entry, and the loop simply runs out.
-function lookupDomain(hostname) {
+function lookupDomain(hostname, dataset) {
+  // dataset is the copy downloaded from maplecheck.store, when there is one.
+  // Everything above in this file is the fallback it shipped with: used on
+  // first run, when offline, and any time a refresh returns something that
+  // does not look like a dataset.
+  const data = (dataset && dataset.data) || OWNERSHIP_DATA;
+  const aliases = (dataset && dataset.aliases) || DOMAIN_ALIASES;
+
   let host = hostname.replace(/^www\./, "").toLowerCase();
   const labels = host.split(".");
   for (let i = 0; i < labels.length - 1; i++) {
     const candidate = labels.slice(i).join(".");
-    const key = DOMAIN_ALIASES[candidate] || candidate;
-    if (OWNERSHIP_DATA[key]) return OWNERSHIP_DATA[key];
+    const key = aliases[candidate] || candidate;
+    if (data[key]) return data[key];
   }
   return null;
+}
+
+// Hands back the freshest dataset available, preferring the downloaded copy
+// and falling back to the bundled one. Callers pass the result straight to
+// lookupDomain, so neither content.js nor popup.js has to know which it got.
+//
+// The count check is the guard that matters: a truncated or half-written
+// payload must never quietly replace a working dataset, because the failure
+// mode is entries silently disappearing rather than anything visible.
+function getDataset(callback) {
+  try {
+    chrome.storage.local.get(["remoteData"], (result) => {
+      const remote = result && result.remoteData;
+      const usable =
+        remote &&
+        remote.schema === 1 &&
+        remote.data &&
+        typeof remote.data === "object" &&
+        Object.keys(remote.data).length >= 50;
+      callback(usable ? remote : null);
+    });
+  } catch (e) {
+    callback(null);
+  }
 }

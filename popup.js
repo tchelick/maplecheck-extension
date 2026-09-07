@@ -26,6 +26,10 @@ function br() {
 // any page, including one opened from a link in this popup, would silently
 // overwrite a single shared "last seen" value — so the popup could show
 // data for the wrong tab entirely if you'd recently opened a link).
+// Resolve the downloaded dataset before doing anything, so the popup answers
+// from the same data the website shows rather than from whatever shipped in
+// the build. Falls back to the bundled copy on first run or if offline.
+getDataset((DATASET) => {
 chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
   const container = document.getElementById("content");
   const reportSection = document.getElementById("report-toggle");
@@ -38,7 +42,7 @@ chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
     hostname = null;
   }
 
-  const found = hostname ? lookupDomain(hostname) : null;
+  const found = hostname ? lookupDomain(hostname, DATASET) : null;
   const data = found ? { hostname, ...found } : (hostname ? { hostname, unknown: true } : null);
 
   // Overwrite the shared storage value with the CORRECT current-tab data,
@@ -185,6 +189,7 @@ chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       )
     );
   }
+});
 });
 
 // ---- Where submissions go ----
@@ -337,3 +342,47 @@ document.getElementById("report-submit").addEventListener("click", () => {
     });
   });
 });
+
+// ---- Optional full coverage ----
+//
+// The manifest can only list the domains that existed when the build was
+// made, so a company added to the directory today gets no automatic on-page
+// badge until a new version clears store review. The popup is unaffected —
+// it works on any site through activeTab, which is why the lookup you just
+// ran worked at all.
+//
+// This closes that gap for anyone who wants it closed. It is requested here,
+// on a click, rather than demanded at install: an extension that asks for
+// every website before it has shown you anything is one most people decline,
+// and rightly. Granting it changes nothing about what leaves the browser —
+// lookups stay local against the downloaded dataset.
+(function coverageOptIn() {
+  const box = document.getElementById("coverage-box");
+  const text = document.getElementById("coverage-text");
+  const button = document.getElementById("coverage-enable");
+  if (!box || !text || !button) return;
+
+  chrome.permissions.contains({ origins: ["<all_urls>"] }, (granted) => {
+    if (granted) return; // already on: say nothing, the badges speak for themselves
+
+    text.textContent =
+      "Badges appear automatically only on sites we already covered when this version was published. Turn this on and newly added companies show a badge straight away, without waiting for an extension update.";
+    box.style.display = "block";
+  });
+
+  button.addEventListener("click", () => {
+    // Must be called directly from the click. Chrome refuses a permission
+    // request that is not tied to a user gesture, so this cannot be moved
+    // into a callback or an async continuation.
+    chrome.permissions.request({ origins: ["<all_urls>"] }, (granted) => {
+      if (granted) {
+        text.textContent = "✓ On. Newly added companies will show a badge without an extension update. Reload a page to see it take effect.";
+        button.style.display = "none";
+        return;
+      }
+      text.textContent =
+        "No problem — left as it was. Badges still appear on the sites this version covers, and the popup works everywhere.";
+      button.style.display = "none";
+    });
+  });
+})();

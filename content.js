@@ -12,16 +12,23 @@
 
 (function () {
   const hostname = window.location.hostname;
-  const result = typeof lookupDomain === "function" ? lookupDomain(hostname) : null;
 
-  // Always record the current site so the popup can respond, even when
-  // there's no data — this is what powers the "we don't know yet, request
-  // research" flow.
-  chrome.storage.local.set({ lastLookup: result ? { hostname, ...result } : { hostname, unknown: true } });
+  // The dataset is read from storage rather than from the bundled file, so a
+  // correction published to the website shows up here on the next refresh
+  // instead of waiting for a store release. getDataset falls back to the
+  // bundled copy on first run or if the download ever fails.
+  getDataset((dataset) => {
+    const result = typeof lookupDomain === "function" ? lookupDomain(hostname, dataset) : null;
 
-  if (!result) return; // no data for this domain — stay silent on the page
+    // Always record the current site so the popup can respond, even when
+    // there's no data — this is what powers the "we don't know yet, request
+    // research" flow.
+    chrome.storage.local.set({ lastLookup: result ? { hostname, ...result } : { hostname, unknown: true } });
 
-  injectBadge(result);
+    if (!result) return; // no data for this domain — stay silent on the page
+
+    injectBadge(result);
+  });
 
   function injectBadge(data) {
     const badge = document.createElement("div");

@@ -1,11 +1,13 @@
 {
   "manifest_version": 3,
   "name": "MapleCheck — Buy Canadian",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Flags US-owned retailers while you shop online and suggests Canadian alternatives.",
   "permissions": [
     "activeTab",
-    "storage"
+    "storage",
+    "alarms",
+    "scripting"
   ],
   "host_permissions": [
     "*://*.30church.com/*",
@@ -486,7 +488,8 @@
     "*://*.zippyjamz.com/*",
     "*://*.zoosk.com/*",
     "https://www.wikidata.org/*",
-    "https://docs.google.com/*"
+    "https://docs.google.com/*",
+    "https://www.maplecheck.store/*"
   ],
   "background": {
     "service_worker": "background.js"
@@ -994,5 +997,8 @@
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
-  }
+  },
+  "optional_host_permissions": [
+    "<all_urls>"
+  ]
 }

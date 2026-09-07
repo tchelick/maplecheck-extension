@@ -40,6 +40,12 @@ const WIKIDATA_HOST = "https://www.wikidata.org/*";
 // we look into this site". Without this the request is blocked.
 const GOOGLE_FORMS_HOST = "https://docs.google.com/*";
 
+// The dataset is refreshed from the website so corrections reach people
+// without waiting on a store release. Drop this and the extension silently
+// falls back to the copy bundled at build time — it keeps working, but it
+// stops getting updates, which is the kind of failure nobody notices.
+const MAPLECHECK_HOST = "https://www.maplecheck.store/*";
+
 const dataSrc = fs.readFileSync(path.join(ROOT, "data.js"), "utf8");
 const OWNERSHIP_DATA = new Function(`${dataSrc}\nreturn OWNERSHIP_DATA;`)();
 // Alias domains need match patterns too, or the content script never runs on
@@ -53,7 +59,7 @@ const matches = domains.map((d) => `*://*.${d}/*`);
 
 const manifest = JSON.parse(fs.readFileSync(MANIFEST, "utf8"));
 const next = structuredClone(manifest);
-next.host_permissions = [...matches, WIKIDATA_HOST, GOOGLE_FORMS_HOST];
+next.host_permissions = [...matches, WIKIDATA_HOST, GOOGLE_FORMS_HOST, MAPLECHECK_HOST];
 next.content_scripts[0].matches = matches;
 
 const nextText = `${JSON.stringify(next, null, 2)}\n`;
@@ -72,7 +78,7 @@ if (process.argv.includes("--check")) {
 fs.writeFileSync(MANIFEST, nextText);
 console.log(`manifest.json updated from data.js:`);
 console.log(`  ${domains.length} domains -> content_scripts[0].matches`);
-console.log(`  ${domains.length} domains + Wikidata -> host_permissions`);
+console.log(`  ${domains.length} domains + Wikidata + Google Forms + maplecheck.store -> host_permissions`);
 console.log("");
 console.log("Reminder: new domains only get an on-page badge after this");
 console.log("manifest change ships in a new store release — a data-only");
