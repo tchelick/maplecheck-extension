@@ -171,32 +171,40 @@ chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
   }
 });
 
+// Submissions go to the public form rather than anywhere local.
+//
+// Both flows below used to be dead ends: the research request only wrote to
+// chrome.storage.local, so it said "thanks" while reaching nobody, and the
+// report opened a mailto, which silently does nothing for anyone without a
+// desktop mail client configured. Sending people to the form means a
+// submission actually arrives, from any machine, with no mail setup.
+const SUBMIT_FORM = "https://tally.so/r/1AeroQ";
+
+function openSubmitForm(params) {
+  const qs = new URLSearchParams(params).toString();
+  chrome.tabs.create({ url: `${SUBMIT_FORM}?${qs}` });
+}
+
 // ---- Request research on an unknown site ----
 document.getElementById("research-toggle").addEventListener("click", () => {
   chrome.storage.local.get(["lastLookup", "researchRequests"], (result) => {
     const lookup = result.lastLookup;
-    const req = {
-      domain: lookup ? lookup.hostname : "unknown",
-      timestamp: new Date().toISOString(),
-    };
+    const domain = lookup ? lookup.hostname : "";
 
-    // Save locally so the queue of "what people actually want covered" builds
-    // up even with no backend yet — this is the demand signal for what to
-    // research next, instead of guessing.
-    // TODO Phase 2: POST this to the hosted API so requests aggregate across
-    // all users instead of staying local to one browser.
+    // Still kept locally, so the person can see what they've asked about.
     const requests = result.researchRequests || [];
-    requests.push(req);
-    chrome.storage.local.set({ researchRequests: requests }, () => {
-      document.getElementById("research-toggle").textContent = "✓ Requested — thanks!";
-      document.getElementById("research-toggle").disabled = true;
-    });
+    requests.push({ domain: domain || "unknown", timestamp: new Date().toISOString() });
+    chrome.storage.local.set({ researchRequests: requests });
+
+    openSubmitForm({ company: domain, domain, request: "New company" });
+
+    const btn = document.getElementById("research-toggle");
+    btn.textContent = "✓ Opened the form — thanks!";
+    btn.disabled = true;
   });
 });
 
 // ---- Report incorrect data ----
-const REPORT_EMAIL = "maplecheck@northmail.ca";
-
 document.getElementById("report-toggle").addEventListener("click", () => {
   const form = document.getElementById("report-form");
   form.style.display = form.style.display === "block" ? "none" : "block";
@@ -217,21 +225,20 @@ document.getElementById("report-submit").addEventListener("click", () => {
       timestamp: new Date().toISOString(),
     };
 
-    // Save locally so nothing is lost even without a backend yet.
-    // TODO Phase 2: POST this to the hosted API instead of (or in addition to) local storage.
+    // Kept locally too, so the person has their own record of what they sent.
     const reports = result.reports || [];
     reports.push(report);
-    chrome.storage.local.set({ reports }, () => {
-      // Also offer an immediate, zero-infra path: pre-filled email.
-      const subject = encodeURIComponent(`MapleCheck data report: ${report.brand}`);
-      const body = encodeURIComponent(
-        `Domain: ${report.domain}\nBrand: ${report.brand}\nCurrent listing: ${JSON.stringify(report.currentData)}\nReason: ${report.reason}\nDetails: ${report.details}\n`
-      );
-      window.open(`mailto:${REPORT_EMAIL}?subject=${subject}&body=${body}`);
+    chrome.storage.local.set({ reports });
 
-      document.getElementById("report-form").style.display = "none";
-      document.getElementById("report-confirm").style.display = "block";
-      document.getElementById("report-details").value = "";
+    openSubmitForm({
+      company: report.brand,
+      domain: report.domain,
+      request: "Correction to an existing entry",
+      details: `${reason}${details ? ` — ${details}` : ""}`,
     });
+
+    document.getElementById("report-form").style.display = "none";
+    document.getElementById("report-confirm").style.display = "block";
+    document.getElementById("report-details").value = "";
   });
 });

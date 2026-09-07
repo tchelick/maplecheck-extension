@@ -38,10 +38,13 @@ const WIKIDATA_HOST = "https://www.wikidata.org/*";
 
 const dataSrc = fs.readFileSync(path.join(ROOT, "data.js"), "utf8");
 const OWNERSHIP_DATA = new Function(`${dataSrc}\nreturn OWNERSHIP_DATA;`)();
+// Alias domains need match patterns too, or the content script never runs on
+// them and lookupDomain never gets the chance to resolve the alias.
+const DOMAIN_ALIASES = new Function(`${dataSrc}\nreturn typeof DOMAIN_ALIASES !== "undefined" ? DOMAIN_ALIASES : {};`)();
 
 // "*://*.walmart.ca/*" matches walmart.ca, www.walmart.ca and any other
 // subdomain, which covers the www-stripping that lookupDomain already does.
-const domains = Object.keys(OWNERSHIP_DATA).sort();
+const domains = [...new Set([...Object.keys(OWNERSHIP_DATA), ...Object.keys(DOMAIN_ALIASES)])].sort();
 const matches = domains.map((d) => `*://*.${d}/*`);
 
 const manifest = JSON.parse(fs.readFileSync(MANIFEST, "utf8"));
