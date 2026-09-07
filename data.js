@@ -848,6 +848,43 @@ const OWNERSHIP_DATA = {
   "modaselle.com": { brand: "Modaselle", ownership: "Canada", category: "Apparel & Fashion", hq: "Vancouver, British Columbia", note: "Canadian luxury consignment business founded by Natalie Ivanova, selling pre-owned handbags, watches and jewellery from its Seymour Street showroom in Vancouver since 2014 and online since 2012. Worth understanding what the Canadian ownership means here: the labels it resells (Chanel, Hermes, Rolex, Cartier) are all foreign-owned, but on a resale the money goes to this Vancouver company and the original brand receives nothing — so buying second-hand through a Canadian consignor is arguably the most Canadian way to buy a foreign luxury brand.", confidence: "high",
     alternatives: [] },
 
+
+  "secondshop.ca": { brand: "SecondShop", ownership: "Canada", category: "Home & Furniture", hq: "Brampton, Ontario", note: "Canadian re-commerce platform selling open-box and overstock appliances and home goods at a discount, founded by CEO Cedric George, who previously started the Calgary delivery company Custom Delivery Solutions. Raised $2M CAD seed funding led by Harvest Venture Partners of Calgary and incubated at Harvest Builders, the studio behind Neo Financial and OneVest — so the backing is Canadian too. Same pattern as Modaselle: the appliance brands it resells (LG, Samsung, KitchenAid) are foreign-owned, but the money from a resale goes to a Canadian company rather than the manufacturer.", confidence: "high",
+    alternatives: [] },
+
+
+  // ---- Batch 5 ----
+  "psychobunny.ca": { brand: "Psycho Bunny", ownership: "Canada", category: "Apparel & Fashion", hq: "Montreal, Quebec", note: "Founded in 2005 by Robert Godley and Robert Goldman and now headquartered in Montreal. Alen Brandman bought the brand outright from the founders in 2021 through his Montreal company Thread Collective, which holds the majority; the Australian investment firm BBRC holds a minority stake. Canadian-controlled.", confidence: "high",
+    alternatives: [] },
+  "cheekbonebeauty.com": { brand: "Cheekbone Beauty", ownership: "Canada", category: "Personal Care & Household", hq: "St. Catharines, Ontario", madeIn: "Canada", note: "Indigenous-owned cosmetics company founded by Jenn Harper, who is Ojibwe and a member of Northwest Angle #33 First Nation — one of the first Indigenous-founded cosmetics companies in Canada. Certified B Corp, cruelty-free and vegan, with a Made in Canada line, and 10% of profits going to the First Nations Child and Family Caring Society.", confidence: "high",
+    alternatives: [] },
+  "kanuk.com": { brand: "Kanuk", ownership: "Canada", category: "Apparel & Fashion", hq: "Montreal, Quebec", note: "Winter outerwear maker founded in a small Montreal workshop in 1974 and still based there after 50 years, building coats specifically for the Quebec climate. The company does not publish its ownership structure, but it has remained a Montreal operation throughout.", confidence: "high",
+    alternatives: [] },
+  "chillymoose.ca": { brand: "Chilly Moose", ownership: "Canada", category: "Home & Furniture", hq: "Ontario", note: "Canadian outdoor gear company — coolers and insulated drinkware — founded by Kristi and Paul Greco and grown, in their words, from their kitchen table. Manufacturing location is not published.", confidence: "high",
+    alternatives: [] },
+  "riversol.com": { brand: "Riversol", ownership: "Canada", category: "Personal Care & Household", hq: "Vancouver, British Columbia", note: "Dermatologist-founded skincare line created by Dr. Jason Rivers, who runs a clinical practice in Vancouver and teaches at UBC. Manufacturing location is not published.", confidence: "high",
+    alternatives: [] },
+  "kits.ca": { brand: "KITS Eyecare", ownership: "Canada", category: "Retail & Department Stores", hq: "Vancouver, British Columbia", note: "Vancouver-headquartered digital eyecare company listed on the TSX as KITS, co-founded and led by Roger Hardy. Sells glasses and contact lenses through KITS.ca, KITS.com and ContactsExpress.ca.", confidence: "high",
+    alternatives: [] },
+  "marcelle.com": { brand: "Marcelle", ownership: "Canada", category: "Personal Care & Household", hq: "Montreal, Quebec", madeIn: "Canada", note: "Flagship brand of Groupe Marcelle, the largest Canadian-owned company in beauty, which also owns Lise Watier, Annabelle and CW Beggs and Sons and employs over 400 people across the country. The group states roughly 80% of its processing and materials are Canadian.", confidence: "high",
+    alternatives: [] },
+  "watier.com": { brand: "Lise Watier", ownership: "Canada", category: "Personal Care & Household", hq: "Montreal, Quebec", madeIn: "Canada", note: "Returned to Quebec ownership in February 2016 when Groupe Marcelle acquired it, backed by an $18M investment from the Caisse de depot et placement du Quebec. Products are made in Montreal. Same Canadian parent as Marcelle and Annabelle.", confidence: "high",
+    alternatives: [] },
+  "altitude-sports.com": { brand: "Altitude Sports", ownership: "Canada", category: "Apparel & Fashion", hq: "Montreal, Quebec", note: "Outdoor retailer founded in 1984 as a shop on St-Denis Street in Montreal. Two employees, Alexandre Guimond and Maxime Dubois, bought the business from its owner in 2011 and still control it. They also own The Last Hunt and the in-house label Vallier.", confidence: "high",
+    alternatives: [] },
+  "thelasthunt.com": { brand: "The Last Hunt", ownership: "Canada", category: "Apparel & Fashion", hq: "Montreal, Quebec", note: "Discount outdoor gear outlet founded in Montreal in 2010, owned by Alexandre Guimond and Maxime Dubois — the same Canadian owners as Altitude Sports.", confidence: "high",
+    alternatives: [] },
+  "jamiesonvitamins.com": { brand: "Jamieson", ownership: "Canada", category: "Personal Care & Household", hq: "Toronto, Ontario", madeIn: "Canada", note: "TIME-SENSITIVE — Canadian today, probably not for much longer. Jamieson Wellness (TSX: JWEL) was founded in 1922, is headquartered in Toronto and manufactures the overwhelming majority of its products in Windsor and Scarborough, Ontario. But in August 2026 it entered a definitive agreement to be acquired by Kirin Holdings of Tokyo for C$2.5 billion enterprise value. The shareholder vote was set for September 2026 and closing is expected in the fourth quarter of 2026. Until that closes it remains Canadian-owned; after it closes this entry becomes Japanese-owned. Recheck from October 2026. Notable because the company markets itself heavily as 'proudly Canadian'.", confidence: "verify",
+    alternatives: [] },
+  "lasenza.ca": { brand: "La Senza", ownership: "US", category: "Apparel & Fashion", hq: "Montreal, Quebec (operations) / Beverly Hills, California (Regent LP)", note: "Founded in Montreal and long treated as a Canadian brand, but not Canadian-owned since 2019, when Beverly Hills private equity firm Regent LP bought it from L Brands. Operations remain in Montreal; ownership is American.", confidence: "high",
+    alternatives: ["Free Label (Canadian)", "Manmade (Canadian)", "Huha (Canadian)"] },
+  "suzyshier.com": { brand: "Suzy Shier", ownership: "Canada", category: "Apparel & Fashion", hq: "Montreal, Quebec", note: "Long-running Canadian womenswear chain, sold to YM Inc. — the privately held Canadian fashion group that also owns Bluenotes, Stitches, Sirens and Urban Planet. Canadian-owned.", confidence: "high",
+    alternatives: [] },
+  "sail.ca": { brand: "SAIL", ownership: "Canada", category: "Apparel & Fashion", hq: "Beloeil, Quebec", note: "National outdoor retailer that began as a surplus store in Beloeil, Quebec in 1983. Acquired in 2026 by three of its own executives — CEO Isabelle Lemay, CFO Stefania Cella and VP Marketing Catherine Venne — in a management buyout explicitly framed as keeping the company Canadian.", confidence: "high",
+    alternatives: [] },
+  "bouclair.com": { brand: "Bouclair", ownership: "verify", category: "Home & Furniture", hq: "Pointe-Claire, Quebec", note: "Home decor retailer headquartered in Pointe-Claire, Quebec and privately held. The picture needs a closer look: Alston Investments acquired the majority of the company's assets in 2019, and in March 2025 Second Avenue Capital Partners — an affiliate of the US Schottenstein group — provided a US$20M senior secured credit facility. A credit facility is lending rather than ownership, but the current ownership chain is not publicly clear enough to assign a flag.", confidence: "verify",
+    alternatives: [] },
+
 };
 
 // Simple lookup by hostname
