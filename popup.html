@@ -65,7 +65,7 @@
       border: 1px solid #ddd;
       border-radius: 6px;
     }
-    #report-form select, #report-form textarea {
+    #report-form select, #report-form textarea, #report-form input {
       width: 100%;
       box-sizing: border-box;
       font-size: 12px;
@@ -135,10 +135,11 @@
       <option value="other">Other</option>
     </select>
     <textarea id="report-details" placeholder="Optional: what should it say instead? Include a source if you have one."></textarea>
+    <input id="report-email" type="email" placeholder="Want us to email you when we've verified it? (optional)" />
     <button id="report-submit">Submit report</button>
   </div>
-  <div id="report-confirm">Opened the submission form in a new tab — send it from there and we'll review it.</div>
-  <div class="footer">v0.1 starter data — verify before relying on for purchases</div>
+  <div id="report-confirm">✓ Sent — thanks. We'll review it.</div>
+  <div class="footer">v0.3 — community-researched; verify before relying on for purchases</div>
   <script src="data.js"></script>
   <script src="wikidata.js"></script>
   <script src="popup.js"></script>

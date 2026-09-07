@@ -173,25 +173,30 @@ chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
 
 // ---- Where submissions go ----
 //
-// Two paths, deliberately different.
+// Both the research request and the correction POST straight to one Google
+// Form. Nothing opens a second tab and asks the person to retype what they
+// already typed.
 //
-// A research request is one fact — the domain — so it is posted straight to a
-// Google Form and needs nothing from the person beyond the click. Requests
-// only matter in volume; making someone fill in a form to say "you don't
-// cover this site" would lose most of them.
+// That bounce is why this changed: the old correction flow collected a
+// reason and details here, then handed the person a Tally form asking for
+// the same thing again. Most people close that tab, and the correction they
+// had already written is lost. A report you have to file twice is a report
+// you mostly do not get.
 //
-// A correction carries an explanation and a source, so it still opens the
-// full form. That is the submission where the detail is the whole point.
-//
-// SETUP: REQUEST_FORM below must point at a Google Form. To get these values,
-// create a form with one short-answer question, click Send, copy the link, and
-// take the id from .../forms/d/e/<THIS>/viewform. For the entry id, open the
-// live form, view source and search for "entry." — it looks like entry.123456789.
-const REQUEST_FORM = {
+// The form's fields, in the order they appear on it. To find an entry id:
+// open the live form, view source, and search for "entry." — each question
+// carries one, like entry.123456789.
+const FORM = {
   formId: "1FAIpQLSctsyB5-m7NlwsqWefc3B-WhvAKqmjSoT1zfHn9rsoA4Niu5g",
-  domainField: "entry.180211344",
+  domain: "entry.180211344",
+  brand: "entry.573150811",
+  reason: "entry.660409413",
+  details: "entry.2072649866",
+  email: "entry.1001107241",
 };
 
+// Kept only as the offline fallback below. Nothing in the popup routes a
+// person here on the normal path any more.
 const SUBMIT_FORM = "https://tally.so/r/1AeroQ";
 
 function openSubmitForm(params) {
@@ -202,14 +207,19 @@ function openSubmitForm(params) {
 // Google does not send CORS headers on form submissions, so the response is
 // opaque and cannot be read. The POST still lands. That means success cannot
 // be confirmed from here — the button reports that it sent, not that it
-// arrived, which is the honest thing it can claim.
-function sendResearchRequest(domain) {
-  if (REQUEST_FORM.formId.startsWith("PASTE_")) {
-    console.warn("MapleCheck: research form not configured; request not sent.");
+// arrived, which is the honest thing it can claim. In practice this only
+// rejects when the network is genuinely unavailable, which is what makes it
+// a usable signal for the fallback.
+function postToForm(fields) {
+  if (FORM.formId.startsWith("PASTE_")) {
+    console.warn("MapleCheck: form not configured; nothing sent.");
     return Promise.resolve(false);
   }
-  const body = new URLSearchParams({ [REQUEST_FORM.domainField]: domain });
-  return fetch(`https://docs.google.com/forms/d/e/${REQUEST_FORM.formId}/formResponse`, {
+  const body = new URLSearchParams();
+  for (const [field, value] of Object.entries(fields)) {
+    if (value) body.append(field, value);
+  }
+  return fetch(`https://docs.google.com/forms/d/e/${FORM.formId}/formResponse`, {
     method: "POST",
     mode: "no-cors",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -233,7 +243,7 @@ document.getElementById("research-toggle").addEventListener("click", () => {
     const btn = document.getElementById("research-toggle");
     btn.disabled = true;
     btn.textContent = "Sending…";
-    sendResearchRequest(domain).then((sent) => {
+    postToForm({ [FORM.domain]: domain }).then((sent) => {
       btn.textContent = sent ? "✓ Sent — thanks!" : "Couldn't send — try the form";
       if (!sent) {
         btn.disabled = false;
@@ -252,8 +262,12 @@ document.getElementById("report-toggle").addEventListener("click", () => {
 document.getElementById("report-submit").addEventListener("click", () => {
   chrome.storage.local.get(["lastLookup", "reports"], (result) => {
     const lookup = result.lastLookup;
-    const reason = document.getElementById("report-reason").value;
+    const reasonSelect = document.getElementById("report-reason");
+    // The visible label, not the option's slug — these land in a spreadsheet
+    // a person reads, where "Ownership is wrong" beats "wrong-ownership".
+    const reason = reasonSelect.options[reasonSelect.selectedIndex].text;
     const details = document.getElementById("report-details").value;
+    const email = document.getElementById("report-email").value.trim();
 
     const report = {
       domain: lookup ? lookup.hostname : "unknown",
@@ -265,19 +279,45 @@ document.getElementById("report-submit").addEventListener("click", () => {
     };
 
     // Kept locally too, so the person has their own record of what they sent.
+    // The email is deliberately not stored here — there is no reason to keep
+    // a second copy of it on the device once it has been sent.
     const reports = result.reports || [];
     reports.push(report);
     chrome.storage.local.set({ reports });
 
-    openSubmitForm({
-      company: report.brand,
-      domain: report.domain,
-      request: "Correction to an existing entry",
-      details: `${reason}${details ? ` — ${details}` : ""}`,
-    });
+    const btn = document.getElementById("report-submit");
+    btn.disabled = true;
+    btn.textContent = "Sending…";
 
-    document.getElementById("report-form").style.display = "none";
-    document.getElementById("report-confirm").style.display = "block";
-    document.getElementById("report-details").value = "";
+    postToForm({
+      [FORM.domain]: report.domain,
+      [FORM.brand]: report.brand,
+      [FORM.reason]: reason,
+      [FORM.details]: details,
+      [FORM.email]: email,
+    }).then((sent) => {
+      if (sent) {
+        document.getElementById("report-form").style.display = "none";
+        document.getElementById("report-confirm").style.display = "block";
+        document.getElementById("report-details").value = "";
+        document.getElementById("report-email").value = "";
+        return;
+      }
+      // Offline. Rather than lose what they wrote, hand it to the hosted form
+      // with the fields carried across so nothing has to be retyped.
+      btn.disabled = false;
+      btn.textContent = "Couldn't send — open the form instead";
+      btn.addEventListener(
+        "click",
+        () =>
+          openSubmitForm({
+            company: report.brand,
+            domain: report.domain,
+            request: "Correction to an existing entry",
+            details: `${reason}${details ? ` — ${details}` : ""}`,
+          }),
+        { once: true }
+      );
+    });
   });
 });
