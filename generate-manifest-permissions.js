@@ -36,6 +36,10 @@ const MANIFEST = path.join(ROOT, "manifest.json");
 // goes away — it is the one host we need beyond the dataset itself.
 const WIKIDATA_HOST = "https://www.wikidata.org/*";
 
+// Research requests are POSTed to a Google Form when someone clicks "Request
+// we look into this site". Without this the request is blocked.
+const GOOGLE_FORMS_HOST = "https://docs.google.com/*";
+
 const dataSrc = fs.readFileSync(path.join(ROOT, "data.js"), "utf8");
 const OWNERSHIP_DATA = new Function(`${dataSrc}\nreturn OWNERSHIP_DATA;`)();
 // Alias domains need match patterns too, or the content script never runs on
@@ -49,7 +53,7 @@ const matches = domains.map((d) => `*://*.${d}/*`);
 
 const manifest = JSON.parse(fs.readFileSync(MANIFEST, "utf8"));
 const next = structuredClone(manifest);
-next.host_permissions = [...matches, WIKIDATA_HOST];
+next.host_permissions = [...matches, WIKIDATA_HOST, GOOGLE_FORMS_HOST];
 next.content_scripts[0].matches = matches;
 
 const nextText = `${JSON.stringify(next, null, 2)}\n`;

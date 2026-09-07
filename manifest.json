@@ -485,7 +485,8 @@
     "*://*.zara.com/*",
     "*://*.zippyjamz.com/*",
     "*://*.zoosk.com/*",
-    "https://www.wikidata.org/*"
+    "https://www.wikidata.org/*",
+    "https://docs.google.com/*"
   ],
   "background": {
     "service_worker": "background.js"
