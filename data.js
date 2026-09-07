@@ -845,7 +845,7 @@ const OWNERSHIP_DATA = {
     alternatives: [], alternativesNote: "No Canadian-owned luxury fragrance house of comparable scale appears in this dataset. Saje Natural Wellness (Vancouver) and Province Apothecary (Toronto) are Canadian-owned in adjacent categories, but neither is a like-for-like substitute for a perfume house." },
 
 
-  "modaselle.com": { brand: "Modaselle", ownership: "Canada", category: "Apparel & Fashion", hq: "Vancouver, British Columbia", note: "Canadian luxury consignment business founded by Natalie Ivanova, selling pre-owned handbags, watches and jewellery from its Seymour Street showroom in Vancouver since 2014 and online since 2012. Worth understanding what the Canadian ownership means here: the labels it resells (Chanel, Hermes, Rolex, Cartier) are all foreign-owned, but on a resale the money goes to this Vancouver company and the original brand receives nothing — so buying second-hand through a Canadian consignor is arguably the most Canadian way to buy a foreign luxury brand.", confidence: "high",
+  "modaselle.com": { brand: "Modaselle", ownership: "Canada", category: "Apparel & Fashion", hq: "Vancouver, British Columbia", note: "Canadian luxury consignment business. Founder attribution is unsettled: some sources name Natalie Ivanova, while a JCK interview credits Alex Jane, who later founded the Vancouver jewellery label Xander Jane, with opening it in 2015. Canadian ownership is not in doubt either way. Sells pre-owned handbags, watches and jewellery from its Seymour Street showroom in Vancouver since 2014 and online since 2012. Worth understanding what the Canadian ownership means here: the labels it resells (Chanel, Hermes, Rolex, Cartier) are all foreign-owned, but on a resale the money goes to this Vancouver company and the original brand receives nothing — so buying second-hand through a Canadian consignor is arguably the most Canadian way to buy a foreign luxury brand.", confidence: "high",
     alternatives: [] },
 
 
@@ -934,6 +934,23 @@ const OWNERSHIP_DATA = {
     alternatives: [] },
   "levi.com": { brand: "Levi's", ownership: "US", category: "Apparel & Fashion", hq: "San Francisco, California", note: "Levi Strauss & Co., NYSE: LEVI. Listed separately from levis.com because Levi's uses both domains for its Canadian storefront and the extension matches on the exact domain.", confidence: "high",
     alternatives: ["Naked & Famous Denim (Canadian, made in Canada)", "Silver Jeans (Canadian, Winnipeg)", "DUER (Canadian)", "Carreli Jeans (Canadian)"] },
+
+
+  // ---- Batch 8 ----
+  "xanderjane.com": { brand: "Xander Jane", ownership: "Canada", category: "Apparel & Fashion", hq: "Vancouver, British Columbia", madeIn: "Canada", note: "Designer jewellery label started in 2019 by Alex Jane, working out of downtown Vancouver. Began by contracting manufacturing out and has since brought it in house. Per a JCK interview, Jane also opened the Vancouver designer resale boutique Modaselle in 2015 — note that other sources name Natalie Ivanova as Modaselle's founder, so the two entries may need reconciling.", confidence: "high",
+    alternatives: [] },
+  "mernini.com": { brand: "mernini", ownership: "Canada", category: "Apparel & Fashion", hq: "St. John's, Newfoundland and Labrador", note: "Female-founded Canadian raincoat brand started by Maria Halfyard in St. John's, with garments designed and tested against North Atlantic weather. One of very few entries in this dataset based in Newfoundland.", confidence: "high",
+    alternatives: [] },
+  "kiyoko.com": { brand: "Kiyoko Beauty", ownership: "Canada", category: "Personal Care & Household", hq: "Toronto, Ontario", note: "Asian-owned Canadian retailer started in 2021 by Gillian Liu and Kevin, stocking more than 80 Japanese and Korean beauty brands and shipping from within Canada so buyers avoid customs charges. A retailer rather than a manufacturer — the brands it carries are Japanese and Korean; the business itself is Canadian.", confidence: "high",
+    alternatives: [] },
+  "motiongrey.com": { brand: "MotionGrey", ownership: "Canada", category: "Home & Furniture", hq: "Richmond, British Columbia", madeIn: "imported", note: "Ergonomic office furniture company — standing desks and chairs — founded by two UBC engineers, Andy and Alex, with fulfilment centres in BC. The company sources product from manufacturers globally rather than making it, so Canadian ownership here does not mean Canadian manufacturing.", confidence: "high",
+    alternatives: [] },
+  "deandavidson.ca": { brand: "Dean Davidson", ownership: "Canada", category: "Apparel & Fashion", hq: "Toronto, Ontario", madeIn: "imported", note: "Fine jewellery brand run from a Toronto studio and boutique by its namesake founder, known for hand-cut gemstones and a brushed finish. The pieces are made in Jaipur, India at a family-owned artisan workshop — Canadian-owned and designed, made abroad, and the company says so openly.", confidence: "high",
+    alternatives: ["Xander Jane (Canadian, made in Vancouver)"] },
+  "legalwills.ca": { brand: "LegalWills", ownership: "Canada", category: "Professional Services", hq: "Ottawa, Ontario", note: "Online will and estate document service operated by PartingWishes Inc. of Ottawa, founded by Tim Hewson, who is CEO, with Henry Raud as president. The same group runs USLegalWills.com and LegalWills.co.uk from Canada — a rare case of a Canadian company operating the American and British versions rather than the reverse.", confidence: "high",
+    alternatives: [] },
+  "selectblindscanada.ca": { brand: "Select Blinds Canada", ownership: "verify", category: "Home & Furniture", hq: "Saint-Laurent, Quebec", note: "Online custom blinds retailer operating from Saint-Laurent, Quebec since 2005, which states on its own site that it is Canadian owned and operated. Flagged because a separate US company, SelectBlinds LLC of Chandler, Arizona, trades under a near-identical name, and no public source establishes whether the two are related, licensed or entirely independent. The company's own claim may well be accurate — it just cannot be corroborated.", confidence: "verify",
+    alternatives: [] },
 
 };
 
