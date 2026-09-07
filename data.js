@@ -952,6 +952,10 @@ const OWNERSHIP_DATA = {
   "selectblindscanada.ca": { brand: "Select Blinds Canada", ownership: "verify", category: "Home & Furniture", hq: "Saint-Laurent, Quebec", note: "Online custom blinds retailer operating from Saint-Laurent, Quebec since 2005, which states on its own site that it is Canadian owned and operated. Flagged because a separate US company, SelectBlinds LLC of Chandler, Arizona, trades under a near-identical name, and no public source establishes whether the two are related, licensed or entirely independent. The company's own claim may well be accurate — it just cannot be corroborated.", confidence: "verify",
     alternatives: [] },
 
+
+  "flytrippers.com": { brand: "Flytrippers", ownership: "Canada", category: "Travel & Transportation", hq: "Quebec City, Quebec", note: "Canadian travel deals site founded in 2016 by Andrew D'Amours and Kevin Gagnon, who pitched it on CBC's Dragons' Den in 2018. Finds discounted flights and publishes travel rewards and credit card guidance for a Canadian audience. Canadian ownership is confirmed both by independent coverage and directly by MapleCheck's operator, who knows the founders personally — noted here for the same reason it is noted on The Learning Designers: readers should be able to see where a claim came from, including when it came from us.", confidence: "high",
+    alternatives: [] },
+
 };
 
 // Simple lookup by hostname
