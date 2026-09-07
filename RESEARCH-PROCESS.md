@@ -68,6 +68,51 @@ in the data.js note field — always trace to what Wikipedia itself cites.
   announcement, a date — so a future check knows what's already been
   verified and what's still owed a better source
 
+## Step 6 — When ownership is changing, or is not where the company is
+
+Decided 7 September 2026, after a reader reported that Roots had been "sold to
+American ownership" and turned out to be substantially right.
+
+Two situations look like an ownership change but are not, and both get a
+visible warning beside the ownership label rather than a change to it. The
+label answers "who owns this today", which has one correct answer; the warnings
+carry everything that makes the correct answer insufficient on its own.
+
+**An agreed sale that has not closed — `changingTo`.**
+
+Do not move `ownership` when a deal is announced, agreed, or even approved by
+shareholders. Until it legally completes, the current owners still own the
+company, and deals genuinely do fall through on regulatory or court approval.
+Set `changingTo` to what it is becoming ("US-owned", "Japanese-owned"), say in
+the note exactly what is still outstanding — votes, Competition Act clearance,
+court approval, expected closing quarter — and set `confidence: "verify"`.
+
+When it closes: clear `changingTo`, change `ownership`, rewrite the note. If it
+dies: clear `changingTo` and say so in the note, so the next person does not
+re-open a settled question.
+
+**Foreign control of a company that is otherwise Canadian — `controlledFrom`.**
+
+A company incorporated here, headquartered here and operating here, but whose
+majority is held by a foreign firm, is not a foreign company and should not be
+labelled one — calling Roots "US-owned" would be read as an error by anyone who
+knows it is a Toronto company, and would cost the whole directory credibility.
+But labelling it only "Canadian" hides exactly what MapleCheck exists to
+surface: a decade of profits flowing to a controlling shareholder on Fifth
+Avenue.
+
+So `ownership` stays as it is, and `controlledFrom` names the country the
+control sits in. The note must say who holds it, from where, and since when.
+Set `confidence: "verify"`.
+
+Do NOT use `controlledFrom` when a foreign parent owns the company outright —
+that is simply `ownership`, and double-flagging it implies a nuance that is not
+there.
+
+**The principle underneath both:** never let the ownership label say something
+false in order to deliver a warning, and never let it stay quiet in order to
+stay accurate. That is what the second field is for.
+
 ## What this pipeline does NOT solve
 
 - It's still manual, per-company research. It doesn't scale to "all

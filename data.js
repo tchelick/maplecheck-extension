@@ -28,6 +28,40 @@
 //
 // ownership: "verify" is separate from confidence — it means no flag is
 // assigned at all, for companies where picking one country would misinform.
+//
+// ---- Two warning flags that are NOT the ownership label ----
+//
+// Both exist because "who owns it" has a legally correct answer that can
+// still leave a shopper misinformed. Neither changes `ownership`; both
+// render as a visible warning next to it, so the label stays accurate and
+// the warning stays impossible to miss.
+//
+// changingTo: "US-owned"        — an agreed sale that has NOT closed. The
+//                                 company is still owned by whoever owns it
+//                                 today, so the label does not move until
+//                                 the deal completes. Saying otherwise would
+//                                 be wrong, and deals do fall through. The
+//                                 note must state what is still outstanding
+//                                 (votes, regulatory clearance, court
+//                                 approval) and the expected closing.
+//                                 Clear this field when the deal closes and
+//                                 change `ownership` then — or clear it and
+//                                 say so in the note if the deal dies.
+//
+// controlledFrom: "US"          — settled, present-day foreign control of a
+//                                 company that is otherwise Canadian:
+//                                 incorporated here, headquartered here,
+//                                 operating here. Majority ownership by a
+//                                 foreign private-equity firm is the usual
+//                                 case (Roots, controlled from New York by
+//                                 Searchlight Capital since 2015). This is
+//                                 not a pending change and not a maybe — it
+//                                 is true now. The note must name who holds
+//                                 control, from where, and since when.
+//
+// Do not use controlledFrom for a foreign parent that owns the company
+// outright: that is just `ownership`, and flagging it twice would suggest a
+// nuance that is not there.
 
 const OWNERSHIP_DATA = {
   // ---- US-owned / US-headquartered ----
@@ -119,7 +153,7 @@ const OWNERSHIP_DATA = {
     alternatives: [] },
   "canadagoose.com": { brand: "Canada Goose", ownership: "Canada", category: "Apparel & Fashion", tags: ["winter coats", "parkas", "outerwear", "jackets"], hq: "Toronto, Ontario", note: "TSX/NYSE: GOOS — dual-listed but Canadian headquartered and founded", confidence: "high",
     alternatives: [] },
-  "roots.com": { brand: "Roots", ownership: "Canada", category: "Apparel & Fashion", tags: ["sweatshirts", "hoodies", "leather bags", "casualwear"], hq: "Toronto, Ontario", note: "Canadian-founded in 1973 and still headquartered in Toronto, but not straightforwardly Canadian-owned. Searchlight Capital Partners, a private equity firm headquartered in New York, bought a majority stake in 2015 and has been the controlling shareholder for a decade; Searchlight, the Budman family holding company Kernwood and the directors and officers together hold about 69% of the voting interest. PENDING: on 21 August 2026 Roots agreed to be taken private by Marquee Brands, a US brand-management company, at C$4.10 per share, partnered with Toronto-based JM&A (Joe Mimran and Frank Rocchetti), who would run design, manufacturing, distribution and retail. The deal still needs a two-thirds shareholder vote (meeting expected October 2026), separate minority approval, Competition Act clearance and Ontario court approval, and is targeted to close in Q4 2026, after which Roots delists from the TSX. Roots says the brand and head office stay in Toronto. Listed as Canadian pending a decision on how to treat long-standing foreign private-equity control; recheck when the deal closes or fails.", confidence: "verify",
+  "roots.com": { brand: "Roots", ownership: "Canada", category: "Apparel & Fashion", tags: ["sweatshirts", "hoodies", "leather bags", "casualwear"], hq: "Toronto, Ontario", changingTo: "US-owned", controlledFrom: "US", note: "Canadian-founded in 1973 and still headquartered in Toronto, but not straightforwardly Canadian-owned. Searchlight Capital Partners, a private equity firm headquartered in New York, bought a majority stake in 2015 and has been the controlling shareholder for a decade; Searchlight, the Budman family holding company Kernwood and the directors and officers together hold about 69% of the voting interest. PENDING: on 21 August 2026 Roots agreed to be taken private by Marquee Brands, a US brand-management company, at C$4.10 per share, partnered with Toronto-based JM&A (Joe Mimran and Frank Rocchetti), who would run design, manufacturing, distribution and retail. The deal still needs a two-thirds shareholder vote (meeting expected October 2026), separate minority approval, Competition Act clearance and Ontario court approval, and is targeted to close in Q4 2026, after which Roots delists from the TSX. Roots says the brand and head office stay in Toronto. Still Canadian-owned in law until the deal closes, which is why the label says Canadian — but it is US-controlled today and being sold to US owners, and both are flagged above. Recheck when the deal closes or fails.", confidence: "verify",
     alternatives: [] },
   "spotify.com": { brand: "Spotify", ownership: "not-US", category: "Media & Entertainment", hq: "Stockholm, Sweden", note: "Not US-owned — Swedish company, NYSE listing is just where it trades, not where it's owned/controlled", confidence: "high",
     alternatives: ["CBC Music"] },
@@ -874,7 +908,7 @@ const OWNERSHIP_DATA = {
     alternatives: [] },
   "thelasthunt.com": { brand: "The Last Hunt", ownership: "Canada", category: "Apparel & Fashion", tags: ["outdoor gear", "discount"], hq: "Montreal, Quebec", note: "Discount outdoor gear outlet founded in Montreal in 2010, owned by Alexandre Guimond and Maxime Dubois — the same Canadian owners as Altitude Sports.", confidence: "high",
     alternatives: [] },
-  "jamiesonvitamins.com": { brand: "Jamieson", ownership: "Canada", category: "Personal Care & Household", tags: ["vitamins", "supplements"], hq: "Toronto, Ontario", madeIn: "Canada", note: "TIME-SENSITIVE — Canadian today, probably not for much longer. Jamieson Wellness (TSX: JWEL) was founded in 1922, is headquartered in Toronto and manufactures the overwhelming majority of its products in Windsor and Scarborough, Ontario. But in August 2026 it entered a definitive agreement to be acquired by Kirin Holdings of Tokyo for C$2.5 billion enterprise value. The shareholder vote was set for September 2026 and closing is expected in the fourth quarter of 2026. Until that closes it remains Canadian-owned; after it closes this entry becomes Japanese-owned. Recheck from October 2026. Notable because the company markets itself heavily as 'proudly Canadian'.", confidence: "verify",
+  "jamiesonvitamins.com": { brand: "Jamieson", ownership: "Canada", category: "Personal Care & Household", tags: ["vitamins", "supplements"], hq: "Toronto, Ontario", madeIn: "Canada", changingTo: "Japanese-owned", note: "TIME-SENSITIVE — Canadian today, probably not for much longer. Jamieson Wellness (TSX: JWEL) was founded in 1922, is headquartered in Toronto and manufactures the overwhelming majority of its products in Windsor and Scarborough, Ontario. But in August 2026 it entered a definitive agreement to be acquired by Kirin Holdings of Tokyo for C$2.5 billion enterprise value. The shareholder vote was set for September 2026 and closing is expected in the fourth quarter of 2026. Until that closes it remains Canadian-owned; after it closes this entry becomes Japanese-owned. Recheck from October 2026. Notable because the company markets itself heavily as 'proudly Canadian'.", confidence: "verify",
     alternatives: [] },
   "lasenza.ca": { brand: "La Senza", ownership: "US", category: "Apparel & Fashion", tags: ["lingerie", "bras", "underwear"], hq: "Montreal, Quebec (operations) / Beverly Hills, California (Regent LP)", note: "Founded in Montreal and long treated as a Canadian brand, but not Canadian-owned since 2019, when Beverly Hills private equity firm Regent LP bought it from L Brands. Operations remain in Montreal; ownership is American.", confidence: "high",
     alternatives: ["Free Label (Canadian)", "Manmade (Canadian)", "Huha (Canadian)"] },

@@ -133,6 +133,22 @@ chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
   const statusBox = el("div", `status ${statusClass}`);
   statusBox.appendChild(el("div", "brand", data.brand));
   statusBox.appendChild(el("div", "meta", `${label}${data.hq ? ` · ${data.hq}` : ""}`));
+
+  // Warnings that qualify the ownership label without replacing it. A sale
+  // that has not closed does not change who owns the company today, and a
+  // Canadian company under foreign control is not a foreign company — so
+  // the label above stays accurate and these sit under it.
+  if (data.changingTo) {
+    statusBox.appendChild(
+      el("div", "alert-tag alert-changing", `⚠ Sale agreed — becoming ${data.changingTo}`)
+    );
+  }
+  if (data.controlledFrom) {
+    statusBox.appendChild(
+      el("div", "alert-tag alert-control", `⚠ ${data.controlledFrom}-controlled`)
+    );
+  }
+
   if (data.note) statusBox.appendChild(el("div", "meta meta-note", data.note));
   container.replaceChildren(statusBox);
 

@@ -52,6 +52,22 @@
     const panel = el("div", "mc-panel");
     panel.appendChild(el("div", "mc-panel-brand", data.brand));
     if (data.hq) panel.appendChild(el("div", "mc-panel-meta", data.hq));
+
+    // Sits above the note, because a note is long and gets skimmed. A sale
+    // that has not closed leaves ownership unchanged for now, and foreign
+    // control of a Canadian company is not foreign ownership — so the label
+    // stays as it is and these carry the qualification.
+    if (data.changingTo) {
+      panel.appendChild(
+        el("div", "mc-alert mc-alert-changing", `⚠ Sale agreed — becoming ${data.changingTo}`)
+      );
+    }
+    if (data.controlledFrom) {
+      panel.appendChild(
+        el("div", "mc-alert mc-alert-control", `⚠ ${data.controlledFrom}-controlled`)
+      );
+    }
+
     if (data.note) panel.appendChild(el("div", "mc-panel-meta", data.note));
 
     const appendAlternatives = (titleText, items) => {
