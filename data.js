@@ -957,7 +957,7 @@ const OWNERSHIP_DATA = {
     alternatives: [] },
 
 
-  "lanaknits.com": { brand: "Lanaknits Hemp", ownership: "Canada", category: "Apparel & Fashion", tags: ["yarn", "hemp yarn", "knitting"], hq: "Nelson, British Columbia", note: "Hemp yarn and knitting pattern company founded by Lana Hames, who came home from a 1997 trade show set on making hemp textiles a business and launched Lanaknits in 2000 after three years of research. Head office and design studio are in downtown Nelson, BC, and the yarns are stocked by knitting shops across North America. The company does not publish where the fibre is grown or spun, so that is left unstated rather than assumed.", confidence: "high",
+  "lanaknits.com": { brand: "Lanaknits Hemp", ownership: "Canada", category: "Apparel & Fashion", tags: ["yarn", "hemp yarn", "knitting"], hq: "Nelson, British Columbia", note: "Hemp yarn and knitting pattern company founded by Lana Hames, who came home from a 1997 trade show set on making hemp textiles a business and launched Lanaknits in 2000 after three years of research. Head office and design studio are in downtown Nelson, BC, and the yarns are stocked by knitting shops across North America. The company does not publish where the fibre is grown or spun. Lana Hames told MapleCheck directly that the fibre is sourced from Europe and Asia, and describes it as ethically and sustainably sourced — that last part is the company's own characterisation, which we have not independently checked.", materialsFrom: "Europe and Asia", confidence: "high",
     alternatives: [] },
 
 };
