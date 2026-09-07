@@ -188,8 +188,8 @@ chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
 // take the id from .../forms/d/e/<THIS>/viewform. For the entry id, open the
 // live form, view source and search for "entry." — it looks like entry.123456789.
 const REQUEST_FORM = {
-  formId: "PASTE_GOOGLE_FORM_ID_HERE",
-  domainField: "entry.PASTE_FIELD_ID_HERE",
+  formId: "1FAIpQLSctsyB5-m7NlwsqWefc3B-WhvAKqmjSoT1zfHn9rsoA4Niu5g",
+  domainField: "entry.180211344",
 };
 
 const SUBMIT_FORM = "https://tally.so/r/1AeroQ";
