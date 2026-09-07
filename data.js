@@ -956,6 +956,10 @@ const OWNERSHIP_DATA = {
   "flytrippers.com": { brand: "Flytrippers", ownership: "Canada", category: "Travel & Transportation", hq: "Quebec City, Quebec", note: "Canadian travel deals site founded in 2016 by Andrew D'Amours and Kevin Gagnon, who pitched it on CBC's Dragons' Den in 2018. Finds discounted flights and publishes travel rewards and credit card guidance for a Canadian audience. Founders, founding date and Canadian base are documented in CBC's Dragons' Den coverage and the company's own national press announcements.", confidence: "high",
     alternatives: [] },
 
+
+  "lanaknits.com": { brand: "Lanaknits Hemp", ownership: "Canada", category: "Apparel & Fashion", hq: "Nelson, British Columbia", note: "Hemp yarn and knitting pattern company founded by Lana Hames, who came home from a 1997 trade show set on making hemp textiles a business and launched Lanaknits in 2000 after three years of research. Head office and design studio are in downtown Nelson, BC, and the yarns are stocked by knitting shops across North America. The company does not publish where the fibre is grown or spun, so that is left unstated rather than assumed.", confidence: "high",
+    alternatives: [] },
+
 };
 
 // Simple lookup by hostname
