@@ -83,6 +83,15 @@
 // exist, belong in their own field so that the disclosure logic can tell the
 // difference between a link that earns money and one that does not.
 
+// ---- affiliateUrl: the earns-money link, kept separate from storeUrl ----
+//
+// Set only when a real affiliate relationship exists for that company. The
+// site renders it with rel="sponsored" and a visible "Sponsored" marker next
+// to the link — never silently. Ownership research and category placement
+// are decided before any affiliate relationship exists and do not change
+// because one does; this field only ever changes where a click ends up, not
+// what the entry says about the company.
+
 const OWNERSHIP_DATA = {
   // ---- US-owned / US-headquartered ----
   "walmart.ca": { brand: "Walmart", ownership: "US", category: "Retail & Department Stores", hq: "Bentonville, Arkansas", note: "NYSE: WMT", confidence: "high",
@@ -1018,6 +1027,9 @@ const OWNERSHIP_DATA = {
     alternatives: [] },
 
   "purechoicefoods.ca": { brand: "Pure Choice Foods", ownership: "Canada", category: "Food & Drink", tags: ["freeze-dried food", "backpacking meals", "camping food"], hq: "Kanata (Ottawa), Ontario", madeIn: "Canada", note: "Freeze-dried food manufacturer for backpackers and campers. Incorporated federally in 2017 (Corporations Canada #10293997); the registry's beneficial-ownership filing lists David Melamed as holding more than 75% of shares since incorporation. Company's own site states it manufactures in Canada. Note: the same registry filing shows two consecutive annual filings overdue as of this check, with a notice of intent to dissolve if not remedied — worth rechecking that the corporation stays in good standing.", confidence: "high",
+    alternatives: [] },
+
+  "secondshop.ca": { brand: "SecondShop", ownership: "Canada", category: "Home & Furniture", tags: ["appliances", "open-box", "overstock", "home goods"], hq: "Burlington, Ontario", affiliateUrl: "https://click.linksynergy.com/deeplink?id=ANxxPiFOs30&mid=54217&murl=https%3A%2F%2Fsecondshop.ca%2F", note: "Toronto-area re-commerce startup selling open-box, overstock and scratch-and-dent appliances at a discount, founded by CEO Cedric George (previously built and sold Calgary's Custom Delivery Solutions in 2019). Incubated by Harvest Builders, a Calgary venture studio, and seed-funded in 2024 by its affiliated Harvest Venture Partners (backed by ATB Financial) plus undisclosed angels. Confirmed by two independent reports agreeing on founder and Canadian backing — BetaKit and Goodmans LLP's tech blog — plus the company's own about page (Burlington, ON team). No foreign ownership found.", confidence: "high",
     alternatives: [] },
 
   "fcl.crs": { brand: "Federated Co-operatives Limited", ownership: "Canada", category: "Grocery & Pharmacy", tags: ["groceries", "gas bar", "hardware", "pharmacy", "co-op"], hq: "Saskatoon, Saskatchewan", note: "Wholesaling and manufacturing co-operative that supplies and is owned by roughly 160 independent local retail co-operatives across Western Canada and into the Arctic — the Co-operative Retailing System (grocery stores, gas bars, hardware and agro centres, pharmacies). Formed 1944 from a merger of the Saskatchewan Co-operative Wholesale Society and Consumers' Co-operative Refineries Limited. Ownership structure and founding confirmed by Wikipedia (citing FCL's own corporate history) and the Encyclopedia of Saskatchewan, agreeing with FCL's own 'Our Story' page. Note: fcl.crs did not respond when checked from this session's network (timeout, not a DNS or parked-domain signal) — the domain is real and actively referenced elsewhere (financial statements hosted there, indexed by search engines), but the live link has not been confirmed working; recheck from a normal connection before trusting the outbound link.", confidence: "high",
