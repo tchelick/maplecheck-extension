@@ -113,6 +113,48 @@ there.
 false in order to deliver a warning, and never let it stay quiet in order to
 stay accurate. That is what the second field is for.
 
+## Step 7 — A personal submission is a lead, not a source — check before publishing what you can't verify
+
+Decided 8 September 2026, after a note from an owner (Pure Choice Foods,
+confirming a CFIA licence) was written straight into the entry as fact,
+attributed but not independently checked. The claim itself was plausible and
+the owner had no reason to lie — the problem was publishing it as settled
+without asking first.
+
+Anything stated only by a submitter — through the Google Form, Tally, or a
+direct message to the maintainer — is a claim, not evidence, no matter how
+confident, well-intentioned, or personally invested the person making it is.
+Being the owner does not make a statement verifiable; it makes it a lead.
+
+When a specific, checkable fact in a submission can't be independently
+corroborated (a certification, a licence, a sourcing or manufacturing
+detail, an award, a "family owned since" claim — anything beyond the
+ownership question itself):
+
+- Don't write it into the note, even attributed as "X told MapleCheck
+  directly." That phrasing reads as confirmed to a site visitor even when
+  it isn't.
+- Hold it out of the published entry and check with the maintainer before
+  adding it. In an interactive session, ask directly rather than deciding by
+  precedent. In an unattended run, don't publish it — flag it clearly (see
+  the daily task's own instructions for exactly where) and wait for a yes.
+- This doesn't block the rest of the entry. If ownership is independently
+  confirmed (registry, filing, press), publish that normally — only the
+  unverifiable extra detail waits.
+
+The point isn't suspicion of submitters. MapleCheck wants owners and
+shoppers to feel good about submitting — the evidence bar is what makes a
+"yes" mean something, not a hurdle meant to make people feel unwelcome. A
+held claim is a quick check, not a rejection.
+
+**The maintainer can override this.** The check this step requires is a
+check with the maintainer, not a demand for public-source proof — if she
+says she believes the claim is true (as with Pure Choice Foods' CFIA line,
+8 September 2026: left live on her call after being asked), that stands as
+the "yes" and the claim can be published or stay published on her word
+alone. Nobody else's say-so satisfies this step — not the submitter's, no
+matter how sincere, and not an assistant's judgment call by precedent.
+
 ## What this pipeline does NOT solve
 
 - It's still manual, per-company research. It doesn't scale to "all
