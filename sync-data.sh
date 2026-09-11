@@ -37,6 +37,10 @@ node make-data-json.js
 echo "Rebuilding per-company pages, sitemap and slug map..."
 ( cd "$SITE_REPO" && node build-company-pages.js )
 
+# Must run after build-company-pages.js — it reads the slug map that writes.
+echo "Rebuilding the findings page..."
+( cd "$SITE_REPO" && node build-findings-page.js )
+
 echo "Updating homepage stat counts..."
 node "$SITE_REPO/update-stats.js" "$SITE_REPO/extension-data.js" "$SITE_REPO/index.html"
 
