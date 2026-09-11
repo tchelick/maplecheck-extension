@@ -346,8 +346,8 @@ const OWNERSHIP_DATA = {
     alternatives: [] },
   "kickinghorsecoffee.com": { brand: "Kicking Horse Coffee", ownership: "not-US", category: "Food & Drink", tags: ["coffee", "beans"], hq: "Invermere, BC (operations) / Turin, Italy (Lavazza Group)", storeUrl: "https://kickinghorsecoffee.ca/", note: "80% owned by Lavazza Group (Italy) since May 2017, purchased from Swander Pace Capital. Founder Elana Rosenfeld retains 20% and remains CEO. Not US-owned, but no longer majority Canadian-owned either — a common misconception given the strong Canadian brand identity. Confirmed via Lavazza's own 2017 acquisition announcement. The .com prices in USD with no Canadian market; kickinghorsecoffee.ca is the Canadian store, serving CAD.", confidence: "high",
     alternatives: ["Ethical Bean Coffee (Canadian)", "Van Houtte (Canadian roots, now Keurig Dr Pepper-owned — verify before recommending)"] },
-  "levis.com": { brand: "Levi's", ownership: "US", category: "Apparel & Fashion", tags: ["jeans", "denim"], hq: "San Francisco, California", note: "Levi Strauss & Co., NYSE: LEVI", confidence: "high",
-    alternatives: ["Naked & Famous Denim"] },
+  "levis.com": { brand: "Levi's", ownership: "US", category: "Apparel & Fashion", tags: ["jeans", "denim"], hq: "San Francisco, California", note: "Levi Strauss & Co., NYSE: LEVI. Levi's runs both levis.com and levi.com for Canadian shoppers; levi.com is handled as an alias so the extension recognises either.", confidence: "high",
+    alternatives: ["Naked & Famous Denim (Canadian, made in Canada)", "Silver Jeans (Canadian, Winnipeg)", "DUER (Canadian)", "Carreli Jeans (Canadian)"] },
   "oldspice.com": { brand: "Old Spice", ownership: "US", category: "Personal Care & Household", tags: ["deodorant", "body wash", "mens grooming"], hq: "Cincinnati, Ohio", note: "Owned by Procter & Gamble, NYSE: PG", confidence: "high",
     alternatives: ["Attitude (Canadian personal care)"] },
   "crest.com": { brand: "Crest", ownership: "US", category: "Personal Care & Household", tags: ["toothpaste", "oral care"], hq: "Cincinnati, Ohio", note: "Owned by Procter & Gamble, NYSE: PG", confidence: "high",
@@ -997,8 +997,6 @@ const OWNERSHIP_DATA = {
     alternatives: ["SAIL (Canadian, employee-owned since 2026)", "Altitude Sports (Canadian)", "The Last Hunt (Canadian)"] },
   "lg.com": { brand: "LG", ownership: "not-US", category: "Home & Furniture", tags: ["appliances", "tv", "electronics", "washers", "fridges"], hq: "Seoul, South Korea", note: "LG Electronics, part of the South Korean LG Corporation conglomerate. Not US-owned and not Canadian.", confidence: "high",
     alternatives: [] },
-  "levi.com": { brand: "Levi's", ownership: "US", category: "Apparel & Fashion", tags: ["jeans", "denim"], hq: "San Francisco, California", note: "Levi Strauss & Co., NYSE: LEVI. Listed separately from levis.com because Levi's uses both domains for its Canadian storefront and the extension matches on the exact domain.", confidence: "high",
-    alternatives: ["Naked & Famous Denim (Canadian, made in Canada)", "Silver Jeans (Canadian, Winnipeg)", "DUER (Canadian)", "Carreli Jeans (Canadian)"] },
 
 
   // ---- Batch 8 ----
@@ -1049,6 +1047,7 @@ const OWNERSHIP_DATA = {
 // and mec.com is not Mountain Equipment Company. Every pair below is the same
 // company operating in two markets.
 const DOMAIN_ALIASES = {
+  "levi.com": "levis.com",
   "kickinghorsecoffee.ca": "kickinghorsecoffee.com",
   "saje.ca": "saje.com",
   "saxx.ca": "saxxunderwear.com",

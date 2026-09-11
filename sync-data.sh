@@ -30,6 +30,13 @@ cp data.js "$SITE_REPO/extension-data.js"
 echo "Writing ownership-data.json for the extension to fetch..."
 node make-data-json.js
 
+# The per-company pages are what makes the research findable in search at
+# all, so they have to be regenerated whenever the dataset changes or they
+# quietly go stale. Also writes sitemap.xml and the slug map the directory
+# uses to link to them.
+echo "Rebuilding per-company pages, sitemap and slug map..."
+( cd "$SITE_REPO" && node build-company-pages.js )
+
 echo "Updating homepage stat counts..."
 node "$SITE_REPO/update-stats.js" "$SITE_REPO/extension-data.js" "$SITE_REPO/index.html"
 
