@@ -1069,7 +1069,7 @@ const OWNERSHIP_DATA = {
     alternatives: ["Kamik (Genfoot, Montreal)", "Baffin (Stoney Creek, Ontario)", "Canada Goose (TSX/NYSE: GOOS)"] },
 
   "knix.ca": { brand: "Knix", ownership: "not-US", category: "Apparel & Fashion", tags: ["underwear", "bras", "period underwear", "intimates"], hq: "Toronto, Ontario", note: "Canadian-founded, Swedish-owned. Joanna Griffiths founded Knix in Toronto, and in 2022 Essity, the Stockholm-listed Swedish hygiene company, bought 80% of it for US$320 million, with Griffiths keeping the other 20% and staying on to run the brand (Essity's announcement, plus Retail Dive and Retail TouchPoints coverage of the closing in September 2022). Not US-owned, but not Canadian-owned either. The domain key is knix.ca because knix.com charges USD.", confidence: "high",
-    alternatives: ["Aisle (Vancouver — period underwear, formerly Lunapads)"] },
+    alternatives: ["Aisle (Vancouver period underwear, formerly Lunapads)"] },
 
   "petvalu.ca": { brand: "Pet Valu", ownership: "Canada", category: "Retail & Department Stores", tags: ["pet food", "pet supplies", "pet store"], hq: "Markham, Ontario", note: "TSX: PET, headquartered in Markham, per the company's own releases. Roark Capital, a US private equity firm, kept about 62% after the 2021 IPO and sold down in stages, and its June 2025 secondary offering left it with no shares (company release on Newswire). The company is now widely held, with no foreign control bloc.", confidence: "high",
     alternatives: [] },
@@ -1081,7 +1081,7 @@ const OWNERSHIP_DATA = {
     alternatives: ["Nature's Path (Canadian, family-owned)", "President's Choice (Canadian private label)"] },
 
   "kindsnacks.ca": { brand: "KIND", ownership: "US", category: "Food & Drink", tags: ["granola bars", "snack bars", "nut bars"], hq: "McLean, Virginia (parent)", note: "Founded by Daniel Lubetzky in New York in 2004, so never Canadian. Owned by Mars, Incorporated, the privately held US confectioner, which took a minority stake in 2017 and acquired KIND North America outright in November 2020 (Mars's announcement, plus Canadian Grocer and FoodNavigator coverage). Often shelved among Canadian products, but American.", confidence: "high",
-    alternatives: ["Nature's Path (Canadian, family-owned — makes granola bars)"] },
+    alternatives: ["Nature's Path (Canadian, family-owned, makes granola bars)"] },
 
   "olddutchfoods.ca": { brand: "Old Dutch", ownership: "verify", category: "Food & Drink", tags: ["chips", "potato chips", "snacks"], hq: "Winnipeg, Manitoba (Canadian head office)", note: "Old Dutch Foods began in Minnesota, where the privately held US parent, Old Dutch Foods Inc., is based in Roseville. Its Canadian arm, Old Dutch Foods Ltd., has had its head office and a chip plant in Winnipeg since 1954 and runs several Canadian plants. The Canadian company is a separate legal entity, but no public source found says who owns it: the US parent, the same family, or someone else. No ownership flag is assigned until that is confirmed through a registry or the company's own statement.", confidence: "verify",
     alternatives: [] },
