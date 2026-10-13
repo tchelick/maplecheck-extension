@@ -274,7 +274,7 @@ const OWNERSHIP_DATA = {
     alternatives: [] },
   "nbc.ca": { brand: "National Bank of Canada", ownership: "Canada", category: "Banking & Insurance", hq: "Montreal, Quebec", note: "TSX: NA", confidence: "high",
     alternatives: [] },
-  "sleepcountry.ca": { brand: "Sleep Country Canada", ownership: "Canada", category: "Home & Furniture", tags: ["mattress", "mattresses", "beds", "sleep"], hq: "Brampton, Ontario", note: "TSX: ZZZ", confidence: "high",
+  "sleepcountry.ca": { brand: "Sleep Country Canada", ownership: "Canada", category: "Home & Furniture", tags: ["mattress", "mattresses", "beds", "sleep"], hq: "Brampton, Ontario", note: "No longer listed: the old TSX: ZZZ reference went stale when Fairfax Financial Holdings (TSX: FFH, Toronto) took Sleep Country private. The arrangement closed on 1 October 2024 at C$35.00 per share, about C$1.7 billion, after a 99.9% shareholder vote and Ontario court approval, and the shares were then delisted (Sleep Country's own closing release on Newswire, plus Torys deal summary). Still Canadian-owned, now through Fairfax.", confidence: "high",
     alternatives: [] },
   "leons.ca": { brand: "Leon's Furniture", ownership: "Canada", category: "Home & Furniture", tags: ["furniture", "appliances", "mattress"], hq: "Toronto, Ontario", note: "TSX: LNF", confidence: "high",
     alternatives: [] },
@@ -937,7 +937,7 @@ const OWNERSHIP_DATA = {
     alternatives: [] },
   "thelasthunt.com": { brand: "The Last Hunt", ownership: "Canada", category: "Apparel & Fashion", tags: ["outdoor gear", "discount"], hq: "Montreal, Quebec", note: "Discount outdoor gear outlet founded in Montreal in 2010, owned by Alexandre Guimond and Maxime Dubois — the same Canadian owners as Altitude Sports.", confidence: "high",
     alternatives: [] },
-  "jamiesonvitamins.com": { brand: "Jamieson", ownership: "Canada", category: "Personal Care & Household", tags: ["vitamins", "supplements"], hq: "Toronto, Ontario", madeIn: "Canada", changingTo: "Japanese-owned", note: "TIME-SENSITIVE — Canadian today, probably not for much longer. Jamieson Wellness (TSX: JWEL) was founded in 1922, is headquartered in Toronto and manufactures the overwhelming majority of its products in Windsor and Scarborough, Ontario. But in August 2026 it entered a definitive agreement to be acquired by Kirin Holdings of Tokyo for C$2.5 billion enterprise value. The shareholder vote was set for September 2026 and closing is expected in the fourth quarter of 2026. Until that closes it remains Canadian-owned; after it closes this entry becomes Japanese-owned. Recheck from October 2026. Notable because the company markets itself heavily as 'proudly Canadian'.", confidence: "verify",
+  "jamiesonvitamins.com": { brand: "Jamieson", ownership: "Canada", category: "Personal Care & Household", tags: ["vitamins", "supplements"], hq: "Toronto, Ontario", madeIn: "Canada", changingTo: "Japanese-owned", note: "TIME-SENSITIVE — Canadian today, probably not for much longer. Jamieson Wellness (TSX: JWEL) was founded in 1922, is headquartered in Toronto and manufactures the overwhelming majority of its products in Windsor and Scarborough, Ontario. But in August 2026 it entered a definitive agreement to be acquired by Kirin Holdings of Tokyo for C$2.5 billion enterprise value. The Ontario Superior Court granted its final order approving the arrangement on 5 October 2026, after the September shareholder meeting. Closing still awaits regulatory clearances and is expected in the fourth quarter of 2026. Until that closes it remains Canadian-owned; after it closes this entry becomes Japanese-owned. Recheck from October 2026. Notable because the company markets itself heavily as 'proudly Canadian'.", confidence: "verify",
     alternatives: [] },
   "lasenza.ca": { brand: "La Senza", ownership: "US", category: "Apparel & Fashion", tags: ["lingerie", "bras", "underwear"], hq: "Montreal, Quebec (operations) / Beverly Hills, California (Regent LP)", note: "Founded in Montreal and long treated as a Canadian brand, but not Canadian-owned since 2019, when Beverly Hills private equity firm Regent LP bought it from L Brands. Operations remain in Montreal; ownership is American.", confidence: "high",
     alternatives: ["Free Label (Canadian)", "Manmade (Canadian)", "Huha (Canadian)"] },
@@ -1035,6 +1035,57 @@ const OWNERSHIP_DATA = {
   "fcl.crs": { brand: "Federated Co-operatives Limited", ownership: "Canada", category: "Grocery & Pharmacy", tags: ["groceries", "gas bar", "hardware", "pharmacy", "co-op"], hq: "Saskatoon, Saskatchewan", note: "Wholesaling and manufacturing co-operative that supplies and is owned by roughly 160 independent local retail co-operatives across Western Canada and into the Arctic — the Co-operative Retailing System (grocery stores, gas bars, hardware and agro centres, pharmacies). Formed 1944 from a merger of the Saskatchewan Co-operative Wholesale Society and Consumers' Co-operative Refineries Limited. Ownership structure and founding confirmed by Wikipedia (citing FCL's own corporate history) and the Encyclopedia of Saskatchewan, agreeing with FCL's own 'Our Story' page. Note: fcl.crs did not respond when checked from this session's network (timeout, not a DNS or parked-domain signal) — the domain is real and actively referenced elsewhere (financial statements hosted there, indexed by search engines), but the live link has not been confirmed working; recheck from a normal connection before trusting the outbound link.", confidence: "high",
     alternatives: [] },
 
+  "liveclean.ca": { brand: "Live Clean", ownership: "US", category: "Personal Care & Household", tags: ["shampoo", "body wash", "baby care", "natural"], hq: "Hoboken, New Jersey (parent)", note: "Canadian-founded, US-owned. Live Clean was created by Belvedere International, a family-owned Mississauga company founded in 1981. The Hain Celestial Group (NASDAQ: HAIN) bought Belvedere, and Live Clean with it, in February 2015 (Hain's own announcement, carried on Newswire, plus trade coverage). Hain's later SEC filings still list Live Clean among its personal care brands. Hain has said publicly it is exploring a sale of its personal care business; no buyer has been announced, so this stays US-owned until one is.", confidence: "high",
+    alternatives: ["Attitude (Beloeil, Quebec)", "Rocky Mountain Soap Company (Canmore, Alberta)", "Green Beaver (Hawkesbury, Ontario)"] },
+
+  "greenbeaver.com": { brand: "Green Beaver", ownership: "Canada", category: "Personal Care & Household", tags: ["natural personal care", "toothpaste", "sunscreen", "shampoo"], hq: "Hawkesbury, Ontario", madeIn: "Canada", note: "Natural personal care company founded in 2002 by scientists Karen Clark and Alain Ménard, per the company's own site, which also states its products are made in Canada. A 2020 RBC profile describes it as a family business that grew out of the founders' kitchen. Still marked for verification because no current source confirms who owns it today: the company does not state its ownership, and an investor appears in third-party database listings without detail. No sale or acquisition was found.", confidence: "verify",
+    alternatives: [] },
+
+  "guestsonearth.com": { brand: "Guests on Earth", ownership: "Canada", category: "Personal Care & Household", tags: ["hand soap", "cleaning products", "refillable", "eco cleaning"], hq: "Toronto, Ontario", madeIn: "Canada", note: "Toronto home-care brand (refillable hand soap and cleaners in aluminum packaging), co-founded by Jackie Prince and Liz Drayton. Founder-owned according to blogTO (2022) and Retail Insider (2024), which agree on the founders and the Toronto base. The company's own site states its products are manufactured in Toronto.", confidence: "high",
+    alternatives: [] },
+
+  "bytheseasoapshoppe.com": { brand: "By the Sea Soap Shoppe", ownership: "Canada", category: "Personal Care & Household", tags: ["soap", "handmade soap"], hq: "Bloomfield, Prince Edward Island", note: "Small handmade-soap business that Dennis and Teresa Hubert started in 2018, run from Duvar Road in western PEI, per the business's own About page.", confidence: "high",
+    alternatives: [] },
+
+  "beautyfrombees.ca": { brand: "Beauty from Bees", ownership: "Canada", category: "Personal Care & Household", tags: ["skincare", "natural skincare", "body care"], hq: "Canada (province not confirmed)", note: "Small natural skincare brand built around bee-derived ingredients. The company's own site names its founder (first name only, Michelle) and says every formula is developed in-house, but it gives no address. Its contact number is a Saskatchewan one, while one directory says the products are made in Alberta and BC. Still marked for verification: Canadian-founded and Canadian-run by every account found, but no registry entry or press report independently confirms ownership or location.", confidence: "verify",
+    alternatives: [] },
+
+  "tanit.co": { brand: "TANIT", ownership: "Canada", category: "Personal Care & Household", tags: ["natural personal care", "deodorant", "soap", "sustainable"], hq: "Montreal, Quebec", madeIn: "Canada", note: "TANIT Botanics, a Montreal company founded in 2018 by a husband-and-wife pair of engineers, per the company's own About page. The company says all of its products are made in its own factory in Saint-Léonard, in the Montreal area.", confidence: "high",
+    alternatives: [] },
+
+  "blondo.ca": { brand: "Blondo", ownership: "US", category: "Apparel & Fashion", tags: ["boots", "waterproof boots", "winter boots", "footwear"], hq: "Long Island City, New York (parent)", note: "Canadian-founded, US-owned. Blondo is a Quebec boot brand that goes back to 1910. Steven Madden, Ltd. (NASDAQ: SHOO) bought the Blondo intellectual property and related assets from Montreal's Regence Footwear in January 2015 (Steve Madden's own press release, plus trade coverage). Steve Madden's FY2025 10-K still lists Blondo among its footwear brands. Earlier signs pointing to Caleres were wrong; the owner is Steve Madden.", confidence: "high",
+    alternatives: ["La Canadienne (Montreal)", "Kamik (Genfoot, Montreal)", "Aldo (Montreal)"] },
+
+  "reigningchamp.com": { brand: "Reigning Champ", ownership: "Canada", category: "Apparel & Fashion", tags: ["sweatshirts", "hoodies", "athletic wear", "menswear"], hq: "Vancouver, BC", note: "Vancouver athletic-wear brand that both designs and manufactures its products. Aritzia (TSX: ATZ) bought a 75% stake in June 2021 at an enterprise value of about $63 million, with the remaining management stake set to convert into Aritzia shares in instalments from 2024 to 2026 (Aritzia's own release, plus Canadian Press coverage). That makes it Canadian-owned through Aritzia. Where it manufactures today is not stated publicly, so made-in is left unset. Note that this site charged USD to Canadian visitors when checked in October 2026, and reigningchamp.ca is a parked domain listed for sale, not theirs.", confidence: "high",
+    alternatives: [] },
+
+  "stanfields.com": { brand: "Stanfield's", ownership: "Canada", category: "Apparel & Fashion", tags: ["underwear", "thermals", "long johns", "workwear"], hq: "Truro, Nova Scotia", madeIn: "mixed", note: "Fifth-generation family-owned company founded in 1856 by Charles E. Stanfield, per the company's own site and its Dictionary of Canadian Biography history. The company says it designs, knits, cuts and sews many of its products at its Truro factory, but that some items made for US-based retailers operating in Canada are imported. That is why made-in is recorded as mixed rather than Canada.", confidence: "high",
+    alternatives: [] },
+
+  "campbellsoup.ca": { brand: "Campbell's", ownership: "US", category: "Food & Drink", tags: ["soup", "canned soup", "broth"], hq: "Camden, New Jersey", madeIn: "imported", note: "The Campbell Company of Canada is a subsidiary of The Campbell's Company (NASDAQ: CPB since August 2024, previously NYSE). In January 2018 Campbell announced it would close its only Canadian factory, the Etobicoke soup plant open since 1931, and move that production to its US plants in North Carolina, Ohio and Texas (company announcement, plus Globe and Mail and IndustryWeek coverage). The Canadian head office stayed in the Greater Toronto Area. So the soup sold here is US-owned and made in the US.", confidence: "high",
+    alternatives: ["President's Choice soups (Loblaw private label)", "Compliments soups (Sobeys private label)"] },
+
+  "sorel.com": { brand: "Sorel", ownership: "US", category: "Apparel & Fashion", tags: ["winter boots", "boots", "snow boots", "footwear"], hq: "Portland, Oregon", note: "Canadian-founded, US-owned. Sorel boots were introduced in 1962 by the Kaufman Rubber Company of Kitchener, Ontario. When Kaufman Footwear went bankrupt in 2000, Columbia Sportswear (NASDAQ: COLM) bought the Sorel trademark but not the factories. The brand is run from Columbia's Portland headquarters and made offshore. Sources: Columbia's own brand history, plus Globe and Mail coverage of the Kaufman collapse. Canadian visitors to sorel.ca are redirected to sorelfootwear.ca.", confidence: "high",
+    alternatives: ["Kamik (Genfoot, Montreal)", "Baffin (Stoney Creek, Ontario)", "Canada Goose (TSX/NYSE: GOOS)"] },
+
+  "knix.ca": { brand: "Knix", ownership: "not-US", category: "Apparel & Fashion", tags: ["underwear", "bras", "period underwear", "intimates"], hq: "Toronto, Ontario", note: "Canadian-founded, Swedish-owned. Joanna Griffiths founded Knix in Toronto, and in 2022 Essity, the Stockholm-listed Swedish hygiene company, bought 80% of it for US$320 million, with Griffiths keeping the other 20% and staying on to run the brand (Essity's announcement, plus Retail Dive and Retail TouchPoints coverage of the closing in September 2022). Not US-owned, but not Canadian-owned either. The domain key is knix.ca because knix.com charges USD.", confidence: "high",
+    alternatives: ["Aisle (Vancouver — period underwear, formerly Lunapads)"] },
+
+  "petvalu.ca": { brand: "Pet Valu", ownership: "Canada", category: "Retail & Department Stores", tags: ["pet food", "pet supplies", "pet store"], hq: "Markham, Ontario", note: "TSX: PET, headquartered in Markham, per the company's own releases. Roark Capital, a US private equity firm, kept about 62% after the 2021 IPO and sold down in stages, and its June 2025 secondary offering left it with no shares (company release on Newswire). The company is now widely held, with no foreign control bloc.", confidence: "high",
+    alternatives: [] },
+
+  "davidstea.com": { brand: "DAVIDsTEA", ownership: "Canada", category: "Food & Drink", tags: ["tea", "loose leaf tea"], hq: "Montreal, Quebec", note: "Montreal tea retailer co-founded in 2008 by Herschel Segal (who also founded Le Château). It now trades on the TSX Venture Exchange (DTEA) after leaving Nasdaq. The company's May 2025 release on Segal's death states that his investment vehicle, Rainy Day Investments, remains its largest shareholder. His daughter Sarah Segal is CEO, and his widow Jane Silverstone Segal chairs the board.", confidence: "high",
+    alternatives: [] },
+
+  "quakeroats.com": { brand: "Quaker", ownership: "US", category: "Food & Drink", tags: ["oatmeal", "oats", "granola bars", "cereal"], hq: "Chicago, Illinois (brand); Purchase, New York (parent)", note: "Owned by PepsiCo (NASDAQ: PEP) since its 2001 acquisition of The Quaker Oats Company. Often shelved among Canadian products, but American. Canadian marketing runs through PepsiCo Canada's Tasty Rewards site. Note that quaker.ca is NOT the brand; it belongs to the Religious Society of Friends (Quakers) in Canada.", confidence: "high",
+    alternatives: ["Nature's Path (Canadian, family-owned)", "President's Choice (Canadian private label)"] },
+
+  "kindsnacks.ca": { brand: "KIND", ownership: "US", category: "Food & Drink", tags: ["granola bars", "snack bars", "nut bars"], hq: "McLean, Virginia (parent)", note: "Founded by Daniel Lubetzky in New York in 2004, so never Canadian. Owned by Mars, Incorporated, the privately held US confectioner, which took a minority stake in 2017 and acquired KIND North America outright in November 2020 (Mars's announcement, plus Canadian Grocer and FoodNavigator coverage). Often shelved among Canadian products, but American.", confidence: "high",
+    alternatives: ["Nature's Path (Canadian, family-owned — makes granola bars)"] },
+
+  "olddutchfoods.ca": { brand: "Old Dutch", ownership: "verify", category: "Food & Drink", tags: ["chips", "potato chips", "snacks"], hq: "Winnipeg, Manitoba (Canadian head office)", note: "Old Dutch Foods began in Minnesota, where the privately held US parent, Old Dutch Foods Inc., is based in Roseville. Its Canadian arm, Old Dutch Foods Ltd., has had its head office and a chip plant in Winnipeg since 1954 and runs several Canadian plants. The Canadian company is a separate legal entity, but no public source found says who owns it: the US parent, the same family, or someone else. No ownership flag is assigned until that is confirmed through a registry or the company's own statement.", confidence: "verify",
+    alternatives: [] },
+
 };
 
 // Alternate domains for the same company. Chains routinely run a .com and a
@@ -1123,6 +1174,12 @@ const DOMAIN_ALIASES = {
   "drunkelephant.com": "drunkelephant.ca",
   "tweezerman.com": "tweezerman.ca",
   "jackjones.com": "jack-jones.ca",
+  "blondo.com": "blondo.ca",
+  "sorel.ca": "sorel.com",
+  "sorelfootwear.ca": "sorel.com",
+  "knix.com": "knix.ca",
+  "kindsnacks.com": "kindsnacks.ca",
+  "campbells.com": "campbellsoup.ca",
 };
 
 // Lookup by hostname.
